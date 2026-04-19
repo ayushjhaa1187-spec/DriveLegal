@@ -1,0 +1,445 @@
+[
+  {
+    "id": "IN::Section-112::speeding",
+    "section": "Section 112 / 183",
+    "rule_reference": "Driving at excessive speed",
+    "title": {
+      "en": "Driving at excessive speed"
+    },
+    "plain_english_summary": "Driving faster than the official speed limit.",
+    "category": "speed",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "min": 1000,
+          "max": 2000
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "fixed": 2000
+        },
+        "licence_suspension": "Impounding of driving licence"
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-185::drunk-driving",
+    "section": "Section 185",
+    "rule_reference": "Driving by a drunken person or by a person under the influence of drugs",
+    "title": {
+      "en": "Drunk driving"
+    },
+    "plain_english_summary": "Driving under the influence of alcohol or drugs exceeding permissible limits.",
+    "category": "intoxication",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 10000
+        },
+        "imprisonment": {
+          "value": 6,
+          "unit": "months",
+          "severity": "may"
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "fixed": 15000
+        },
+        "imprisonment": {
+          "value": 2,
+          "unit": "years",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-194D::helmet",
+    "section": "Section 194D",
+    "rule_reference": "Penalty for not wearing protective headgear",
+    "title": {
+      "en": "Driving without a helmet"
+    },
+    "plain_english_summary": "Riding a two-wheeler without wearing a helmet or carrying a pillion rider without a helmet.",
+    "category": "helmet",
+    "applies_to": ["2W"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 1000
+        },
+        "licence_disqualification": "Disqualification for 3 months"
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-194B::seatbelt",
+    "section": "Section 194B",
+    "rule_reference": "Use of safety belts and the seating of children",
+    "title": {
+      "en": "Driving without a seatbelt"
+    },
+    "plain_english_summary": "Driving a car without wearing a seatbelt or ferrying passengers not wearing seatbelts.",
+    "category": "seatbelt",
+    "applies_to": ["4W", "LMV", "HMV"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 1000
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-196::uninsured",
+    "section": "Section 196",
+    "rule_reference": "Driving uninsured vehicle",
+    "title": {
+      "en": "Driving without insurance"
+    },
+    "plain_english_summary": "Driving a vehicle without a valid third-party insurance cover.",
+    "category": "insurance",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 2000
+        },
+        "imprisonment": {
+          "value": 3,
+          "unit": "months",
+          "severity": "may"
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "fixed": 4000
+        },
+        "imprisonment": {
+          "value": 3,
+          "unit": "months",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-181::no-licence",
+    "section": "Section 181",
+    "rule_reference": "Driving vehicles in contravention of section 3 or section 4",
+    "title": {
+      "en": "Driving without a valid licence"
+    },
+    "plain_english_summary": "Driving a vehicle without holding an effective and valid driving licence.",
+    "category": "licence",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 5000
+        },
+        "imprisonment": {
+          "value": 3,
+          "unit": "months",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-199A::juvenile",
+    "section": "Section 199A",
+    "rule_reference": "Offences by Juveniles",
+    "title": {
+      "en": "Offence by Juvenile"
+    },
+    "plain_english_summary": "A minor driving a motor vehicle and committing an offence.",
+    "category": "juvenile",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 25000
+        },
+        "imprisonment": {
+          "value": 3,
+          "unit": "years",
+          "severity": "shall"
+        },
+        "licence_suspension": "Registration cancelled for 12 months, juvenile ineligible for licence until age 25"
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-184::dangerous-driving",
+    "section": "Section 184",
+    "rule_reference": "Driving dangerously",
+    "title": {
+      "en": "Dangerous Driving"
+    },
+    "plain_english_summary": "Driving in a manner dangerous to the public, including jumping red lights, violating stop signs, or using handheld devices.",
+    "category": "dangerous_driving",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "min": 1000,
+          "max": 5000
+        },
+        "imprisonment": {
+          "value": 6,
+          "unit": "months",
+          "severity": "may"
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "fixed": 10000
+        },
+        "imprisonment": {
+          "value": 2,
+          "unit": "years",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-194E::emergency",
+    "section": "Section 194E",
+    "rule_reference": "Failure to allow free passage to emergency vehicles",
+    "title": {
+      "en": "Blocking Emergency Vehicles"
+    },
+    "plain_english_summary": "Failing to give way to fire engines, ambulances, or other emergency vehicles.",
+    "category": "safety",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 10000
+        },
+        "imprisonment": {
+          "value": 6,
+          "unit": "months",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-190::pollution",
+    "section": "Section 190(2)",
+    "rule_reference": "Using vehicle in unsafe condition",
+    "title": {
+      "en": "Violation of road safety and pollution standards"
+    },
+    "plain_english_summary": "Driving a vehicle violating standards for road safety, control of noise, or air pollution (e.g. without PUC certificate).",
+    "category": "pollution",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 10000
+        },
+        "imprisonment": {
+          "value": 3,
+          "unit": "months",
+          "severity": "may"
+        },
+        "licence_suspension": "Disqualification for 3 months"
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-192A::permit",
+    "section": "Section 192A",
+    "rule_reference": "Using vehicle without permit",
+    "title": {
+      "en": "Driving without Permit"
+    },
+    "plain_english_summary": "Using a transport vehicle without a valid permit.",
+    "category": "permit",
+    "applies_to": ["transport"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 10000
+        },
+        "imprisonment": {
+          "value": 6,
+          "unit": "months",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-193::registration",
+    "section": "Section 192",
+    "rule_reference": "Using vehicle without registration",
+    "title": {
+      "en": "Driving without Registration"
+    },
+    "plain_english_summary": "Driving a motor vehicle without a valid registration certificate.",
+    "category": "registration",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "min": 2000,
+          "max": 5000
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "min": 5000,
+          "max": 10000
+        },
+        "imprisonment": {
+          "value": 1,
+          "unit": "years",
+          "severity": "may"
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-194::overloading",
+    "section": "Section 194",
+    "rule_reference": "Driving vehicle exceeding permissible weight",
+    "title": {
+      "en": "Overloading of goods vehicles"
+    },
+    "plain_english_summary": "Driving a transport vehicle loaded beyond the legally permissible limits.",
+    "category": "overloading",
+    "applies_to": ["transport", "HMV"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 20000
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-194A::overloading-passengers",
+    "section": "Section 194A",
+    "rule_reference": "Carriage of excess passengers",
+    "title": {
+      "en": "Overloading of passengers"
+    },
+    "plain_english_summary": "Carrying more passengers than officially permitted in a transport vehicle.",
+    "category": "overloading",
+    "applies_to": ["transport"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 200
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  },
+  {
+    "id": "IN::Section-177::general",
+    "section": "Section 177",
+    "rule_reference": "General provision for punishment of offences",
+    "title": {
+      "en": "General Traffic Violation"
+    },
+    "plain_english_summary": "General penalty for breaking any traffic rule where no specific penalty is provided.",
+    "category": "other",
+    "applies_to": ["all"],
+    "penalty": {
+      "first_offence": {
+        "fine": {
+          "fixed": 500
+        }
+      },
+      "repeat_offence": {
+        "fine": {
+          "fixed": 1500
+        }
+      }
+    },
+    "jurisdiction": {
+      "level": "central"
+    },
+    "source_document": "Motor Vehicles (Amendment) Act 2019",
+    "verification_status": "verified"
+  }
+]

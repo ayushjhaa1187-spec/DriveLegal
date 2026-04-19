@@ -85,4 +85,4 @@ export function clearViolationCache(): void {
 }
 
 /** Expose the full list of states that have override files */
-export const STATES_WITH_OVERRIDES: string[] = ["MH"];
+export const STATES_WITH_OVERRIDES: string[] = ["MH", "KA", "DL"];

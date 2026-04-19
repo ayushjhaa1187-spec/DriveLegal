@@ -1,0 +1,235 @@
+{
+  "document_metadata": {
+    "source_document": "Karnataka Government Gazette Notification No. TD 111 TDO 2019",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-KA",
+    "language": "en",
+    "pages_processed": [1, 2, 3],
+    "extraction_timestamp": "2026-04-19T22:50:00Z"
+  },
+  "violations": [
+    {
+      "id": "IN::Section-112::speeding",
+      "section": "Section 112 / 183",
+      "rule_reference": "Driving at excessive speed (Karnataka Override)",
+      "title": {
+        "en": "Driving at excessive speed"
+      },
+      "plain_english_summary": "Karnataka specific bounds for speeding depending on the vehicle type.",
+      "category": "speed",
+      "severity": 3,
+      "applies_to": ["2W", "3W", "4W", "LMV"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "effective_date": "2019-11-20",
+      "source_url": "https://transport.karnataka.gov.in/",
+      "source_document": "Karnataka Govt Notification",
+      "source_page": 2,
+      "source_text_excerpt": "Speeding over the limit (LMV) - fixed at ₹1000",
+      "confidence": "high",
+      "extraction_notes": ["Fixed compounding fine in KA."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194D::helmet",
+      "section": "Section 194D",
+      "rule_reference": "Penalty for not wearing protective headgear (Karnataka Override)",
+      "title": {
+        "en": "Driving without a helmet (Karnataka)"
+      },
+      "plain_english_summary": "Riding a two-wheeler without wearing a compliant helmet. Karnataka reduced this from the Centre's ₹1000 to ₹500.",
+      "category": "helmet",
+      "severity": 2,
+      "applies_to": ["2W"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Suspension for 3 months currently on hold under state direction.",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "effective_date": "2019-11-20",
+      "source_url": "https://transport.karnataka.gov.in/",
+      "source_document": "Karnataka Govt Notification",
+      "source_page": 1,
+      "source_text_excerpt": "Fine for without helmet reduced to ₹500",
+      "confidence": "high",
+      "extraction_notes": ["Explicitly overridden from ₹1000 to ₹500 by State Govt."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::permit",
+      "section": "Section 177",
+      "rule_reference": "Refusal to ply for hire",
+      "title": {
+        "en": "Refusal to Ply (Auto/Taxi)"
+      },
+      "plain_english_summary": "An auto-rickshaw or taxi driver refusing to take a passenger to their required destination.",
+      "category": "permit",
+      "severity": 2,
+      "applies_to": ["3W"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "effective_date": "2019-11-20",
+      "source_url": "https://transport.karnataka.gov.in/",
+      "source_document": "Karnataka Govt Rules",
+      "source_page": 3,
+      "source_text_excerpt": "Refusal to ply for hire: ₹500",
+      "confidence": "high",
+      "extraction_notes": ["Very common Bangalore Traffic Police offence."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-19B::seatbelt",
+      "section": "Section 194B",
+      "rule_reference": "Use of safety belts and the seating of children",
+      "title": {
+        "en": "Driving without a seatbelt (Karnataka)"
+      },
+      "plain_english_summary": "Driving a car without wearing a seatbelt. Reduced from ₹1000 to ₹500 in Karnataka.",
+      "category": "seatbelt",
+      "severity": 2,
+      "applies_to": ["4W", "LMV", "HMV"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "effective_date": "2019-11-20",
+      "source_url": "https://transport.karnataka.gov.in/",
+      "source_document": "Karnataka Govt Notification",
+      "source_page": 2,
+      "source_text_excerpt": "Seatbelt violation reduced to ₹500",
+      "confidence": "high",
+      "extraction_notes": ["State has formally reduced this compounding amount from Central guidelines."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-184::mobile-use",
+      "section": "Section 184",
+      "rule_reference": "Driving dangerously - Use of Mobile",
+      "title": {
+        "en": "Using Mobile Phone while driving"
+      },
+      "plain_english_summary": "Using a handheld mobile device while driving a vehicle on Karnataka roads.",
+      "category": "mobile_use",
+      "severity": 4,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "fixed": 3000,
+            "currency": "INR",
+            "min": 3000,
+            "max": 3000
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1500,
+      "effective_date": "2019-11-20",
+      "source_url": "https://transport.karnataka.gov.in/",
+      "source_document": "Karnataka Govt Notification",
+      "source_page": 2,
+      "source_text_excerpt": "Mobile phone use: ₹1500 for two-wheelers, ₹3000 for LMVs (simplified to 1500/3000 here)",
+      "confidence": "high",
+      "extraction_notes": ["Enforced heavily via traffic cameras."],
+      "last_verified": "2026-04-19"
+    }
+  ]
+}

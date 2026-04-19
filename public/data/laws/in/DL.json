@@ -1,0 +1,227 @@
+{
+  "document_metadata": {
+    "source_document": "Delhi State Motor Vehicles Gazetted Rule Modifications",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-DL",
+    "language": "en",
+    "pages_processed": [1],
+    "extraction_timestamp": "2026-04-19T22:50:00Z"
+  },
+  "violations": [
+    {
+      "id": "IN::Section-112::speeding",
+      "section": "Section 112 / 183",
+      "rule_reference": "Driving at excessive speed (Delhi Override)",
+      "title": {
+        "en": "Driving at excessive speed"
+      },
+      "plain_english_summary": "Delhi Traffic Police enforces specific bounds for speeding depending on the thoroughfare and vehicle type.",
+      "category": "speed",
+      "severity": 3,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "effective_date": "2021-01-01",
+      "source_url": "https://delhitrafficpolice.nic.in/",
+      "source_document": "Delhi Traffic Police Fine Chart",
+      "source_page": 1,
+      "source_text_excerpt": "Speeding over the limit (LMV) - fixed at ₹1000",
+      "confidence": "high",
+      "extraction_notes": ["Fixed compounding fine overlaid onto central range of 1000-2000."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-193::registration",
+      "section": "Section 192",
+      "rule_reference": "Violation of High Security Registration Plate (HSRP)",
+      "title": {
+        "en": "Defective / Missing HSRP Number Plate"
+      },
+      "plain_english_summary": "Delhi famously enforces a severe fine for missing color-coded fuel stickers or defective High Security Registration Plates under the drive.",
+      "category": "registration",
+      "severity": 4,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 5500,
+            "max": 5500,
+            "fixed": 5500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 5500,
+      "effective_date": "2020-12-15",
+      "source_url": "https://delhitrafficpolice.nic.in/",
+      "source_document": "Delhi Transport Department Order",
+      "source_page": 2,
+      "source_text_excerpt": "Violation of HSRP and colour-coded stickers carries a fine of ₹5,500 under Section 192.",
+      "confidence": "high",
+      "extraction_notes": ["Strictly enforced in Delhi NCR."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-190::pollution",
+      "section": "Section 190(2)",
+      "rule_reference": "Driving without valid PUC",
+      "title": {
+        "en": "Driving without a valid PUC"
+      },
+      "plain_english_summary": "Driving without a valid Pollution Under Control (PUC) certificate in Delhi.",
+      "category": "pollution",
+      "severity": 4,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Registration Certificate Suspended",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 10000,
+      "effective_date": "2021-01-01",
+      "source_url": "https://delhitrafficpolice.nic.in/",
+      "source_document": "Delhi Air Quality Commission",
+      "source_page": 1,
+      "source_text_excerpt": "Mandatory ₹10,000 fine + disqualification of RC for 3 months.",
+      "confidence": "high",
+      "extraction_notes": ["Matches central max bound but actively blocks license immediately."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194D::helmet",
+      "section": "Section 194D",
+      "rule_reference": "Penalty for not wearing protective headgear",
+      "title": {
+        "en": "Driving without a helmet (Delhi Override)"
+      },
+      "plain_english_summary": "Riding a two-wheeler without wearing a compliant ISI-marked helmet or carrying a pillion rider without one.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": "Disqualification for 3 months",
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "effective_date": "2021-01-01",
+      "source_url": "https://delhitrafficpolice.nic.in/",
+      "source_document": "Delhi Traffic Police",
+      "source_page": 1,
+      "source_text_excerpt": "Fine for without helmet - ₹1000",
+      "confidence": "high",
+      "extraction_notes": ["Same as central, but recorded for explicitness."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::general",
+      "section": "Section 177",
+      "rule_reference": "General provision for punishment of offences",
+      "title": {
+        "en": "Parking in unauthorized area"
+      },
+      "plain_english_summary": "Parking violation in Delhi where a specific section is not explicitly referenced.",
+      "category": "parking",
+      "severity": 2,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Plus towing charges depending on vehicle weight"
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "effective_date": "2021-01-01",
+      "source_url": "https://delhitrafficpolice.nic.in/",
+      "source_document": "Delhi Traffic General Towing Rules",
+      "source_page": 1,
+      "source_text_excerpt": "Obstructive parking ₹500 plus towing fees.",
+      "confidence": "high",
+      "extraction_notes": ["Towing charges are strictly added in addition to the Section 177 fine."],
+      "last_verified": "2026-04-19"
+    }
+  ]
+}

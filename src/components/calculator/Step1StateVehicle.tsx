@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useMemo } from "react";
-import { MapPin, ChevronDown, Search } from "lucide-react";
+import { MapPin, ChevronDown, Search, LocateFixed, Loader2 } from "lucide-react";
 import { INDIA_STATES } from "@/lib/law-engine/states";
+import { detectState } from "@/lib/geo/detector";
 import type { VehicleTypeInput } from "@/lib/law-engine/types";
 
 const VEHICLE_TYPES: { value: VehicleTypeInput; label: string; emoji: string }[] = [
@@ -30,6 +31,23 @@ export function Step1StateVehicle({
 }: Step1Props) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [isDetecting, setIsDetecting] = useState(false);
+  const [detectionLabel, setDetectionLabel] = useState<string | null>(null);
+
+  async function handleAutoDetect() {
+    setIsDetecting(true);
+    setDetectionLabel(null);
+    const result = await detectState();
+    setIsDetecting(false);
+    if (result.stateCode) {
+      onSelectState(result.stateCode);
+      setDetectionLabel(
+        result.method === "gps" ? "Detected via GPS" : "Detected via IP"
+      );
+    } else {
+      setDetectionLabel("Could not detect — please select manually");
+    }
+  }
 
   const filteredStates = useMemo(
     () =>
@@ -49,10 +67,11 @@ export function Step1StateVehicle({
           📍 Your State / UT
         </label>
         <div className="relative">
+        <div className="flex gap-2">
           <button
             id="state-selector"
             onClick={() => setIsOpen((v) => !v)}
-            className="w-full flex items-center justify-between bg-white border-2 border-zinc-200 hover:border-brand-navy rounded-2xl px-5 py-4 text-left transition-all focus:outline-none focus:border-brand-navy"
+            className="flex-1 flex items-center justify-between bg-white border-2 border-zinc-200 hover:border-brand-navy rounded-2xl px-5 py-4 text-left transition-all focus:outline-none focus:border-brand-navy"
           >
             <span className={selectedStateName ? "text-zinc-900 font-medium" : "text-zinc-400"}>
               {selectedStateName ?? "Select your state..."}
@@ -61,6 +80,18 @@ export function Step1StateVehicle({
               className={`w-5 h-5 text-zinc-400 transition-transform ${isOpen ? "rotate-180" : ""}`}
             />
           </button>
+          <button
+            id="auto-detect-state"
+            onClick={handleAutoDetect}
+            disabled={isDetecting}
+            title="Auto-detect my state"
+            className="flex items-center justify-center w-14 h-14 bg-blue-50 hover:bg-blue-100 border-2 border-blue-200 rounded-2xl transition-all disabled:opacity-50"
+          >
+            {isDetecting
+              ? <Loader2 className="w-5 h-5 text-brand-navy animate-spin" />
+              : <LocateFixed className="w-5 h-5 text-brand-navy" />}
+          </button>
+        </div>
 
           {isOpen && (
             <div className="absolute z-50 w-full mt-2 bg-white border border-zinc-200 rounded-2xl shadow-2xl overflow-hidden">
@@ -104,10 +135,14 @@ export function Step1StateVehicle({
           )}
         </div>
 
-        {selectedState && (
+        {(selectedState || detectionLabel) && (
           <div className="flex items-center gap-2 text-xs text-zinc-500">
             <MapPin className="w-3 h-3" />
-            {INDIA_STATES.find(s => s.code === selectedState)?.hasOverride
+            {detectionLabel && !selectedState
+              ? <span className="text-red-500">{detectionLabel}</span>
+              : detectionLabel
+              ? <span className="text-emerald-600 font-medium">{detectionLabel}</span>
+              : INDIA_STATES.find(s => s.code === selectedState)?.hasOverride
               ? <span className="text-amber-600 font-medium">State-specific fines apply for {selectedStateName}</span>
               : <span>Using Central Motor Vehicles Act 2019 rates</span>
             }

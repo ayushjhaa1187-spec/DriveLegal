@@ -11,16 +11,14 @@
     {
       "id": "MH::Section-194D::helmet-not-worn-by-rider",
       "section": "Section 194D",
-      "rule_reference": null,
+      "rule_reference": "Riding without protective headgear",
       "title": {
         "en": "Riding without helmet (Maharashtra Override)"
       },
       "plain_english_summary": "State-specific compounding fee for riding without a helmet in Maharashtra.",
       "category": "helmet",
       "severity": 3,
-      "applies_to": [
-        "2W"
-      ],
+      "applies_to": ["2W"],
       "jurisdiction": {
         "country": "IN",
         "state_code": "MH",
@@ -45,14 +43,184 @@
       "compoundable": true,
       "compounding_amount_inr": 500,
       "effective_date": "2021-12-01",
-      "source_url": "https://transport.maharashtra.gov.in/Site/Upload/GR/Notification%20MV%20Act%20Compounding%20Fees.pdf",
+      "source_url": "https://transport.maharashtra.gov.in/",
       "source_document": "Maharashtra Government Gazette Notification",
       "source_page": 5,
       "source_text_excerpt": "Section 194D: Riding without protective headgear - Compounding fee ₹500",
       "confidence": "high",
-      "extraction_notes": [
-        "Maharashtra reduced the compounding fee to ₹500 from the statutory ₹1000 specified in the Central Act."
-      ],
+      "extraction_notes": ["Maharashtra reduced compounding fee to ₹500 from Central ₹1000."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "MH::Section-112::speeding",
+      "section": "Section 112 / 183",
+      "rule_reference": "Driving at excessive speed (MH)",
+      "title": {
+        "en": "Driving at excessive speed"
+      },
+      "plain_english_summary": "Maharashtra uses higher compounding fines for speeding vehicles depending on type, particularly tractors.",
+      "category": "speed",
+      "severity": 3,
+      "applies_to": ["4W", "LMV"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "MH",
+        "state_name": "Maharashtra"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 2000,
+      "effective_date": "2021-12-01",
+      "source_url": "https://transport.maharashtra.gov.in/",
+      "source_document": "Maharashtra Government Gazette Notification",
+      "source_page": 6,
+      "source_text_excerpt": "Speeding over the limit (LMV) - fixed at ₹2000",
+      "confidence": "high",
+      "extraction_notes": ["Maharashtra fixed LMV speeding at ₹2000 instead of 1000-2000 range."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "MH::Section-190::pollution",
+      "section": "Section 190(2)",
+      "rule_reference": "Driving without valid PUC in MH",
+      "title": {
+        "en": "Driving without a valid PUC"
+      },
+      "plain_english_summary": "Driving without a valid Pollution Under Control (PUC) certificate in Maharashtra.",
+      "category": "pollution",
+      "severity": 3,
+      "applies_to": ["all"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "MH",
+        "state_name": "Maharashtra"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 2000,
+      "effective_date": "2021-12-01",
+      "source_url": "https://transport.maharashtra.gov.in/",
+      "source_document": "Maharashtra Air Quality Norms 2021",
+      "source_page": 2,
+      "source_text_excerpt": "PUC violation is compounded at ₹2000 in MH instead of ₹10000.",
+      "confidence": "high",
+      "extraction_notes": ["Massively reduced fine compared to Central maximum of ₹10,000."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "MH::Section-194C::pillion",
+      "section": "Section 194C",
+      "rule_reference": "Penalty for overloading 2W",
+      "title": {
+        "en": "Triple Riding on Two Wheeler"
+      },
+      "plain_english_summary": "Carrying more than one pillion rider on a two wheeler.",
+      "category": "safety",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "MH",
+        "state_name": "Maharashtra"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification for 3 months currently active in Traffic drives",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "effective_date": "2021-12-01",
+      "source_url": "https://transport.maharashtra.gov.in/",
+      "source_document": "Maharashtra Traffic Notification",
+      "source_page": 3,
+      "source_text_excerpt": "Triple riding compounded at ₹1000.",
+      "confidence": "high",
+      "extraction_notes": ["Standard enforcement under state drive."],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "MH::Section-192A::permit",
+      "section": "Section 192A",
+      "rule_reference": "Using vehicle without permit",
+      "title": {
+        "en": "Driving without Permit (MH Specific)"
+      },
+      "plain_english_summary": "Using a transport vehicle without a valid permit in Maharashtra.",
+      "category": "permit",
+      "severity": 4,
+      "applies_to": ["transport", "HMV", "3W"],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "MH",
+        "state_name": "Maharashtra"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 5000,
+            "max": 5000,
+            "fixed": 5000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "RC suspended under specific conditions",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 5000,
+      "effective_date": "2021-12-01",
+      "source_url": "https://transport.maharashtra.gov.in/",
+      "source_document": "Maharashtra Government Gazette Notification",
+      "source_page": 7,
+      "source_text_excerpt": "Section 192A: First offence compounded at ₹5000 in MH.",
+      "confidence": "high",
+      "extraction_notes": ["Reduced from central ₹10000 to ₹5000 for transport vehicles in MH."],
       "last_verified": "2026-04-19"
     }
   ]

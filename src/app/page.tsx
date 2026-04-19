@@ -29,7 +29,11 @@ export default function Home() {
           </p>
 
           {/* Giant Search Bar */}
-          <div className="relative max-w-2xl mx-auto group">
+          <form 
+            action="/ask" 
+            method="GET"
+            className="relative max-w-2xl mx-auto group"
+          >
             <div className="absolute inset-0 bg-brand-amber/20 blur-xl group-focus-within:bg-brand-amber/40 transition-all rounded-full" />
             <div className="relative flex items-center bg-white rounded-full shadow-2xl overflow-hidden p-2">
               <div className="pl-4 pr-2 text-zinc-400">
@@ -37,19 +41,21 @@ export default function Home() {
               </div>
               <input
                 type="text"
+                name="q"
                 placeholder="How much fine if I don't wear helmet in Pune?"
                 className="flex-1 bg-transparent py-3 md:py-4 px-2 text-zinc-900 focus:outline-none text-lg"
+                required
               />
               <div className="flex items-center gap-2 pr-2">
                  <div className="hidden md:flex items-center px-3 py-1 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-500 uppercase tracking-widest border border-zinc-200">
-                  Detecting State...
+                  Powered by AI
                 </div>
-                <button className="p-3 bg-brand-navy text-white rounded-full hover:bg-brand-navy/90 transition-all">
+                <button type="submit" className="p-3 bg-brand-navy text-white rounded-full hover:bg-brand-navy/90 transition-all">
                   <Mic className="w-6 h-6" />
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </section>
 
