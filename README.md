@@ -7,7 +7,7 @@
 
 <div align="center">
 
-![DriveLegal Banner](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,20&height=220&section=header&text=DRIVELEGAL&fontSize=80&fontAlignY=38&desc=Ask.%20Know.%20Contest.%20Drive%20Safe.&descAlignY=58&descAlign=50&fontColor=ffffff&animation=twinkling)
+
 
 <br/>
 
@@ -17,29 +17,29 @@
 
 <br/><br/>
 
-[![Next.js](https://img.shields.io/badge/Next.js-14.x-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-[![Tailwind](https://img.shields.io/badge/TailwindCSS-3.x-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
-[![PWA](https://img.shields.io/badge/PWA-Offline--First-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
-[![Gemini](https://img.shields.io/badge/Gemini-1.5%20Flash-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://ai.google.dev/)
-[![Groq](https://img.shields.io/badge/Groq-Llama%203.1%2070B-F55036?style=for-the-badge&logo=meta&logoColor=white)](https://groq.com/)
-[![Cloudflare](https://img.shields.io/badge/Cloudflare-Edge%20Cache-F38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://www.cloudflare.com/)
-[![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](#)
+[
+[
+[
+[
+[
+[
+[
+[
+[
+[
 
 <br/>
 
-[🌐 Live Demo](https://drivelegal.vercel.app/) &nbsp;•&nbsp;
-[📋 Problem Statement](#-problem-statement) &nbsp;•&nbsp;
-[🗺️ Implementation Plan](#-40-day-master-timeline) &nbsp;•&nbsp;
-[⚖️ Data Sources](#-data-acquisition--curation) &nbsp;•&nbsp;
-[🐛 Report Bug](../../issues) &nbsp;•&nbsp;
+[🌐 Live Demo](https://drivelegal.vercel.app/) &nbsp;- &nbsp;
+[📋 Problem Statement](#-problem-statement) &nbsp;- &nbsp;
+[🗺️ Implementation Plan](#-40-day-master-timeline) &nbsp;- &nbsp;
+[⚖️ Data Sources](#-data-acquisition--curation) &nbsp;- &nbsp;
+[🐛 Report Bug](../../issues) &nbsp;- &nbsp;
 [💡 Request Feature](../../issues)
 
 </div>
 
----
+***
 
 ## 📖 Table of Contents
 
@@ -47,6 +47,8 @@
 - [Problem Statement](#-problem-statement)
 - [Core Features](#-core-features)
 - [System Architecture](#-system-architecture)
+- [Workflow Diagrams](#-workflow-diagrams)
+- [Integrated Ecosystem](#-integrated-ecosystem)
 - [Tech Stack](#-tech-stack-breakdown)
 - [Data Acquisition & Curation](#-data-acquisition--curation)
 - [Data Schema](#-data-schema)
@@ -66,7 +68,7 @@
 - [Contributing](#-contributing)
 - [Team](#-team)
 
----
+***
 
 ## 🎯 What is DriveLegal?
 
@@ -97,7 +99,7 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 └───────────────────────┴──────────────────────┴───────────────────┘
 ```
 
----
+***
 
 ## 🧩 Problem Statement
 
@@ -109,7 +111,7 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 2. **Language barrier** — Over 70% of Indians are not comfortable reading legal English.
 3. **Connectivity barrier** — Highways, rural areas, and checkpoint scenarios often have poor or no data coverage.
 
----
+***
 
 ## ✨ Core Features
 
@@ -156,13 +158,13 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 - `<iframe src="drivelegal.app/embed/calculator?state=TN">`
 - Designed for driving schools, state government sites, insurance portals, fleet operators
 
----
+***
 
 ## 🏗️ System Architecture
 
 ### The Core Insight
 
-> DriveLegal is **static-first, LLM-assisted** — not LLM-first. **95 %+** of all user queries are resolved by a **deterministic rule engine running in the browser** on cached JSON. The LLM is invoked only for **natural-language understanding** (parsing a sentence into `{violation, state, vehicle}`) — never for generating legal amounts.
+> DriveLegal is **static-first, LLM-assisted** — not LLM-first. **95%+** of all user queries are resolved by a **deterministic rule engine running in the browser** on cached JSON. The LLM is invoked only for **natural-language understanding** (parsing a sentence into `{violation, state, vehicle}`) — never for generating legal amounts.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -186,8 +188,8 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 ┌─────────────────────────────────────────────────────────────────────┐
 │                  VERCEL EDGE FUNCTION (proxy)                       │
 │    • Rate limiting (Upstash Redis free tier)                        │
-│    • API key rotation:  Gemini → Groq → HuggingFace                 │
-│    • Response caching (Cloudflare 24 h TTL)                         │
+│    • API key rotation:  Gemini → Groq → HuggingFace                │
+│    • Response caching (Cloudflare 24 h TTL)                        │
 └──────────────────────────────┬──────────────────────────────────────┘
                                ▼
       ┌──────────────────┬─────────────────┬────────────────────┐
@@ -208,7 +210,145 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 | **Deterministic > probabilistic** | Fines never come from LLM weights — always from authoritative JSON |
 | **Privacy by design** | No user accounts, no behavioural tracking, no data leaves device |
 
----
+***
+
+## 🔄 Workflow Diagrams
+
+### Flow 1 — Challan Calculator
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as Calculator UI
+    participant GEO as Geo Detector
+    participant ENGINE as Law Engine
+    participant DATA as Cached Laws JSON
+
+    User->>UI: Opens calculator
+    UI->>GEO: Detect state
+    alt Geolocation available
+        GEO-->>UI: State from GPS / reverse geocode
+    else Header fallback available
+        GEO-->>UI: State from Cloudflare headers
+    else Manual selection
+        User->>UI: Select state manually
+    end
+
+    User->>UI: Select violation + vehicle type + repeat offence
+    UI->>ENGINE: queryViolations({state, violation, vehicleType, repeat})
+    ENGINE->>DATA: Load central + state override rules
+    DATA-->>ENGINE: Matching legal entries
+    ENGINE-->>UI: Fine amount + section + licence impact + source
+    UI-->>User: Render result card + citation + shareable URL
+```
+
+### Flow 2 — AI Legal Q&A
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as Ask UI
+    participant API as /api/ask
+    participant LLM as Gemini / Groq Router
+    participant ENGINE as Law Engine
+    participant DATA as Cached Laws JSON
+
+    User->>UI: Ask in plain language
+    UI->>API: Send user query
+    API->>LLM: Parse intent only
+    LLM-->>API: {violation, state, vehicleType, repeat?}
+    API->>ENGINE: queryViolations(parsedIntent)
+    ENGINE->>DATA: Resolve legal entry
+    DATA-->>ENGINE: Exact fine + section + consequences
+    ENGINE-->>API: Deterministic legal result
+    API-->>UI: Answer with citation + disclaimer
+
+    alt LLM unavailable
+        UI->>ENGINE: Local keyword search fallback
+        ENGINE-->>UI: Closest matching legal entries
+    end
+```
+
+### Flow 3 — Scan-and-Verify OCR
+
+```mermaid
+sequenceDiagram
+    actor User
+    participant UI as Scan UI
+    participant OCR as Gemini Vision
+    participant ENGINE as Law Engine
+    participant PDF as Dispute Letter Generator
+
+    User->>UI: Upload challan image
+    UI->>OCR: Extract violation, amount, date, state
+    OCR-->>UI: Structured challan fields
+    UI->>ENGINE: Match extracted violation against legal dataset
+    ENGINE-->>UI: Legal fine + section + mismatch check
+
+    alt Amount charged > legal amount
+        UI->>PDF: Generate dispute letter
+        PDF-->>User: Downloadable dispute document
+    else Valid amount
+        UI-->>User: Mark challan as legally consistent
+    end
+```
+
+### Flow 4 — Weekly Law Update Pipeline
+
+```mermaid
+flowchart TD
+    A[Government PDFs / India Code / State Notifications] --> B[Playwright Scraper]
+    B --> C[OCR Repair]
+    C --> D[Section Discovery Prompt]
+    D --> E[Structured Extraction Prompt]
+    E --> F[Normalization + Deduplication]
+    F --> G[Zod Schema Validation]
+    G --> H{Valid?}
+    H -- No --> I[Manual Review / Fix]
+    I --> E
+    H -- Yes --> J[Commit to data/laws/in/*.json]
+    J --> K[GitHub Actions Weekly Refresh]
+    K --> L[Vercel Deploy / CDN Cache Refresh]
+```
+
+***
+
+## ♻️ Integrated Ecosystem
+
+### Citizen Legal Assistance Lifecycle
+
+```mermaid
+graph TD
+    A[User opens DriveLegal] --> B[Detect state automatically]
+    B --> C[Instant challan calculation]
+    C --> D{Needs more explanation?}
+    D -- Yes --> E[AI legal Q&A]
+    D -- No --> F[Save / Share legal result]
+
+    E --> G[Gets section-backed answer]
+    G --> H{Still unsure?}
+    H -- Yes --> I[Know-Your-Rights guidance]
+    H -- No --> F
+
+    F --> J[User stopped from overpaying]
+    I --> K[Understands contest process / documents]
+    J --> L[Safer, informed road user]
+    K --> L
+```
+
+### DriveLegal Value Loop
+
+```mermaid
+graph LR
+    A[Official legal sources] --> B[Structured law dataset]
+    B --> C[Deterministic calculator]
+    C --> D[Citizen trust]
+    D --> E[More usage + feedback]
+    E --> F[Better law coverage + updates]
+    F --> B
+```
+
+***
 
 ## 🧰 Tech Stack Breakdown
 
@@ -243,7 +383,7 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 | Analytics | **Plausible (self-host)** | Privacy-first, no cookies |
 | Error tracking | **Sentry free tier** | Production error visibility |
 
----
+***
 
 ## 📚 Data Acquisition & Curation
 
@@ -285,7 +425,7 @@ Think of it as: **Google Translate** × **TurboTax** × **Wikipedia-for-traffic-
 - gzipped: **~400 KB** served over CDN
 - Every entry includes `sourceUrl` + `lastVerified` date for legal transparency
 
----
+***
 
 ## 📐 Data Schema
 
@@ -320,7 +460,7 @@ interface Violation {
 }
 ```
 
----
+***
 
 ## 🧠 LLM Extraction Pipeline
 
@@ -389,7 +529,7 @@ RULES:
 > - *"If the document does not explicitly state a fine or penalty, do not fill it from prior knowledge."*
 > - *"Do not merge multiple legal clauses into one entry unless the source text clearly describes a single violation with multiple penalty stages."*
 
----
+***
 
 ## 🎨 Feature Specs
 
@@ -433,7 +573,7 @@ Top-10 country rule packs generated at build time and bundled. Country selector 
 ### F10: Embeddable Widget (Day 30)
 `<iframe src="drivelegal.app/embed/calculator?state=TN">` — for driving schools, government sites, insurance portals.
 
----
+***
 
 ## 🎨 UI / UX & Accessibility
 
@@ -459,10 +599,10 @@ Top-10 country rule packs generated at build time and bundled. Country selector 
 ✅ **Lighthouse:** Performance 95+, Accessibility 100, SEO 100, Best Practices 100
 ✅ Keyboard-only navigable
 ✅ Screen-reader tested (NVDA / VoiceOver)
-✅ 200 % zoom-friendly
+✅ 200% zoom-friendly
 ✅ Works on 3G (< 200 KB initial bundle)
 
----
+***
 
 ## 🧪 Testing & Hardening
 
@@ -478,12 +618,12 @@ Top-10 country rule packs generated at build time and bundled. Country selector 
 | Legal accuracy | **Manual review** | Spot-check 50 random violations vs source PDFs |
 
 ### Error Budget for 9M Users
-- Static assets on CDN → SLA **99.99 %** (Cloudflare)
+- Static assets on CDN → SLA **99.99%** (Cloudflare)
 - Edge function invoked only for ~5% of queries → even at 9M DAU = 450K/day
 - Cloudflare edge cache (24 h TTL) collapses duplicates → real LLM calls ~10K/day
 - **Offline-first** means network failures never break the app
 
----
+***
 
 ## 📈 Scale Engineering — How We Serve 9M Users on Free Tiers
 
@@ -511,7 +651,7 @@ Gracefully degrades to keyword search on local JSON if ALL LLMs down
 | Edge function cold start | **< 300 ms** |
 | Real LLM calls at 9M DAU | **~10K / day** (well under free limits) |
 
----
+***
 
 ## 🚀 Quick Start
 
@@ -547,7 +687,7 @@ pnpm build
 pnpm start
 ```
 
----
+***
 
 ## 🔐 Environment Variables
 
@@ -569,7 +709,7 @@ NEXT_PUBLIC_ENABLE_GLOBAL_MODE=true
 NEXT_PUBLIC_ENABLE_VOICE=true
 ```
 
----
+***
 
 ## 📁 Project Structure
 
@@ -601,7 +741,7 @@ drivelegal/
     └── sw.js
 ```
 
----
+***
 
 ## 🗓️ 40-Day Master Timeline
 
@@ -631,7 +771,7 @@ drivelegal/
 | 9 | Global mode (10 countries) | 🟡 P2 | 2 | ⭐⭐⭐⭐ |
 | 10 | Embeddable widget | 🟢 P3 | 1 | ⭐⭐⭐ |
 
----
+***
 
 ## ⚠️ Risks & Mitigations
 
@@ -643,7 +783,7 @@ drivelegal/
 | OCR misreads challan | 🟠 Medium | Show confidence score + allow manual correction |
 | "Why not a mobile app?" pushback | 🟠 Medium | PWA installs like an app, works on all OS, zero app-store friction |
 
----
+***
 
 ## 📊 Success Metrics
 
@@ -659,7 +799,7 @@ drivelegal/
 | States covered | **All 36 (28 states + 8 UTs)** |
 | Edge function cold start | **< 300 ms** |
 
----
+***
 
 ## 🛣️ Roadmap
 
@@ -678,7 +818,7 @@ drivelegal/
 - **Crowd-sourced corrections** with moderation queue
 - **Dispute filing automation** for Lok Adalat (state by state)
 
----
+***
 
 ## 🚢 Deployment
 
@@ -711,7 +851,7 @@ jobs:
       - run: git push
 ```
 
----
+***
 
 ## 📦 Deliverables
 
@@ -737,7 +877,7 @@ jobs:
 - 📱 QR code for judges to install PWA on their phone
 - 📊 Lighthouse report screenshots
 
----
+***
 
 ## 🎤 Jury Presentation — Live Demo Script (8 min)
 
@@ -758,7 +898,7 @@ jobs:
 | *What if LLM hallucinates a fine?* | LLM never generates fines — it only maps user intent to local authoritative JSON |
 | *Revenue model?* | Freemium API for driving schools / insurance / fleet operators; consumer app stays free forever |
 
----
+***
 
 ## 🤝 Contributing
 
@@ -770,7 +910,7 @@ Contributions are welcome! DriveLegal is public infrastructure for road safety.
 4. **If your PR touches `data/laws/`, you MUST include the source URL + screenshot from the official PDF**
 5. Open a PR — CI will run Zod validation + Vitest + Lighthouse
 
----
+***
 
 ## 👥 Team
 
@@ -782,7 +922,7 @@ Contributions are welcome! DriveLegal is public infrastructure for road safety.
 | Legal Data Curation | *Your Name Here* |
 | Design & Accessibility | *Your Name Here* |
 
----
+***
 
 ## 📜 License & Legal Disclaimer
 
@@ -790,13 +930,13 @@ This project is licensed under the **MIT License** — see [LICENSE](LICENSE) fo
 
 > ⚠️ **Legal Disclaimer:** DriveLegal is an **informational tool only**. It is not a substitute for professional legal advice. Fine amounts, procedures, and regulations may change. Always verify with the [Motor Vehicles Act](https://www.indiacode.nic.in/) and your state transport department before taking any legal action. Every violation entry in this app links to its official source for audit.
 
----
+***
 
 <div align="center">
 
 ### ⭐ If DriveLegal helped you, give us a star!
 
-![Footer](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,20&height=120&section=footer)
+
 
 **Ask. Know. Contest. Drive Safe.**
 
