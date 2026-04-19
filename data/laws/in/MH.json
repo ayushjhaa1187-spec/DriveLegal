@@ -1,0 +1,59 @@
+{
+  "document_metadata": {
+    "source_document": "Maharashtra State Notification No. MVR. 0121/C.R. 49/TRA-2",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-MH",
+    "language": "en",
+    "pages_processed": [1, 5],
+    "extraction_timestamp": "2026-04-19T22:50:00Z"
+  },
+  "violations": [
+    {
+      "id": "MH::Section-194D::helmet-not-worn-by-rider",
+      "section": "Section 194D",
+      "rule_reference": null,
+      "title": {
+        "en": "Riding without helmet (Maharashtra Override)"
+      },
+      "plain_english_summary": "State-specific compounding fee for riding without a helmet in Maharashtra.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": [
+        "2W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "MH",
+        "state_name": "Maharashtra"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification of licence for three months",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "effective_date": "2021-12-01",
+      "source_url": "https://transport.maharashtra.gov.in/Site/Upload/GR/Notification%20MV%20Act%20Compounding%20Fees.pdf",
+      "source_document": "Maharashtra Government Gazette Notification",
+      "source_page": 5,
+      "source_text_excerpt": "Section 194D: Riding without protective headgear - Compounding fee ₹500",
+      "confidence": "high",
+      "extraction_notes": [
+        "Maharashtra reduced the compounding fee to ₹500 from the statutory ₹1000 specified in the Central Act."
+      ],
+      "last_verified": "2026-04-19"
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "document_metadata": {
+    "source_document": "Motor Vehicles (Amendment) Act, 2019",
+    "document_type": "central_act",
+    "jurisdiction": "IN",
+    "language": "en",
+    "pages_processed": [1, 47, 52],
+    "extraction_timestamp": "2026-04-19T22:45:00Z"
+  },
+  "violations": [
+    {
+      "id": "IN::Section-194D::helmet-not-worn-by-rider",
+      "section": "Section 194D",
+      "rule_reference": null,
+      "title": {
+        "en": "Riding without protective headgear"
+      },
+      "plain_english_summary": "Penalty for driving or riding a two-wheeler without wearing a protective headgear where required by law.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": [
+        "2W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification of licence for three months",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
+      "source_document": "Motor Vehicles (Amendment) Act, 2019",
+      "source_page": 47,
+      "source_text_excerpt": "whoever drives a motor cycle or causes or allows a motor cycle to be driven without wearing protective headgear... shall be punishable with fine of one thousand rupees and he shall be disqualified for licence for three months",
+      "confidence": "high",
+      "extraction_notes": [],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-181::driving-without-licence",
+      "section": "Section 181",
+      "rule_reference": null,
+      "title": {
+        "en": "Driving without a valid driving licence"
+      },
+      "plain_english_summary": "Driving a motor vehicle without a valid driving licence or in contravention of licence conditions.",
+      "category": "licence",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 5000,
+            "max": 5000,
+            "fixed": 5000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 3,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment for a term which may extend to three months"
+          }
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
+      "source_document": "Motor Vehicles (Amendment) Act, 2019",
+      "source_page": 40,
+      "source_text_excerpt": "whoever drives a motor vehicle in contravention of section 3 or section 4 shall be punishable with imprisonment for a term which may extend to three months or with fine of five thousand rupees, or with both",
+      "confidence": "high",
+      "extraction_notes": [],
+      "last_verified": "2026-04-19"
+    }
+  ]
+}
