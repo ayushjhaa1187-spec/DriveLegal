@@ -8,6 +8,8 @@ import { INDIA_STATES } from "@/lib/law-engine/states";
 import type { ScanResult } from "@/app/api/scan/route";
 import type { QueryResult } from "@/lib/law-engine/types";
 import { detectState } from "@/lib/geo/detector";
+import { generateDisputePDF } from "@/lib/utils/pdf-gen";
+import { Info, Download, ShieldCheck, Scale, FileText } from "lucide-react";
 
 export default function ScanPage() {
   const [image, setImage] = useState<string | null>(null);
@@ -89,7 +91,9 @@ export default function ScanPage() {
 
   // Calculate if overcharged
   let isOvercharged = false;
+  let isSettlementEligible = false;
   const match = engineResult?.results[0];
+  const currentState = engineResult?.params.stateCode;
 
   if (scanResult?.amountCharged != null && match) {
     const fineDef = match.violation.penalty.first_offence?.fine;
@@ -100,7 +104,23 @@ export default function ScanPage() {
         if (scanResult.amountCharged > fineDef.max) isOvercharged = true;
       }
     }
+    
+    // Delhi Settlement Logic (Sept 2024 Framework)
+    // Eligible for major offences like Red Light, Speeding, Seatbelt (if notification active)
+    if (currentState === "DL" && ["red_light", "speeding", "seatbelt", "helmet"].some(c => match.violation.category.includes(c as any))) {
+      isSettlementEligible = true;
+    }
   }
+
+  const handleDownloadPDF = () => {
+    if (!scanResult || !match) return;
+    generateDisputePDF({
+      amountCharged: scanResult.amountCharged || 0,
+      date: scanResult.date,
+      section: scanResult.section,
+      match: match
+    });
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
@@ -167,62 +187,86 @@ export default function ScanPage() {
         {scanResult && match && !isScanning && (
           <div className="space-y-6">
             
-            {/* Captured Image thumb */}
-            <div className="flex justify-between items-center bg-white border border-zinc-200 rounded-xl p-4 shadow-sm">
-              <div className="flex items-center gap-4">
-                <img src={image!} alt="Challan" className="w-16 h-16 object-cover rounded-lg border border-zinc-200" />
-                <div>
-                   <p className="font-bold text-zinc-800">Challan Extracted</p>
-                   <p className="text-xs text-zinc-500">Section {scanResult.section || "Unknown"}</p>
+            {/* Truth Comparison Card */}
+            <div className="bg-white border border-zinc-200 rounded-3xl overflow-hidden shadow-sm">
+              <div className={`px-5 py-3 flex items-center justify-between ${isOvercharged ? 'bg-red-500 text-white' : 'bg-emerald-500 text-white'}`}>
+                <div className="flex items-center gap-2">
+                  {isOvercharged ? <FileWarning className="w-4 h-4" /> : <ShieldCheck className="w-4 h-4" />}
+                  <span className="text-xs font-bold uppercase tracking-wider">
+                    {isOvercharged ? "Potential Overcharge" : "Amount Verified"}
+                  </span>
+                </div>
+                <div className="text-[10px] opacity-80 font-medium">Source: MVA 2019 + State Schedule</div>
+              </div>
+              
+              <div className="p-6 space-y-6">
+                <div className="grid grid-cols-2 gap-8 relative">
+                  {/* Vertical Divider */}
+                  <div className="absolute left-1/2 top-0 bottom-0 w-px bg-zinc-100 hidden sm:block" />
+                  
+                  <div className="text-center space-y-1">
+                    <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-widest">On Challan</p>
+                    <p className={`text-4xl font-black ${isOvercharged ? 'text-red-600' : 'text-zinc-800'}`}>
+                      ₹{scanResult.amountCharged || "---"}
+                    </p>
+                    <p className="text-[10px] text-zinc-500 italic">Extracted via AI</p>
+                  </div>
+
+                  <div className="text-center space-y-1">
+                    <p className="text-[10px] text-brand-navy font-bold uppercase tracking-widest">Legal Maximum</p>
+                    <p className="text-4xl font-black text-brand-navy">
+                      {match.resolvedFine.displayText}
+                    </p>
+                    <p className="text-[10px] text-zinc-500 italic">{match.citation.section}</p>
+                  </div>
+                </div>
+
+                {isSettlementEligible && (
+                  <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex gap-3">
+                    <Info className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                    <div className="space-y-1">
+                      <p className="text-sm font-bold text-blue-900">Delhi 50% Settlement Opportunity</p>
+                      <p className="text-xs text-blue-700 leading-relaxed">
+                        This offence may be eligible for a 50% compounding reduction under the Sept 2024 Delhi framework. 
+                        Verification of settlement window (90 days) is required.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                <div className="pt-4 border-t border-zinc-50 flex flex-col gap-3">
+                   {isOvercharged && (
+                     <button 
+                       onClick={handleDownloadPDF}
+                       className="w-full bg-brand-navy text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors shadow-lg shadow-blue-900/10"
+                     >
+                       <Download className="w-5 h-5" />
+                       Download Dispute Notice (PDF)
+                     </button>
+                   )}
+                   <button 
+                    onClick={() => { setImage(null); setScanResult(null); }}
+                    className="w-full text-zinc-400 text-sm font-medium py-2 hover:text-zinc-600"
+                   >
+                     Rescan Different Receipt
+                   </button>
                 </div>
               </div>
-              <button onClick={() => { setImage(null); setScanResult(null); }} className="text-xs font-medium text-brand-navy border border-brand-navy px-3 py-1.5 rounded-lg">Rescan</button>
             </div>
 
-            {/* Comparison Details */}
-            <div className="grid grid-cols-2 gap-4">
-               <div className="bg-white border border-zinc-200 rounded-2xl p-5 text-center shadow-sm">
-                 <p className="text-xs text-zinc-500 font-medium mb-1 uppercase tracking-wider">Amount Charged</p>
-                 <p className="text-3xl font-black text-zinc-800">{scanResult.amountCharged ? `₹${scanResult.amountCharged}` : "Unknown"}</p>
-               </div>
-               <div className="bg-white border border-zinc-200 rounded-2xl p-5 text-center shadow-sm">
-                 <p className="text-xs text-zinc-500 font-medium mb-1 uppercase tracking-wider">Official Fine</p>
-                 <p className="text-3xl font-black text-brand-navy">{match.resolvedFine.displayText}</p>
-               </div>
+            {/* Legal Text Snippet */}
+            <div className="bg-slate-100 rounded-2xl p-5 border border-zinc-200/50">
+              <div className="flex items-center gap-2 mb-3 text-zinc-600">
+                <Scale className="w-4 h-4" />
+                <h4 className="text-xs font-bold uppercase tracking-wider">Applicable Law</h4>
+              </div>
+              <p className="text-sm text-zinc-700 font-serif leading-relaxed italic">
+                "{match.violation.plain_english_summary.slice(0, 200)}..."
+              </p>
+              <Link href="/rights" className="inline-flex items-center gap-1 text-[10px] font-bold text-brand-navy mt-3 uppercase tracking-tighter hover:underline">
+                View Full Rights & Procedure <ChevronLeft className="w-3 h-3 rotate-180" />
+              </Link>
             </div>
-
-            {/* Verdict */}
-            {isOvercharged ? (
-              <div className="bg-red-50 border-2 border-red-200 rounded-2xl p-5">
-                <div className="flex items-center gap-2 text-red-700 mb-2">
-                  <FileWarning className="w-5 h-5" />
-                  <h3 className="font-bold">You may have been overcharged.</h3>
-                </div>
-                <p className="text-sm text-red-600">
-                  The official fine for <b>{match.violation.title.en}</b> is {match.resolvedFine.displayText}, but your receipt shows ₹{scanResult.amountCharged}.
-                </p>
-                <div className="mt-4 p-4 bg-white rounded-xl border border-red-100 shadow-sm">
-                  <p className="text-xs font-medium text-zinc-500 mb-2 uppercase tracking-wide">Draft Dispute Notice</p>
-                  <p className="text-sm text-zinc-800 whitespace-pre-wrap font-serif">
-{`To the Traffic Police Department,
-
-I was issued a challan for Rs ${scanResult.amountCharged}/- on ${scanResult.date || "[Date]"}. According to ${match.citation.section} of the Motor Vehicles Act, the official compoundable fine is ${match.resolvedFine.displayText}.
-
-I request rectification of this errant challan amount as per official rules.`}
-                  </p>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-emerald-50 border-2 border-emerald-200 rounded-2xl p-5">
-                <div className="flex items-center gap-2 text-emerald-700 mb-2">
-                  <CheckCircle className="w-5 h-5" />
-                  <h3 className="font-bold">Challan amount verified.</h3>
-                </div>
-                <p className="text-sm text-emerald-600">
-                  The amount charged matches the official maximum limit for <b>{match.violation.title.en}</b>.
-                </p>
-              </div>
-            )}
             
           </div>
         )}

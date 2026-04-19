@@ -2823,6 +2823,212 @@
         "Applies to epilepsy, severe vision loss, or other certified disabilities."
       ],
       "last_verified": "2026-04-19"
+    },
+    {
+      "id": "DL::Sec-183::speeding-lvp",
+      "section": "Section 183(1)",
+      "rule_reference": "MVA 2019",
+      "title": {
+        "en": "Speeding (Light Motor Vehicle)"
+      },
+      "plain_english_summary": "Exceeding the speed limit in a Light Motor Vehicle (Car/Jeep).",
+      "category": "speed",
+      "severity": 3,
+      "applies_to": [
+        "LMV",
+        "4W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 2000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Eligible for 50% compounding settlement in Delhi (Sept 2024 Framework)."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2024-09-11",
+      "source_url": null,
+      "source_document": "Delhi Govt Compounding Notification Sept 2024",
+      "source_page": null,
+      "source_text_excerpt": "Exceeding the speed limit in a Light Motor Vehicle (Car/Jeep).",
+      "confidence": "high",
+      "extraction_notes": [
+        "Sept 2024 Delhi framework applies to specific violations."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "DL::Sec-184::red-light-jumping",
+      "section": "Section 184",
+      "rule_reference": "MVA 2019",
+      "title": {
+        "en": "Dangerous Driving (Red Light Jumping)"
+      },
+      "plain_english_summary": "Jumping a red traffic signal or dangerous driving behavior.",
+      "category": "signal_violation",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "DL",
+        "state_name": "Delhi"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 5000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Eligible for 50% compounding settlement in Delhi."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2024-09-11",
+      "source_url": null,
+      "source_document": "Delhi Govt Compounding Notification Sept 2024",
+      "source_page": null,
+      "source_text_excerpt": "Jumping a red traffic signal or dangerous driving behavior.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Sept 2024 Delhi framework applies."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "KA::Sec-183-1::speeding-lmv",
+      "section": "Section 183(1)",
+      "rule_reference": "MVA 2019",
+      "title": {
+        "en": "Speeding (LMV - Karnataka)"
+      },
+      "plain_english_summary": "Exceeding speed limit in LMV (Non-Transport).",
+      "category": "speed",
+      "severity": 3,
+      "applies_to": [
+        "LMV"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "effective_date": "2023-01-01",
+      "source_url": null,
+      "source_document": "Karnataka Compounding Schedule",
+      "source_page": null,
+      "source_text_excerpt": "Exceeding speed limit in LMV (Non-Transport).",
+      "confidence": "high",
+      "extraction_notes": [
+        "Karnataka specific schedule."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "KA::Sec-194::overloading",
+      "section": "Section 194(1)",
+      "rule_reference": "MVA 2019",
+      "title": {
+        "en": "Overloading of Vehicle"
+      },
+      "plain_english_summary": "Driving a vehicle with weight exceeding the permissible limit.",
+      "category": "overloading",
+      "severity": 5,
+      "applies_to": [
+        "transport",
+        "HMV"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": "KA",
+        "state_name": "Karnataka"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 20000,
+            "max": 20000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Plus ₹2,000 per extra tonne."
+      },
+      "compoundable": false,
+      "compounding_amount_inr": null,
+      "effective_date": "2023-01-01",
+      "source_url": null,
+      "source_document": "Karnataka Compounding Schedule",
+      "source_page": null,
+      "source_text_excerpt": "Driving a vehicle with weight exceeding the permissible limit.",
+      "confidence": "high",
+      "extraction_notes": [
+        "High severity violation."
+      ],
+      "last_verified": "2026-04-20"
     }
   ]
 }
