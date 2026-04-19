@@ -1,0 +1,168 @@
+[
+  {
+    "id": "IN::Section-194E::blocking-ambulance",
+    "section": "Section 194E",
+    "rule_reference": "Failure to draw to the side of the road",
+    "title": { "en": "Blocking Emergency Vehicles (Ambulance/Fire)" },
+    "plain_english_summary": "Failure to allow free passage to emergency vehicles like ambulances, fire engines, or other responder vehicles using sirens.",
+    "category": "safety",
+    "severity": 5,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment up to 6 months" }
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 194E",
+    "source_page": null,
+    "source_text_excerpt": "Whoever while driving... fails to draw to the side... for an emergency vehicle... fine of ten thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["New section introduced in 2019 with heavy fine."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194C::triple-riding",
+    "section": "Section 194C",
+    "rule_reference": "Penalty for violation of safety measures for motor cycle and pillion riders",
+    "title": { "en": "Triple Riding on Two-Wheeler" },
+    "plain_english_summary": "Carrying more than one person in addition to the driver on a two-wheeled motorcycle.",
+    "category": "safety",
+    "severity": 3,
+    "applies_to": ["2W"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": "Disqualification for holding licence for three months.",
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "MVA 2019 Section 194C",
+    "source_page": null,
+    "source_text_excerpt": "Whoever drives... carrying more than one person... fine of one thousand rupees and disqualified for three months.",
+    "confidence": "high",
+    "extraction_notes": ["Directly applies to the registered owner/driver."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::wrong-parking",
+    "section": "Section 177 / 177A",
+    "rule_reference": "Parking in prohibited area / causing obstruction",
+    "title": { "en": "Wrong / Dangerous Parking" },
+    "plain_english_summary": "Parking a vehicle in a 'No Parking' zone, on a footpath, near a hydrant, or in a manner that obstructs traffic flow or visibility.",
+    "category": "parking",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Towing charges are usually extra (₹200-₹1000 depending on vehicle)."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Section 122 MVA / 177A",
+    "source_page": null,
+    "source_text_excerpt": "Leaving vehicle in dangerous position or causing obstruction to other users.",
+    "confidence": "high",
+    "extraction_notes": ["Base penalty is 500, but obstruction (122) can be cited."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-115::no-entry-violation",
+    "section": "Section 115 / 177",
+    "rule_reference": "Power to restrict the use of vehicles",
+    "title": { "en": "Entering a 'No Entry' Zone" },
+    "plain_english_summary": "Driving a vehicle into a road or area where entry is prohibited by a official sign or notification.",
+    "category": "safety",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 2000, "fixed": null, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Often cited alongside Section 177 (General) or 179 (Disobedience)."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "MVA Section 115",
+    "source_page": null,
+    "source_text_excerpt": "The State Government... may prohibit or restrict... the driving of motor vehicles... on any road.",
+    "confidence": "high",
+    "extraction_notes": ["Fines vary by city traffic police notifications."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-184::zig-zag-driving",
+    "section": "Section 184",
+    "rule_reference": "Driving dangerously",
+    "title": { "en": "Zig-Zag / Reckless Driving" },
+    "plain_english_summary": "Driving in a zig-zag manner on a public road, which is considered dangerous to the public.",
+    "category": "dangerous_driving",
+    "severity": 5,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 5000, "fixed": null, "currency": "INR" },
+        "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment or fine" }
+      },
+      "repeat_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 2, "unit": "years", "severity": "may", "text": "Imprisonment or fine" }
+      },
+      "licence_suspension": "Suspension of licence.",
+      "licence_disqualification": "Disqualification.",
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": false,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 184 (c)",
+    "source_page": null,
+    "source_text_excerpt": "Whoever drives... in a manner which is dangerous... specifically including: (c) driving in a zig-zag manner.",
+    "confidence": "high",
+    "extraction_notes": ["Explicitly listed as a dangerous activity in the 2019 amendment."],
+    "last_verified": "2026-04-19"
+  }
+]

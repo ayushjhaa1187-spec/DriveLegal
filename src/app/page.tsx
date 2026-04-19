@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Search, Mic, Calculator, MessageSquareText, Scan, ShieldCheck, ChevronRight } from "lucide-react";
+import { SyncStatus } from "@/components/SyncStatus";
 
 export default function Home() {
   return (
@@ -21,7 +22,10 @@ export default function Home() {
 
         {/* Content */}
         <div className="relative z-10 w-full max-w-4xl px-6 text-center text-white">
-          <h1 className="text-4xl md:text-6xl font-bold font-headings tracking-tight mb-4">
+          <div className="absolute top-0 right-6 md:right-0">
+            <SyncStatus />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold font-headings tracking-tight mb-4 mt-12 md:mt-0">
             Drive <span className="text-brand-amber">Legal</span>
           </h1>
           <p className="text-lg md:text-xl text-zinc-200 mb-8 max-w-2xl mx-auto">
@@ -96,7 +100,7 @@ export default function Home() {
 const features = [
   {
     title: "Calculator",
-    description: "Check official fine amounts for 150+ violations across all states.",
+    description: "Check official fine amounts for 50+ violations across all states.",
     href: "/calculator",
     icon: Calculator,
     iconBg: "bg-blue-50 dark:bg-blue-900/20",

@@ -1,0 +1,337 @@
+[
+  {
+    "id": "IN::Section-189::racing-speed-trials",
+    "section": "Section 189",
+    "rule_reference": "Racing and trials of speed",
+    "title": { "en": "Racing or Speed Trials" },
+    "plain_english_summary": "Engaging in any race or trial of speed between motor vehicles in any public place without written consent from the State Government.",
+    "category": "dangerous_driving",
+    "severity": 5,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 5000, "max": 5000, "fixed": 5000, "currency": "INR" },
+        "imprisonment": { "value": 1, "unit": "months", "severity": "may", "text": "Imprisonment up to 1 month" }
+      },
+      "repeat_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 1, "unit": "months", "severity": "may", "text": "Imprisonment up to 1 month" }
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": false,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 189",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... takes part in a race or trial of speed... fine of five thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Non-compoundable; requires court appearance."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194A::overloading-passengers",
+    "section": "Section 194A",
+    "rule_reference": "Carrying excess passengers",
+    "title": { "en": "Overloading Passengers (LMV/Taxi)" },
+    "plain_english_summary": "Carrying more passengers in a vehicle than the seating capacity specified in the registration certificate.",
+    "category": "safety",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 200, "max": 200, "fixed": 200, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Penalty is ₹200 for every excess passenger. For commercial vehicles, permit may also be cancelled."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 194A",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... carries any person in excess of the number of persons... fine of two hundred rupees per excess passenger.",
+    "confidence": "high",
+    "extraction_notes": ["Commonly applied to auto-rickshaws and shared taxis."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-182-1::driving-after-disqualification",
+    "section": "Section 182(1)",
+    "rule_reference": "Offences relating to driving licences",
+    "title": { "en": "Driving Post Licence Disqualification" },
+    "plain_english_summary": "Driving a motor vehicle while still disqualified from holding or obtaining a driving licence by a court or authority.",
+    "category": "licence",
+    "severity": 5,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 3, "unit": "months", "severity": "may", "text": "Imprisonment up to 3 months" }
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": "Extended disqualification period.",
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": false,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 182(1)",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... while still disqualified... drives a motor vehicle... fine of ten thousand rupees or imprisonment for three months.",
+    "confidence": "high",
+    "extraction_notes": ["High penalty to deter violation of court orders."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-190-2::air-horn-silent-zone",
+    "section": "Section 190(2)",
+    "rule_reference": "Air horn misuse and silent zones",
+    "title": { "en": "Using Prohibited Air Horns" },
+    "plain_english_summary": "Using multi-toned or air-pressure horns that emit excessive noise, or honking in designated 'Silent Zones' (near hospitals, schools, etc.).",
+    "category": "pollution",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "The prohibited horn may be confiscated by the officer."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "CMVR Rule 119",
+    "source_page": null,
+    "source_text_excerpt": "No person shall use a horn... that gives a succession of different notes or which contains sounds... resembling a siren.",
+    "confidence": "high",
+    "extraction_notes": ["Heavily enforced as part of noise pollution control."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194F::needless-honking",
+    "section": "Section 194F",
+    "rule_reference": "Needless honking in silent zone",
+    "title": { "en": "Unnecessary / Continuous Honking" },
+    "plain_english_summary": "Honking without any reasonable necessity or continuous sounding of the horn, especially in a silent zone.",
+    "category": "pollution",
+    "severity": 1,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 194F",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... sounds the horn needlessly or continuously... shall be punishable... with fine of one thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Introduced specifically to combat urban noise pollution."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194B-2::child-safety-restraint",
+    "section": "Section 194B(2)",
+    "rule_reference": "Safety of children in motor vehicles",
+    "title": { "en": "Child Safety / Seat Restraint Violation" },
+    "plain_english_summary": "Failure to ensure that a child below the age of 14 is secured by a safety belt or appropriate child restraint system.",
+    "category": "seatbelt",
+    "severity": 3,
+    "applies_to": ["4W", "LMV"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 194B(2)",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... fails to ensure that a child... is secured... shall be punishable with fine of one thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Holds the adult driver responsible for the child's safety."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-201::obstructing-traffic-parking",
+    "section": "Section 201",
+    "rule_reference": "Penalty for causing obstruction to free flow of traffic",
+    "title": { "en": "Obstructing Traffic Flow (Abandoned Vehicle)" },
+    "plain_english_summary": "Leaving a vehicle in a public place in such a manner as to cause obstruction to the free flow of traffic or danger to others.",
+    "category": "parking",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Plus ₹500 for every hour during which such obstruction continues."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 201",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... causes obstruction to the free flow of traffic... fine of five hundred rupees per hour.",
+    "confidence": "high",
+    "extraction_notes": ["A common way to penalize vehicles parked on main roads for long durations."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-181::underage-driving-owner",
+    "section": "Section 181 / 199A",
+    "rule_reference": "Allowing person without licence to drive",
+    "title": { "en": "Allowing Unauthorized Person to Drive" },
+    "plain_english_summary": "A vehicle owner allowing a person who does not hold a valid licence or a minor to drive their motor vehicle.",
+    "category": "licence",
+    "severity": 4,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 5000, "max": 5000, "fixed": 5000, "currency": "INR" },
+        "imprisonment": { "value": 3, "unit": "months", "severity": "may", "text": "Imprisonment up to 3 months" }
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "If the person is a minor, see Section 199A for much higher penalties (₹25000)."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "MVA 2019 Section 181 read with Section 5",
+    "source_page": null,
+    "source_text_excerpt": "Owners of motor vehicles shall not permit any person... to drive the vehicle in contravention of section 3 or section 4.",
+    "confidence": "high",
+    "extraction_notes": ["Owner is legally responsible for verifying the driver's licence."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::defective-indicators-lights",
+    "section": "Section 177 / 177A",
+    "rule_reference": "Driving without indicators or defective lamps",
+    "title": { "en": "Defective Indicators / Brake Lights" },
+    "plain_english_summary": "Driving a vehicle with non-functional indicators, tail lamps, or brake lights, making it dangerous for other road users.",
+    "category": "vehicle_condition",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "CMVR Rule 105",
+    "source_page": null,
+    "source_text_excerpt": "Provision of lamps... shall at all times be in good and efficient condition.",
+    "confidence": "high",
+    "extraction_notes": ["One of the most frequent safety-check failures."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-186::unfit-driver",
+    "section": "Section 186",
+    "rule_reference": "Driving when mentally or physically unfit",
+    "title": { "en": "Driving when Physically/Mentally Unfit" },
+    "plain_english_summary": "Driving a motor vehicle by a person with a known disease or disability which makes their driving a source of danger to themselves or others.",
+    "category": "dangerous_driving",
+    "severity": 4,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": "Immediate suspension and medical review of licence.",
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 186",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... drives a motor vehicle... when he is to his knowledge suffering from any disease or disability... fine of one thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Applies to epilepsy, severe vision loss, or other certified disabilities."],
+    "last_verified": "2026-04-19"
+  }
+]

@@ -1376,6 +1376,1453 @@
         "Auto-extracted from Model"
       ],
       "last_verified": "2026-04-19T18:10:32.163Z"
+    },
+    {
+      "id": "IN::Section-177::fancy-registration-plate",
+      "section": "Section 177 / 192",
+      "rule_reference": "Rule 50 / 51 Central Motor Vehicles Rules",
+      "title": {
+        "en": "Fancy or Illegal Number Plate"
+      },
+      "plain_english_summary": "Using registration plates that do not conform to the prescribed font, size, or display (fancy fonts, names, or non-HSRP plates in some zones).",
+      "category": "registration",
+      "severity": 3,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "May be combined with Section 192 for unregistered/HSRP violations in some states."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "CMVR Rule 50",
+      "source_page": null,
+      "source_text_excerpt": "Using registration plates that do not conform to the prescribed font, size, or display (fancy fonts, names, or non-HSRP plates in some zones).",
+      "confidence": "high",
+      "extraction_notes": [
+        "Commonly penalized as 500 for first time under general section."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::wrong-side-driving",
+      "section": "Section 177A / 184",
+      "rule_reference": "Driving against the flow of traffic",
+      "title": {
+        "en": "Wrong Side / One-Way Violation"
+      },
+      "plain_english_summary": "Driving a vehicle in the opposite direction of the traffic flow or entering a 'No Entry' or 'One Way' street incorrectly.",
+      "category": "safety",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "If driving is deemed 'dangerous' to others, police may book under Section 184 (₹1000-₹5000)."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "Rules of the Road Regulations 2017",
+      "source_page": null,
+      "source_text_excerpt": "Driving a vehicle in the opposite direction of the traffic flow or entering a 'No Entry' or 'One Way' street incorrectly.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Baseline is 177A, but frequently escalated to 184."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-192A::no-permit",
+      "section": "Section 192A",
+      "rule_reference": "Using vehicle without permit",
+      "title": {
+        "en": "Driving without a valid Permit"
+      },
+      "plain_english_summary": "Using a transport vehicle in any public place without a valid permit issued by the Authority.",
+      "category": "permit",
+      "severity": 5,
+      "applies_to": [
+        "transport",
+        "HMV",
+        "3W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 6,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 6 months"
+          }
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 1,
+            "unit": "years",
+            "severity": "may",
+            "text": "Imprisonment up to 1 year"
+          }
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 192A",
+      "source_page": null,
+      "source_text_excerpt": "Using a transport vehicle in any public place without a valid permit issued by the Authority.",
+      "confidence": "high",
+      "extraction_notes": [
+        "One of the highest fines in the Act for commercial non-compliance."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::illegal-lights-high-beam",
+      "section": "Section 177 / 177A",
+      "rule_reference": "Rule 105 CMVR",
+      "title": {
+        "en": "Improper Use of High Beam / Dazzling Lights"
+      },
+      "plain_english_summary": "Using high beams in a manner that dazzles other drivers, or using unauthorized multi-colored or excessively bright auxiliary lights.",
+      "category": "safety",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Illegal auxiliary lights may be confiscated/removed on the spot."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "CMVR Rule 105",
+      "source_page": null,
+      "source_text_excerpt": "Using high beams in a manner that dazzles other drivers, or using unauthorized multi-colored or excessively bright auxiliary lights.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Penalty falls under general Section 177."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-190::unfit-vehicle",
+      "section": "Section 190(1)",
+      "rule_reference": "Using vehicle in unsafe condition",
+      "title": {
+        "en": "Driving Unsafe / Unfit Vehicle"
+      },
+      "plain_english_summary": "Using a vehicle that is in such a condition that it is a danger to the public (e.g., failed brakes, bald tires, hanging parts).",
+      "category": "safety",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 3000,
+            "max": 3000,
+            "fixed": 3000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": "Registration may be suspended until repair.",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 190(1)",
+      "source_page": null,
+      "source_text_excerpt": "Using a vehicle that is in such a condition that it is a danger to the public (e.g., failed brakes, bald tires, hanging parts).",
+      "confidence": "high",
+      "extraction_notes": [
+        "Distinct from Pollution (190(2))."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::horn-silencer",
+      "section": "Section 177 / 190(2)",
+      "rule_reference": "Noise pollution and silencer modification",
+      "title": {
+        "en": "Modified Exhaust / Noise Pollution"
+      },
+      "plain_english_summary": "Using a modified silencer, high-decibel air horns, or excessive honking in silent zones.",
+      "category": "pollution",
+      "severity": 3,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Modified silencers (e.g. on Bullets) are frequently confiscated."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "Environment Protection rules / MVA 190(2)",
+      "source_page": null,
+      "source_text_excerpt": "Using a modified silencer, high-decibel air horns, or excessive honking in silent zones.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Combined enforcement with 190(2) usually results in ₹1000+ fines."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-192::hsrp-violation",
+      "section": "Section 192",
+      "rule_reference": "Violation of High Security Registration Plate (HSRP)",
+      "title": {
+        "en": "Driving without HSRP (Number Plate)"
+      },
+      "plain_english_summary": "Driving a vehicle without the High Security Registration Plate mandated by the government for all old and new vehicles.",
+      "category": "registration",
+      "severity": 3,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 5000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Fine amount varies by state implementation of Section 192."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2022-01-01",
+      "source_url": null,
+      "source_document": "Supreme Court / MoRTH Mandate",
+      "source_page": null,
+      "source_text_excerpt": "Driving a vehicle without the High Security Registration Plate mandated by the government for all old and new vehicles.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Heavily enforced in DL, KA, MH."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-193::illegal-tint-glass",
+      "section": "Section 177 / 190",
+      "rule_reference": "Rule 100 CMVR",
+      "title": {
+        "en": "Dark Tint / Sun-film on Windows"
+      },
+      "plain_english_summary": "Using sun-film or tinting glass beyond permissible limits (must be 70% VLT for front/back and 50% for sides).",
+      "category": "safety",
+      "severity": 2,
+      "applies_to": [
+        "4W",
+        "LMV",
+        "HMV"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Police usually strip off the film on the spot in addition to the fine."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2012-05-04",
+      "source_url": null,
+      "source_document": "Supreme Court Order Avishek Goenka vs Union Of India",
+      "source_page": null,
+      "source_text_excerpt": "Using sun-film or tinting glass beyond permissible limits (must be 70% VLT for front/back and 50% for sides).",
+      "confidence": "high",
+      "extraction_notes": [
+        "SC order strictly prohibits ANY film, even if light."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194D::pillion-helmet",
+      "section": "Section 194D",
+      "rule_reference": "Avishek Goenka vs Union of India",
+      "title": {
+        "en": "Pillion Rider without Helmet"
+      },
+      "plain_english_summary": "Carrying a secondary rider (pillion) on a motorcycle who is not wearing a protective helmet.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": [
+        "2W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification of rider's licence for three months.",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 194D / 129",
+      "source_page": null,
+      "source_text_excerpt": "Carrying a secondary rider (pillion) on a motorcycle who is not wearing a protective helmet.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Applies to the rider even if they are wearing one but the pillion isn't."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194E::blocking-ambulance",
+      "section": "Section 194E",
+      "rule_reference": "Failure to draw to the side of the road",
+      "title": {
+        "en": "Blocking Emergency Vehicles (Ambulance/Fire)"
+      },
+      "plain_english_summary": "Failure to allow free passage to emergency vehicles like ambulances, fire engines, or other responder vehicles using sirens.",
+      "category": "safety",
+      "severity": 5,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 6,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 6 months"
+          }
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 194E",
+      "source_page": null,
+      "source_text_excerpt": "Failure to allow free passage to emergency vehicles like ambulances, fire engines, or other responder vehicles using sirens.",
+      "confidence": "high",
+      "extraction_notes": [
+        "New section introduced in 2019 with heavy fine."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194C::triple-riding",
+      "section": "Section 194C",
+      "rule_reference": "Penalty for violation of safety measures for motor cycle and pillion riders",
+      "title": {
+        "en": "Triple Riding on Two-Wheeler"
+      },
+      "plain_english_summary": "Carrying more than one person in addition to the driver on a two-wheeled motorcycle.",
+      "category": "safety",
+      "severity": 3,
+      "applies_to": [
+        "2W"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification for holding licence for three months.",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 194C",
+      "source_page": null,
+      "source_text_excerpt": "Carrying more than one person in addition to the driver on a two-wheeled motorcycle.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Directly applies to the registered owner/driver."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::wrong-parking",
+      "section": "Section 177 / 177A",
+      "rule_reference": "Parking in prohibited area / causing obstruction",
+      "title": {
+        "en": "Wrong / Dangerous Parking"
+      },
+      "plain_english_summary": "Parking a vehicle in a 'No Parking' zone, on a footpath, near a hydrant, or in a manner that obstructs traffic flow or visibility.",
+      "category": "parking",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Towing charges are usually extra (₹200-₹1000 depending on vehicle)."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "Section 122 MVA / 177A",
+      "source_page": null,
+      "source_text_excerpt": "Parking a vehicle in a 'No Parking' zone, on a footpath, near a hydrant, or in a manner that obstructs traffic flow or visibility.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Base penalty is 500, but obstruction (122) can be cited."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-115::no-entry-violation",
+      "section": "Section 115 / 177",
+      "rule_reference": "Power to restrict the use of vehicles",
+      "title": {
+        "en": "Entering a 'No Entry' Zone"
+      },
+      "plain_english_summary": "Driving a vehicle into a road or area where entry is prohibited by a official sign or notification.",
+      "category": "safety",
+      "severity": 3,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 2000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Often cited alongside Section 177 (General) or 179 (Disobedience)."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA Section 115",
+      "source_page": null,
+      "source_text_excerpt": "Driving a vehicle into a road or area where entry is prohibited by a official sign or notification.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Fines vary by city traffic police notifications."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-184::zig-zag-driving",
+      "section": "Section 184",
+      "rule_reference": "Driving dangerously",
+      "title": {
+        "en": "Zig-Zag / Reckless Driving"
+      },
+      "plain_english_summary": "Driving in a zig-zag manner on a public road, which is considered dangerous to the public.",
+      "category": "dangerous_driving",
+      "severity": 5,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 5000,
+            "fixed": null,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 6,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment or fine"
+          }
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 2,
+            "unit": "years",
+            "severity": "may",
+            "text": "Imprisonment or fine"
+          }
+        },
+        "licence_suspension": "Suspension of licence.",
+        "licence_disqualification": "Disqualification.",
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": false,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 184 (c)",
+      "source_page": null,
+      "source_text_excerpt": "Driving in a zig-zag manner on a public road, which is considered dangerous to the public.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Explicitly listed as a dangerous activity in the 2019 amendment."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177A::stop-line-violation",
+      "section": "Section 177A",
+      "rule_reference": "Violation of stop line at traffic signal",
+      "title": {
+        "en": "Stop Line Violation"
+      },
+      "plain_english_summary": "Stopping or crossing the white 'stop line' painted on the road when the traffic signal is red.",
+      "category": "safety",
+      "severity": 1,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "Rules of the Road Regulations 2017",
+      "source_page": null,
+      "source_text_excerpt": "Stopping or crossing the white 'stop line' painted on the road when the traffic signal is red.",
+      "confidence": "high",
+      "extraction_notes": [
+        "One of the most common automated e-challan types."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177A::yellow-line-violation",
+      "section": "Section 177A",
+      "rule_reference": "Crossing solid yellow or white line",
+      "title": {
+        "en": "Solid Line / Lane Tracking Violation"
+      },
+      "plain_english_summary": "Crossing a solid yellow or white line on the road which indicates 'no overtaking' or 'fixed lanes'.",
+      "category": "safety",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "Rules of the Road Regulations 2017",
+      "source_page": null,
+      "source_text_excerpt": "Crossing a solid yellow or white line on the road which indicates 'no overtaking' or 'fixed lanes'.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Often cited as lane indiscipline."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::defective-number-plate",
+      "section": "Section 177 / 192",
+      "rule_reference": "Plate numbers not clearly visible",
+      "title": {
+        "en": "Defective / Hidden Number Plate"
+      },
+      "plain_english_summary": "Driving with a number plate that is dirty, broken, hidden, or where the characters are not clearly legible.",
+      "category": "registration",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "CMVR Rule 50",
+      "source_page": null,
+      "source_text_excerpt": "Driving with a number plate that is dirty, broken, hidden, or where the characters are not clearly legible.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Common during monsoon (muddy plates) or night checks."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-179-2::refusal-to-provide-info",
+      "section": "Section 179(2)",
+      "rule_reference": "Penalty for refusal to give information",
+      "title": {
+        "en": "Refusing to Share Driver Details"
+      },
+      "plain_english_summary": "Refusing to provide your name, address, or licence details when lawfully required by a police officer.",
+      "category": "other",
+      "severity": 3,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 179(2)",
+      "source_page": null,
+      "source_text_excerpt": "Refusing to provide your name, address, or licence details when lawfully required by a police officer.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Specific sub-section for withholding info."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-189::racing-speed-trials",
+      "section": "Section 189",
+      "rule_reference": "Racing and trials of speed",
+      "title": {
+        "en": "Racing or Speed Trials"
+      },
+      "plain_english_summary": "Engaging in any race or trial of speed between motor vehicles in any public place without written consent from the State Government.",
+      "category": "dangerous_driving",
+      "severity": 5,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 5000,
+            "max": 5000,
+            "fixed": 5000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 1,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 1 month"
+          }
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 1,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 1 month"
+          }
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": false,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 189",
+      "source_page": null,
+      "source_text_excerpt": "Engaging in any race or trial of speed between motor vehicles in any public place without written consent from the State Government.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Non-compoundable; requires court appearance."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-182-1::driving-after-disqualification",
+      "section": "Section 182(1)",
+      "rule_reference": "Offences relating to driving licences",
+      "title": {
+        "en": "Driving Post Licence Disqualification"
+      },
+      "plain_english_summary": "Driving a motor vehicle while still disqualified from holding or obtaining a driving licence by a court or authority.",
+      "category": "licence",
+      "severity": 5,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 10000,
+            "max": 10000,
+            "fixed": 10000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 3,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 3 months"
+          }
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": "Extended disqualification period.",
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": false,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 182(1)",
+      "source_page": null,
+      "source_text_excerpt": "Driving a motor vehicle while still disqualified from holding or obtaining a driving licence by a court or authority.",
+      "confidence": "high",
+      "extraction_notes": [
+        "High penalty to deter violation of court orders."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-190-2::air-horn-silent-zone",
+      "section": "Section 190(2)",
+      "rule_reference": "Air horn misuse and silent zones",
+      "title": {
+        "en": "Using Prohibited Air Horns"
+      },
+      "plain_english_summary": "Using multi-toned or air-pressure horns that emit excessive noise, or honking in designated 'Silent Zones' (near hospitals, schools, etc.).",
+      "category": "pollution",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "The prohibited horn may be confiscated by the officer."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "CMVR Rule 119",
+      "source_page": null,
+      "source_text_excerpt": "Using multi-toned or air-pressure horns that emit excessive noise, or honking in designated 'Silent Zones' (near hospitals, schools, etc.).",
+      "confidence": "high",
+      "extraction_notes": [
+        "Heavily enforced as part of noise pollution control."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194F::needless-honking",
+      "section": "Section 194F",
+      "rule_reference": "Needless honking in silent zone",
+      "title": {
+        "en": "Unnecessary / Continuous Honking"
+      },
+      "plain_english_summary": "Honking without any reasonable necessity or continuous sounding of the horn, especially in a silent zone.",
+      "category": "pollution",
+      "severity": 1,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 194F",
+      "source_page": null,
+      "source_text_excerpt": "Honking without any reasonable necessity or continuous sounding of the horn, especially in a silent zone.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Introduced specifically to combat urban noise pollution."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-194B-2::child-safety-restraint",
+      "section": "Section 194B(2)",
+      "rule_reference": "Safety of children in motor vehicles",
+      "title": {
+        "en": "Child Safety / Seat Restraint Violation"
+      },
+      "plain_english_summary": "Failure to ensure that a child below the age of 14 is secured by a safety belt or appropriate child restraint system.",
+      "category": "seatbelt",
+      "severity": 3,
+      "applies_to": [
+        "4W",
+        "LMV"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 194B(2)",
+      "source_page": null,
+      "source_text_excerpt": "Failure to ensure that a child below the age of 14 is secured by a safety belt or appropriate child restraint system.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Holds the adult driver responsible for the child's safety."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-201::obstructing-traffic-parking",
+      "section": "Section 201",
+      "rule_reference": "Penalty for causing obstruction to free flow of traffic",
+      "title": {
+        "en": "Obstructing Traffic Flow (Abandoned Vehicle)"
+      },
+      "plain_english_summary": "Leaving a vehicle in a public place in such a manner as to cause obstruction to the free flow of traffic or danger to others.",
+      "category": "parking",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "Plus ₹500 for every hour during which such obstruction continues."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 201",
+      "source_page": null,
+      "source_text_excerpt": "Leaving a vehicle in a public place in such a manner as to cause obstruction to the free flow of traffic or danger to others.",
+      "confidence": "high",
+      "extraction_notes": [
+        "A common way to penalize vehicles parked on main roads for long durations."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-181::underage-driving-owner",
+      "section": "Section 181 / 199A",
+      "rule_reference": "Allowing person without licence to drive",
+      "title": {
+        "en": "Allowing Unauthorized Person to Drive"
+      },
+      "plain_english_summary": "A vehicle owner allowing a person who does not hold a valid licence or a minor to drive their motor vehicle.",
+      "category": "licence",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 5000,
+            "max": 5000,
+            "fixed": 5000,
+            "currency": "INR"
+          },
+          "imprisonment": {
+            "value": 3,
+            "unit": "months",
+            "severity": "may",
+            "text": "Imprisonment up to 3 months"
+          }
+        },
+        "repeat_offence": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": "If the person is a minor, see Section 199A for much higher penalties (₹25000)."
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 181 read with Section 5",
+      "source_page": null,
+      "source_text_excerpt": "A vehicle owner allowing a person who does not hold a valid licence or a minor to drive their motor vehicle.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Owner is legally responsible for verifying the driver's licence."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-177::defective-indicators-lights",
+      "section": "Section 177 / 177A",
+      "rule_reference": "Driving without indicators or defective lamps",
+      "title": {
+        "en": "Defective Indicators / Brake Lights"
+      },
+      "plain_english_summary": "Driving a vehicle with non-functional indicators, tail lamps, or brake lights, making it dangerous for other road users.",
+      "category": "vehicle_condition",
+      "severity": 2,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 500,
+            "max": 500,
+            "fixed": 500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 1500,
+            "max": 1500,
+            "fixed": 1500,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "CMVR Rule 105",
+      "source_page": null,
+      "source_text_excerpt": "Driving a vehicle with non-functional indicators, tail lamps, or brake lights, making it dangerous for other road users.",
+      "confidence": "high",
+      "extraction_notes": [
+        "One of the most frequent safety-check failures."
+      ],
+      "last_verified": "2026-04-19"
+    },
+    {
+      "id": "IN::Section-186::unfit-driver",
+      "section": "Section 186",
+      "rule_reference": "Driving when mentally or physically unfit",
+      "title": {
+        "en": "Driving when Physically/Mentally Unfit"
+      },
+      "plain_english_summary": "Driving a motor vehicle by a person with a known disease or disability which makes their driving a source of danger to themselves or others.",
+      "category": "dangerous_driving",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "IN",
+        "state_code": null,
+        "state_name": null
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 1000,
+            "max": 1000,
+            "fixed": 1000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": {
+            "min": 2000,
+            "max": 2000,
+            "fixed": 2000,
+            "currency": "INR"
+          },
+          "imprisonment": null
+        },
+        "licence_suspension": "Immediate suspension and medical review of licence.",
+        "licence_disqualification": null,
+        "community_service": null,
+        "other_penalty_text": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": null,
+      "effective_date": "2019-09-01",
+      "source_url": null,
+      "source_document": "MVA 2019 Section 186",
+      "source_page": null,
+      "source_text_excerpt": "Driving a motor vehicle by a person with a known disease or disability which makes their driving a source of danger to themselves or others.",
+      "confidence": "high",
+      "extraction_notes": [
+        "Applies to epilepsy, severe vision loss, or other certified disabilities."
+      ],
+      "last_verified": "2026-04-19"
     }
   ]
 }

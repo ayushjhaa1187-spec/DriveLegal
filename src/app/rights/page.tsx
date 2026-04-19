@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ChevronLeft, Shield, FileText, Scale, Siren, Info, Car } from "lucide-react";
+import { ChevronLeft, Shield, FileText, Scale, Siren, Info, Car, Cloud, Check } from "lucide-react";
 import Markdown from "react-markdown";
+import { useAuth } from "@/components/AuthProvider";
+import { SyncStatus } from "@/components/SyncStatus";
+import { syncDisputeLetter } from "@/lib/firebase/firestore";
 
 type TopicId = string;
 
@@ -48,11 +51,14 @@ const TOPICS: Topic[] = [
 ];
 
 export default function RightsPage() {
+  const { user, signIn } = useAuth();
   const [activeTopic, setActiveTopic] = useState<Topic | null>(null);
   const [response, setResponse] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isOffline, setIsOffline] = useState(false);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [hasSynced, setHasSynced] = useState(false);
 
   useEffect(() => {
     const update = () => setIsOffline(!navigator.onLine);
@@ -73,6 +79,7 @@ export default function RightsPage() {
     setActiveTopic(topic);
     setResponse(null);
     setError(null);
+    setHasSynced(false);
     setIsLoading(true);
 
     try {
@@ -93,6 +100,30 @@ export default function RightsPage() {
     }
   }
 
+  async function handleCloudSync() {
+    if (!user) {
+      await signIn();
+      return;
+    }
+
+    if (!response || !activeTopic) return;
+
+    setIsSyncing(true);
+    try {
+      await syncDisputeLetter(user.uid, {
+        title: activeTopic.title,
+        body: response,
+        violationId: activeTopic.id,
+        amount: 0, // General rights info, no specific fine
+      });
+      setHasSynced(true);
+    } catch (err) {
+      console.error("Sync failed", err);
+    } finally {
+      setIsSyncing(false);
+    }
+  }
+
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
        <div className="border-b border-zinc-100 bg-white px-4 py-4 sticky top-0 z-10">
@@ -100,10 +131,11 @@ export default function RightsPage() {
           <Link href="/" className="p-1 text-zinc-400 hover:text-brand-navy transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </Link>
-          <div>
-            <h1 className="text-lg font-bold text-zinc-900">Know Your Rights</h1>
-            <p className="text-xs text-zinc-400">Guardrailed AI legal insights</p>
+          <div className="flex-1">
+            <h1 className="text-lg font-bold text-zinc-900 leading-tight">Know Your Rights</h1>
+            <p className="text-[10px] text-zinc-400 uppercase tracking-wider font-bold">AI Legal Insights</p>
           </div>
+          <SyncStatus />
         </div>
       </div>
 
@@ -167,8 +199,36 @@ export default function RightsPage() {
               )}
 
               {response && (
-                <div className="prose prose-sm prose-zinc max-w-none prose-p:leading-relaxed prose-li:marker:text-blue-500">
+                <div className="prose prose-sm prose-zinc max-w-none prose-p:leading-relaxed prose-li:marker:text-blue-500 mb-8">
                   <Markdown>{response}</Markdown>
+                </div>
+              )}
+
+              {response && !isLoading && (
+                <div className="pt-6 border-t border-zinc-100 flex justify-between items-center">
+                  <p className="text-xs text-zinc-400 max-w-[200px]">
+                    {hasSynced 
+                      ? "Saved to your cloud legal vault." 
+                      : "Sync this insight to your account for offline access."}
+                  </p>
+                  <button
+                    onClick={handleCloudSync}
+                    disabled={isSyncing || hasSynced}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold transition-all
+                      ${hasSynced 
+                        ? "bg-green-50 text-green-600 cursor-default" 
+                        : "bg-brand-navy text-white hover:bg-blue-900 active:scale-95 shadow-sm"}
+                    `}
+                  >
+                    {isSyncing ? (
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : hasSynced ? (
+                      <Check className="w-4 h-4" />
+                    ) : (
+                      <Cloud className="w-4 h-4" />
+                    )}
+                    {isSyncing ? "Syncing..." : hasSynced ? "Saved" : "Save to Cloud"}
+                  </button>
                 </div>
               )}
             </div>

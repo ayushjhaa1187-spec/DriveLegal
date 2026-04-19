@@ -145,6 +145,21 @@ export default function AskPage() {
     }
   }
 
+  const LoadingSkeleton = () => (
+    <div className="flex justify-start animate-slide-up">
+      <div className="bg-white border border-zinc-100 rounded-2xl px-5 py-4 w-full max-w-[80%] shadow-sm">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-8 h-8 rounded-full bg-zinc-100 animate-pulse" />
+          <div className="h-4 w-32 bg-zinc-100 rounded animate-pulse" />
+        </div>
+        <div className="space-y-2">
+          <div className="h-3 w-full bg-zinc-50 rounded animate-pulse" />
+          <div className="h-3 w-3/4 bg-zinc-50 rounded animate-pulse" />
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div className="flex flex-col h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
@@ -193,9 +208,9 @@ export default function AskPage() {
           )}
 
           {messages.map((msg) => (
-            <div key={msg.id} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+            <div key={msg.id} className={`flex animate-slide-up ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
               {msg.role === "user" ? (
-                <div className="max-w-[80%] bg-brand-navy text-white px-4 py-3 rounded-2xl rounded-br-sm text-sm">
+                <div className="max-w-[80%] bg-brand-navy text-white px-4 py-3 rounded-2xl rounded-br-sm text-sm shadow-md shadow-brand-navy/10">
                   {msg.text}
                 </div>
               ) : (
@@ -262,18 +277,7 @@ export default function AskPage() {
             </div>
           ))}
 
-          {isLoading && (
-            <div className="flex justify-start">
-              <div className="bg-white border border-zinc-200 rounded-2xl px-5 py-4 flex items-center gap-2">
-                <div className="flex gap-1">
-                  {[0,1,2].map(i => (
-                    <div key={i} className="w-2 h-2 bg-brand-navy rounded-full animate-bounce" style={{ animationDelay: `${i * 0.15}s` }} />
-                  ))}
-                </div>
-                <span className="text-xs text-zinc-400">Looking up official records...</span>
-              </div>
-            </div>
-          )}
+          {isLoading && <LoadingSkeleton />}
 
           <div ref={bottomRef} />
         </div>

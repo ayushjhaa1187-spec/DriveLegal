@@ -4,13 +4,14 @@ import { z } from "zod";
 import { ViolationSchema } from "../src/lib/law-engine/schema";
 import type { Violation } from "../src/lib/law-engine/schema";
 
-const EXTRACTED_PATH = join(process.cwd(), "data", "parsed", "gemini_extracted.json");
+const DEFAULT_EXTRACT_PATH = join(process.cwd(), "data", "parsed", "gemini_extracted.json");
 const CENTRAL_PATH = join(process.cwd(), "public", "data", "laws", "in", "central.json");
 
 function merge() {
-  console.log("🚦 Starting DriveLegal Deduplication & Append pipeline...");
+  const sourcePath = process.argv[2] || DEFAULT_EXTRACT_PATH;
+  console.log(`🚦 Starting DriveLegal pipeline with source: ${sourcePath}...`);
 
-  const rawExtracted = readFileSync(EXTRACTED_PATH, "utf-8");
+  const rawExtracted = readFileSync(sourcePath, "utf-8");
   let newViolations: any[] = [];
   try {
     newViolations = JSON.parse(rawExtracted);

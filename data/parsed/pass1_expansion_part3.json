@@ -1,0 +1,171 @@
+[
+  {
+    "id": "IN::Section-177A::stop-line-violation",
+    "section": "Section 177A",
+    "rule_reference": "Violation of stop line at traffic signal",
+    "title": { "en": "Stop Line Violation" },
+    "plain_english_summary": "Stopping or crossing the white 'stop line' painted on the road when the traffic signal is red.",
+    "category": "safety",
+    "severity": 1,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Rules of the Road Regulations 2017",
+    "source_page": null,
+    "source_text_excerpt": "A driver... shall not cross the stop line when the traffic signal is red.",
+    "confidence": "high",
+    "extraction_notes": ["One of the most common automated e-challan types."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177A::yellow-line-violation",
+    "section": "Section 177A",
+    "rule_reference": "Crossing solid yellow or white line",
+    "title": { "en": "Solid Line / Lane Tracking Violation" },
+    "plain_english_summary": "Crossing a solid yellow or white line on the road which indicates 'no overtaking' or 'fixed lanes'.",
+    "category": "safety",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Rules of the Road Regulations 2017",
+    "source_page": null,
+    "source_text_excerpt": "Drivers shall not cross solid longitudinal lines marked on the road.",
+    "confidence": "high",
+    "extraction_notes": ["Often cited as lane indiscipline."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194::overloading",
+    "section": "Section 194",
+    "rule_reference": "Driving vehicle exceeding permissible weight",
+    "title": { "en": "Overloading of Goods Vehicle" },
+    "plain_english_summary": "Carrying a load that exceeds the gross vehicle weight or permissible axle weight.",
+    "category": "safety",
+    "severity": 5,
+    "applies_to": ["transport", "HMV", "LMV"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 20000, "max": 20000, "fixed": 20000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Plus ₹2,000 per extra tonne of excess load. Vehicle must be offloaded at owner's cost."
+    },
+    "compoundable": false,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 194",
+    "source_page": null,
+    "source_text_excerpt": "Whoever drives a motor vehicle... in contravention of... [weight limits]... shall be punishable with fine of twenty thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Massive increase in fine from ₹2000 to ₹20000 in 2019."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::defective-number-plate",
+    "section": "Section 177 / 192",
+    "rule_reference": "Plate numbers not clearly visible",
+    "title": { "en": "Defective / Hidden Number Plate" },
+    "plain_english_summary": "Driving with a number plate that is dirty, broken, hidden, or where the characters are not clearly legible.",
+    "category": "registration",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "CMVR Rule 50",
+    "source_page": null,
+    "source_text_excerpt": "The registration mark... shall at all times be clearly visible and legible.",
+    "confidence": "high",
+    "extraction_notes": ["Common during monsoon (muddy plates) or night checks."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-179-2::refusal-to-provide-info",
+    "section": "Section 179(2)",
+    "rule_reference": "Penalty for refusal to give information",
+    "title": { "en": "Refusing to Share Driver Details" },
+    "plain_english_summary": "Refusing to provide your name, address, or licence details when lawfully required by a police officer.",
+    "category": "other",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 179(2)",
+    "source_page": null,
+    "source_text_excerpt": "Whoever... being required to give any information... wilfully withholds such information... fine up to two thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Specific sub-section for withholding info."],
+    "last_verified": "2026-04-19"
+  }
+]

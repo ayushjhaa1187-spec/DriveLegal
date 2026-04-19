@@ -64,3 +64,47 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+/* Sync Status Styles */
+.sync-status-btn {
+  @apply flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sync-status--offline {
+  @apply bg-white/10 text-white/90 hover:bg-white/20;
+}
+
+.sync-status--synced {
+  @apply bg-brand-navy/80 text-white border-brand-navy/30;
+}
+
+.sync-avatar {
+  @apply w-5 h-5 rounded-full ring-1 ring-white/30;
+}
+
+.sync-logout {
+  @apply ml-1 p-0.5 hover:bg-white/10 rounded-full transition-colors leading-none;
+}
+
+/* Subtle page-load animations */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.4s ease-out forwards;
+}
+
+/* Dark mode overrides for synced status */
+.dark .sync-status--synced {
+  @apply bg-green-500/20 text-green-400 border-green-500/30;
+}
+
+.dark .sync-logout {
+  @apply text-green-400/50 hover:text-green-400;
+}

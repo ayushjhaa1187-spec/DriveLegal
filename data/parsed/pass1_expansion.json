@@ -1,0 +1,360 @@
+[
+  {
+    "id": "IN::Section-177::fancy-registration-plate",
+    "section": "Section 177 / 192",
+    "rule_reference": "Rule 50 / 51 Central Motor Vehicles Rules",
+    "title": {
+      "en": "Fancy or Illegal Number Plate"
+    },
+    "plain_english_summary": "Using registration plates that do not conform to the prescribed font, size, or display (fancy fonts, names, or non-HSRP plates in some zones).",
+    "category": "registration",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "May be combined with Section 192 for unregistered/HSRP violations in some states."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "CMVR Rule 50",
+    "source_page": null,
+    "source_text_excerpt": "Registration marks shall be displayed in the manner specified... non-compliance is punishable under section 177.",
+    "confidence": "high",
+    "extraction_notes": ["Commonly penalized as 500 for first time under general section."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::wrong-side-driving",
+    "section": "Section 177A / 184",
+    "rule_reference": "Driving against the flow of traffic",
+    "title": {
+      "en": "Wrong Side / One-Way Violation"
+    },
+    "plain_english_summary": "Driving a vehicle in the opposite direction of the traffic flow or entering a 'No Entry' or 'One Way' street incorrectly.",
+    "category": "safety",
+    "severity": 4,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+         "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+         "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "If driving is deemed 'dangerous' to others, police may book under Section 184 (₹1000-₹5000)."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Rules of the Road Regulations 2017",
+    "source_page": null,
+    "source_text_excerpt": "One-way traffic. A driver... shall not drive against the direction of the traffic.",
+    "confidence": "high",
+    "extraction_notes": ["Baseline is 177A, but frequently escalated to 184."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-192A::no-permit",
+    "section": "Section 192A",
+    "rule_reference": "Using vehicle without permit",
+    "title": {
+      "en": "Driving without a valid Permit"
+    },
+    "plain_english_summary": "Using a transport vehicle in any public place without a valid permit issued by the Authority.",
+    "category": "permit",
+    "severity": 5,
+    "applies_to": ["transport", "HMV", "3W"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment up to 6 months" }
+      },
+      "repeat_offence": {
+        "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+        "imprisonment": { "value": 1, "unit": "years", "severity": "may", "text": "Imprisonment up to 1 year" }
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 192A",
+    "source_page": null,
+    "source_text_excerpt": "whoever drives a motor vehicle... in contravention of... [permit sections]... shall be punishable for the first offence with a fine of ten thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["One of the highest fines in the Act for commercial non-compliance."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::illegal-lights-high-beam",
+    "section": "Section 177 / 177A",
+    "rule_reference": "Rule 105 CMVR",
+    "title": {
+      "en": "Improper Use of High Beam / Dazzling Lights"
+    },
+    "plain_english_summary": "Using high beams in a manner that dazzles other drivers, or using unauthorized multi-colored or excessively bright auxiliary lights.",
+    "category": "safety",
+    "severity": 2,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Illegal auxiliary lights may be confiscated/removed on the spot."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "CMVR Rule 105",
+    "source_page": null,
+    "source_text_excerpt": "Lights... shall be so adjusted that they shall at all times... not dazzle any person.",
+    "confidence": "high",
+    "extraction_notes": ["Penalty falls under general Section 177."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-179::disobeying-police",
+    "section": "Section 179",
+    "rule_reference": "Disobedience of orders, obstruction and refusal of information",
+    "title": {
+      "en": "Disobeying Lawful Directions of Police"
+    },
+    "plain_english_summary": "Refusing to stop when signalled, refusing to produce documents, or giving false information to a traffic officer.",
+    "category": "legal",
+    "severity": 4,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://prsindia.org/",
+    "source_document": "MVA 2019 Section 179",
+    "source_page": null,
+    "source_text_excerpt": "whoever wilfully disobeys any direction lawfully given... or obstructs... shall be punishable with fine which may extend to two thousand rupees.",
+    "confidence": "high",
+    "extraction_notes": ["Penalty increased from ₹500 to ₹2000 in 2019."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-190::unfit-vehicle",
+    "section": "Section 190(1)",
+    "rule_reference": "Using vehicle in unsafe condition",
+    "title": {
+      "en": "Driving Unsafe / Unfit Vehicle"
+    },
+    "plain_english_summary": "Using a vehicle that is in such a condition that it is a danger to the public (e.g., failed brakes, bald tires, hanging parts).",
+    "category": "safety",
+    "severity": 4,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 3000, "max": 3000, "fixed": 3000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": "Registration may be suspended until repair.",
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "MVA 2019 Section 190(1)",
+    "source_page": null,
+    "source_text_excerpt": "Any person who drives... a motor vehicle in any public place which is in such a condition that it is a danger to the public... [penalty].",
+    "confidence": "high",
+    "extraction_notes": ["Distinct from Pollution (190(2))."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-177::horn-silencer",
+    "section": "Section 177 / 190(2)",
+    "rule_reference": "Noise pollution and silencer modification",
+    "title": {
+      "en": "Modified Exhaust / Noise Pollution"
+    },
+    "plain_english_summary": "Using a modified silencer, high-decibel air horns, or excessive honking in silent zones.",
+    "category": "pollution",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Modified silencers (e.g. on Bullets) are frequently confiscated."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Environment Protection rules / MVA 190(2)",
+    "source_page": null,
+    "source_text_excerpt": "Vehicle non complying with the standards prescribed in relation to air and noise pollution...",
+    "confidence": "high",
+    "extraction_notes": ["Combined enforcement with 190(2) usually results in ₹1000+ fines."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-192::hsrp-violation",
+    "section": "Section 192",
+    "rule_reference": "Violation of High Security Registration Plate (HSRP)",
+    "title": {
+      "en": "Driving without HSRP (Number Plate)"
+    },
+    "plain_english_summary": "Driving a vehicle without the High Security Registration Plate mandated by the government for all old and new vehicles.",
+    "category": "registration",
+    "severity": 3,
+    "applies_to": ["all"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 2000, "max": 5000, "fixed": null, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Fine amount varies by state implementation of Section 192."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2022-01-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Supreme Court / MoRTH Mandate",
+    "source_page": null,
+    "source_text_excerpt": "Requirement for HSRP in all states. Penalty under Section 192.",
+    "confidence": "high",
+    "extraction_notes": ["Heavily enforced in DL, KA, MH."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-193::illegal-tint-glass",
+    "section": "Section 177 / 190",
+    "rule_reference": "Rule 100 CMVR",
+    "title": {
+      "en": "Dark Tint / Sun-film on Windows"
+    },
+    "plain_english_summary": "Using sun-film or tinting glass beyond permissible limits (must be 70% VLT for front/back and 50% for sides).",
+    "category": "safety",
+    "severity": 2,
+    "applies_to": ["4W", "LMV", "HMV"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": {
+        "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+        "imprisonment": null
+      },
+      "licence_suspension": null,
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": "Police usually strip off the film on the spot in addition to the fine."
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2012-05-04",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "Supreme Court Order Avishek Goenka vs Union Of India",
+    "source_page": null,
+    "source_text_excerpt": "Complete ban on use of black films of any VLT on safety glasses/windscreens.",
+    "confidence": "high",
+    "extraction_notes": ["SC order strictly prohibits ANY film, even if light."],
+    "last_verified": "2026-04-19"
+  },
+  {
+    "id": "IN::Section-194D::pillion-helmet",
+    "section": "Section 194D",
+    "rule_reference": "Avishek Goenka vs Union of India",
+    "title": {
+      "en": "Pillion Rider without Helmet"
+    },
+    "plain_english_summary": "Carrying a secondary rider (pillion) on a motorcycle who is not wearing a protective helmet.",
+    "category": "helmet",
+    "severity": 3,
+    "applies_to": ["2W"],
+    "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+    "penalty": {
+      "first_offence": {
+        "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+        "imprisonment": null
+      },
+      "repeat_offence": null,
+      "licence_suspension": "Disqualification of rider's licence for three months.",
+      "licence_disqualification": null,
+      "community_service": null,
+      "other_penalty_text": null
+    },
+    "compoundable": true,
+    "compounding_amount_inr": null,
+    "effective_date": "2019-09-01",
+    "source_url": "https://morth.nic.in/",
+    "source_document": "MVA 2019 Section 194D / 129",
+    "source_page": null,
+    "source_text_excerpt": "Every person, while riding a motor cycle... shall wear protective headgear.",
+    "confidence": "high",
+    "extraction_notes": ["Applies to the rider even if they are wearing one but the pillion isn't."],
+    "last_verified": "2026-04-19"
+  }
+]

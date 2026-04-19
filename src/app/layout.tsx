@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import { PWARegistrar } from "@/components/pwa-registrar";
 import { LanguageSelector } from "@/components/LanguageSelector";
+import { AuthProvider } from "@/components/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,9 +47,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <PWARegistrar />
-        <LanguageSelector />
-        {children}
+        <AuthProvider>
+          <PWARegistrar />
+          <LanguageSelector />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );

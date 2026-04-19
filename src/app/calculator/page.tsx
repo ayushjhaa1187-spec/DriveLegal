@@ -141,9 +141,16 @@ function CalculatorInner() {
         {step === 3 && (
           <div>
             {isLoading ? (
-              <div className="flex flex-col items-center justify-center py-24 gap-4 animate-in fade-in duration-300">
-                <div className="w-12 h-12 border-4 border-brand-navy border-t-transparent rounded-full animate-spin" />
-                <p className="text-zinc-500 font-medium">Looking up official fine...</p>
+              <div className="space-y-6 animate-slide-up">
+                <div className="bg-white rounded-3xl border border-zinc-100 p-8 shadow-xl">
+                  <div className="h-4 w-24 bg-zinc-100 rounded animate-pulse mb-6" />
+                  <div className="h-16 w-48 bg-zinc-100 rounded animate-pulse mb-8" />
+                  <div className="space-y-4">
+                    <div className="h-4 w-full bg-zinc-50 rounded animate-pulse" />
+                    <div className="h-4 w-5/6 bg-zinc-50 rounded animate-pulse" />
+                    <div className="h-4 w-4/6 bg-zinc-50 rounded animate-pulse" />
+                  </div>
+                </div>
               </div>
             ) : queryResult ? (
               <ResultCard
