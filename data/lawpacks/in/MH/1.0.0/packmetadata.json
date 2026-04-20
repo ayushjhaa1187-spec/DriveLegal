@@ -1,0 +1,17 @@
+{
+  "packId": "IN-MH",
+  "packVersion": "1.0.0",
+  "jurisdiction": "IN",
+  "stateCode": "MH",
+  "stateName": "Maharashtra",
+  "publishedAt": "2026-01-01T00:00:00Z",
+  "lastVerified": "2026-05-15",
+  "sourceUrls": [
+    "https://transport.maharashtra.gov.in"
+  ],
+  "totalViolations": 25,
+  "coverageNotes": "Maharashtra state-specific overrides to MVA 2019",
+  "maintainer": "DriveLegal Data Team",
+  "schemaVersion": "2.0.0",
+  "hash": "sha256:mh123"
+}
