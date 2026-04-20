@@ -1,0 +1,2 @@
+-- Phase 15.1 — hotspots data model + trust score.
+-- TODO(phase-15): write schema + RLS policies.

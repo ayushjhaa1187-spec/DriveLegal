@@ -1,0 +1,18 @@
+# Phase 8.2 — weekly law-data update pipeline.
+# TODO(phase-8): implement Fetch → Extract → Diff → PR.
+name: Weekly Law Update
+
+on:
+  schedule:
+    - cron: '30 21 * * 6'  # Sun 03:00 IST
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: echo "TODO(phase-8): implement scrape → extract → diff → PR."

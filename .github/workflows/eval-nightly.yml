@@ -1,0 +1,15 @@
+# Phase 11.3 — nightly LLM evaluation harness.
+# TODO(phase-11): implement.
+name: Nightly LLM Eval
+
+on:
+  schedule:
+    - cron: '0 18 * * *'  # 23:30 IST
+  workflow_dispatch:
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "TODO(phase-11): run golden-set eval."
