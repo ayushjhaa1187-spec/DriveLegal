@@ -1,0 +1,156 @@
+{
+  "_schema_version": "1.0.0",
+  "_description": "Seed registry of state legal documents for pan-India compounding schedule parsing. PDFs are NOT stored in git — only URLs, hashes, and extracted evidence.",
+  "_last_updated": "2026-04-20",
+  "IN": {
+    "MH": [
+      {
+        "source_url": "https://transport.maharashtra.gov.in/Site/Upload/Acts%20Rules/English/Compounding%20Fees.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Maharashtra Motor Vehicles (Compounding of Offences) Rules — Fee Schedule",
+        "notes": "Official MH Transport Dept. Periodically revised. Check for amendment notifications."
+      },
+      {
+        "source_url": "https://mahatrafficpolice.gov.in/images/PDF/compounding_fees_MV_act.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "police_echallan_table",
+        "title_hint": "Maharashtra Traffic Police eChallan Fine Table",
+        "notes": "Operationally-used fine amounts; may differ slightly from gazette."
+      }
+    ],
+    "DL": [
+      {
+        "source_url": "https://transport.delhi.gov.in/sites/default/files/All-PDF/Compounding%20of%20Offences%20Rules.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Delhi Motor Vehicles (Compounding of Offences) Rules",
+        "notes": "Delhi Transport Dept official gazette notification."
+      },
+      {
+        "source_url": "https://delhitrafficpolice.nic.in/uploads/files/penalty_chart.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "police_echallan_table",
+        "title_hint": "Delhi Traffic Police Penalty Chart",
+        "notes": "Operational fine chart used by Delhi Traffic Police."
+      }
+    ],
+    "KA": [
+      {
+        "source_url": "https://transport.karnataka.gov.in/storage/pdf-files/MV%20Compounding%20Rules%20Karnataka.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Karnataka Motor Vehicles (Compounding of Offences) Rules",
+        "notes": "Karnataka Transport Dept. Cross-check with latest gazette notifications."
+      }
+    ],
+    "TN": [
+      {
+        "source_url": "https://tnsta.gov.in/uploads/compounding_schedule_tn.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Tamil Nadu Motor Vehicles Compounding Fee Schedule",
+        "notes": "TN State Transport Authority official schedule."
+      }
+    ],
+    "UP": [
+      {
+        "source_url": "https://uptransport.upsdc.gov.in/en-us/TransportRule/CompoundingRules.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Uttar Pradesh Motor Vehicles Compounding Rules",
+        "notes": "UP Transport Dept. One of highest-volume states for traffic violations."
+      }
+    ],
+    "RJ": [
+      {
+        "source_url": "https://transport.rajasthan.gov.in/content/dam/transport/pdf/compounding-fees.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Rajasthan Motor Vehicles Compounding Fees Schedule",
+        "notes": "Rajasthan Transport Dept official document."
+      }
+    ],
+    "GJ": [
+      {
+        "source_url": "https://rtogujarat.gov.in/files/Compounding_Fees_Schedule_GJ.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Gujarat Motor Vehicles Compounding Fee Schedule",
+        "notes": "Gujarat RTO official. Gujarat often has lower compounding amounts than central."
+      }
+    ],
+    "MP": [
+      {
+        "source_url": "https://mptransport.org/pdf/compounding_schedule.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Madhya Pradesh Motor Vehicles Compounding Schedule",
+        "notes": "MP Transport official. Verify against gazette notifications."
+      }
+    ],
+    "WB": [
+      {
+        "source_url": "https://wbtransport.gov.in/docs/MV_Compounding_Fees_WB.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "West Bengal Motor Vehicles Compounding Fees",
+        "notes": "WB Transport Dept. Often has older gazette versions — check amendments."
+      }
+    ],
+    "TS": [
+      {
+        "source_url": "https://transport.telangana.gov.in/pdf/compounding_offences_TS.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Telangana Motor Vehicles Compounding of Offences Schedule",
+        "notes": "Telangana Transport Dept. State bifurcated from AP; verify post-2014 rules separately."
+      }
+    ],
+    "AP": [
+      {
+        "source_url": "https://aptransport.org/html/Acts_Rules/AP_Compounding_Schedule.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Andhra Pradesh Motor Vehicles Compounding Schedule",
+        "notes": "AP Transport Dept. Post-bifurcation AP-specific rules."
+      }
+    ],
+    "PB": [
+      {
+        "source_url": "https://punjabtransport.org/docs/Compounding_Rules_Punjab.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Punjab Motor Vehicles Compounding Rules",
+        "notes": "Punjab Transport Dept official schedule."
+      }
+    ],
+    "HR": [
+      {
+        "source_url": "https://hartrans.gov.in/pdf/compounding_fees_haryana.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Haryana Motor Vehicles Compounding Fee Schedule",
+        "notes": "Haryana Transport Dept. Often matches central amounts post-MVA 2019."
+      }
+    ],
+    "BR": [
+      {
+        "source_url": "https://biharetransport.gov.in/pdf/Compounding_Schedule_Bihar.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Bihar Motor Vehicles Compounding Schedule",
+        "notes": "Bihar Transport Dept. Verify — Bihar has historically delayed gazette adoption."
+      }
+    ],
+    "OD": [
+      {
+        "source_url": "https://odishatransport.gov.in/sites/default/files/Compounding_Fees_Odisha.pdf",
+        "source_type": "pdf",
+        "document_type_hint": "state_compounding_schedule",
+        "title_hint": "Odisha Motor Vehicles Compounding Fees Schedule",
+        "notes": "Odisha Transport Dept official."
+      }
+    ]
+  }
+}
