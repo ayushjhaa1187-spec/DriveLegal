@@ -1,0 +1,76 @@
+{
+  "schemaVersion": "2.0.0",
+  "generatedAt": "2026-05-20T00:00:00Z",
+  "packs": {
+    "IN-central": {
+      "latest": "1.0.0",
+      "path": "in/central/1.0.0",
+      "lastVerified": "2026-05-20"
+    },
+    "IN-MH": {
+      "latest": "1.0.0",
+      "path": "in/MH/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-DL": {
+      "latest": "1.0.0",
+      "path": "in/DL/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-TN": {
+      "latest": "1.0.0",
+      "path": "in/TN/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-KA": {
+      "latest": "1.0.0",
+      "path": "in/KA/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-UP": {
+      "latest": "1.0.0",
+      "path": "in/UP/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-GJ": {
+      "latest": "1.0.0",
+      "path": "in/GJ/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-RJ": {
+      "latest": "1.0.0",
+      "path": "in/RJ/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-WB": {
+      "latest": "1.0.0",
+      "path": "in/WB/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "IN-TS": {
+      "latest": "1.0.0",
+      "path": "in/TS/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "global-US": {
+      "latest": "1.0.0",
+      "path": "global/US/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "global-UK": {
+      "latest": "1.0.0",
+      "path": "global/UK/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "global-AE": {
+      "latest": "1.0.0",
+      "path": "global/AE/1.0.0",
+      "lastVerified": "2026-05-15"
+    },
+    "global-AU": {
+      "latest": "1.0.0",
+      "path": "global/AU/1.0.0",
+      "lastVerified": "2026-05-15"
+    }
+  }
+}
