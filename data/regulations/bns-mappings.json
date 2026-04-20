@@ -1,0 +1,175 @@
+{
+  "_meta": {
+    "title": "BNS 2023 Traffic Offence Sections — Mapped to MVA 1988",
+    "description": "Bharatiya Nyaya Sanhita 2023 sections applicable to road/traffic offences, mapped to corresponding Motor Vehicles Act sections",
+    "source": "Bharatiya Nyaya Sanhita, 2023 (Act No. 45 of 2023)",
+    "effectiveDate": "2024-07-01",
+    "lastUpdated": "2026-04-20",
+    "totalMappings": 12
+  },
+  "mappings": [
+    {
+      "bnsSection": "Section 281",
+      "bnsTitle": "Rash driving or riding on a public way",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Driving dangerously",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 6 months",
+        "fine": "Up to Rs 1000",
+        "or_both": true
+      },
+      "notes": "IPC Section 279 equivalent under BNS 2023"
+    },
+    {
+      "bnsSection": "Section 285",
+      "bnsTitle": "Negligent conduct with respect to poisonous substance — road endangerment",
+      "mvaSection": "Section 185",
+      "mvaTitle": "Driving by a drunken person or by a person under influence of drugs",
+      "category": "intoxication",
+      "penalty_bns": {
+        "imprisonment": "Up to 6 months",
+        "fine": "Up to Rs 1000",
+        "or_both": true
+      },
+      "notes": "BNS Section 285 covers negligent acts with intoxicants; drunk driving prosecuted under both MVA 185 and BNS 285"
+    },
+    {
+      "bnsSection": "Section 106",
+      "bnsTitle": "Causing death by negligence",
+      "mvaSection": "Section 134",
+      "mvaTitle": "Duty of driver in case of accident and injury to a person",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 5 years",
+        "fine": "As decided by court",
+        "or_both": false
+      },
+      "notes": "IPC Section 304A equivalent. Hit-and-run cases can attract BNS 106 (culpable homicide by negligence). BNS 106(2) specifically covers hit-and-run with imprisonment up to 10 years."
+    },
+    {
+      "bnsSection": "Section 125",
+      "bnsTitle": "Act endangering life or personal safety of others",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Driving dangerously",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 3 months",
+        "fine": "Up to Rs 2500",
+        "or_both": true
+      },
+      "notes": "IPC Section 336 equivalent. Applies to racing, stunts, or extremely reckless driving endangering others."
+    },
+    {
+      "bnsSection": "Section 126",
+      "bnsTitle": "Act causing hurt by endangering life",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Driving dangerously — causing hurt",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 6 months",
+        "fine": "Up to Rs 5000",
+        "or_both": true
+      },
+      "notes": "IPC Section 337 equivalent. If dangerous driving causes hurt to any person."
+    },
+    {
+      "bnsSection": "Section 127",
+      "bnsTitle": "Act causing grievous hurt by endangering life",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Driving dangerously — grievous hurt",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 2 years",
+        "fine": "Up to Rs 10000",
+        "or_both": true
+      },
+      "notes": "IPC Section 338 equivalent. If dangerous driving causes grievous hurt."
+    },
+    {
+      "bnsSection": "Section 316",
+      "bnsTitle": "Causing hurt by act endangering life of others — road rage",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Road rage / aggressive driving",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 2 years",
+        "fine": "As decided by court",
+        "or_both": true
+      },
+      "notes": "Road rage incidents involving physical assault can be charged under BNS 316 in addition to MVA offences."
+    },
+    {
+      "bnsSection": "Section 317",
+      "bnsTitle": "Causing grievous hurt by act endangering life — road rage",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Road rage — grievous hurt",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 4 years",
+        "fine": "As decided by court",
+        "or_both": true
+      },
+      "notes": "Road rage causing grievous hurt. Applicable alongside MVA penalty."
+    },
+    {
+      "bnsSection": "Section 109",
+      "bnsTitle": "Abetment of offence — juvenile driving",
+      "mvaSection": "Section 199A",
+      "mvaTitle": "Offences by juveniles — guardian/owner liability",
+      "category": "juvenile",
+      "penalty_bns": {
+        "imprisonment": "As per abetted offence",
+        "fine": "As per abetted offence",
+        "or_both": true
+      },
+      "notes": "Guardian/owner who allows juvenile to drive can be charged with abetment under BNS 109, alongside MVA 199A."
+    },
+    {
+      "bnsSection": "Section 329",
+      "bnsTitle": "Causing mischief — road blockade / vehicle damage",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Causing obstruction or mischief on public road",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 6 months",
+        "fine": "As decided by court",
+        "or_both": true
+      },
+      "notes": "IPC Section 425 equivalent. Blocking roads or damaging vehicles can attract BNS 329."
+    },
+    {
+      "bnsSection": "Section 303",
+      "bnsTitle": "Theft — vehicle theft",
+      "mvaSection": "Section 206",
+      "mvaTitle": "Power to detain vehicles used without certificate of registration",
+      "category": "registration",
+      "penalty_bns": {
+        "imprisonment": "Up to 3 years",
+        "fine": "As decided by court",
+        "or_both": true
+      },
+      "notes": "IPC Section 379 equivalent. Driving a stolen vehicle invokes BNS 303 and MVA violations."
+    },
+    {
+      "bnsSection": "Section 351",
+      "bnsTitle": "Criminal intimidation — road rage threats",
+      "mvaSection": "Section 184",
+      "mvaTitle": "Aggressive / threatening behaviour on road",
+      "category": "dangerous_driving",
+      "penalty_bns": {
+        "imprisonment": "Up to 2 years",
+        "fine": "As decided by court",
+        "or_both": true
+      },
+      "notes": "IPC Section 506 equivalent. Threatening behaviour during road rage can attract BNS 351."
+    }
+  ],
+  "quickReference": {
+    "drunkDriving": { "mvaSections": ["185", "202"], "bnsSections": ["285"] },
+    "dangerousDriving": { "mvaSections": ["184"], "bnsSections": ["281", "125", "126", "127"] },
+    "hitAndRun": { "mvaSections": ["134", "161"], "bnsSections": ["106"] },
+    "roadRage": { "mvaSections": ["184"], "bnsSections": ["316", "317", "351"] },
+    "juvenileDriving": { "mvaSections": ["199A"], "bnsSections": ["109"] }
+  }
+}
