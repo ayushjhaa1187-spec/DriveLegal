@@ -1,0 +1,110 @@
+{
+  "jurisdiction": {
+    "id": "in-DL-new-delhi",
+    "name": "New Delhi",
+    "state": "Delhi (NCT)",
+    "stateCode": "DL",
+    "country": "IN",
+    "type": "capital_territory",
+    "coordinates": { "latitude": 28.6139, "longitude": 77.2090 }
+  },
+  "trafficAuthority": {
+    "name": "Delhi Traffic Police",
+    "website": "https://www.delhitrafficpolice.nic.in",
+    "challanPortal": "https://echallan.parivahan.gov.in",
+    "headquarters": "Delhi Police Headquarters, ITO, New Delhi - 110002",
+    "contacts": [
+      {
+        "type": "helpline",
+        "number": "1095",
+        "description": "Traffic Police Helpline",
+        "available": "24x7"
+      },
+      {
+        "type": "control_room",
+        "number": "011-25844444",
+        "description": "Traffic Control Room",
+        "available": "24x7"
+      },
+      {
+        "type": "whatsapp",
+        "number": "8750871493",
+        "description": "Traffic WhatsApp Helpline",
+        "available": "24x7"
+      }
+    ]
+  },
+  "rto": [
+    {
+      "code": "DL-01",
+      "name": "RTO Delhi Central",
+      "address": "Kashmere Gate, Delhi - 110006",
+      "phone": "011-23862011",
+      "email": "rto.central@delhi.gov.in",
+      "hours": "Mon-Fri 9:30-17:00"
+    },
+    {
+      "code": "DL-07",
+      "name": "RTO Delhi South",
+      "address": "Lajpat Nagar, New Delhi - 110024",
+      "phone": "011-29813900",
+      "email": "rto.south@delhi.gov.in",
+      "hours": "Mon-Fri 9:30-17:00"
+    },
+    {
+      "code": "DL-11",
+      "name": "RTO Delhi West",
+      "address": "Rohini, Delhi - 110085",
+      "phone": "011-27051380",
+      "email": "rto.west@delhi.gov.in",
+      "hours": "Mon-Fri 9:30-17:00"
+    }
+  ],
+  "courts": [
+    {
+      "name": "Motor Accident Claims Tribunal Delhi",
+      "address": "Rohini Courts, Delhi - 110085",
+      "phone": "011-27051110",
+      "jurisdiction": "Motor vehicle accident claims"
+    },
+    {
+      "name": "Patiala House Courts (Traffic)",
+      "address": "Patiala House, New Delhi - 110001",
+      "phone": "011-23386473",
+      "jurisdiction": "Traffic violations for central Delhi"
+    }
+  ],
+  "speedLimits": {
+    "expressway": 100,
+    "nationalHighway": 80,
+    "urbanRoad": 50,
+    "schoolZone": 25,
+    "residential": 30,
+    "unit": "kmph"
+  },
+  "localRegulations": [
+    {
+      "id": "dl-odd-even",
+      "title": "Odd-Even Vehicle Scheme",
+      "description": "Seasonal odd-even vehicle restriction during high pollution periods",
+      "penalty": 2000
+    },
+    {
+      "id": "dl-no-entry",
+      "title": "Commercial Vehicle No-Entry",
+      "description": "Heavy vehicles restricted in central Delhi 8am-8pm",
+      "penalty": 10000
+    },
+    {
+      "id": "dl-bs3-ban",
+      "title": "BS-III/BS-IV Vehicle Ban",
+      "description": "Pre-BS-VI diesel vehicles banned during GRAP Stage 3/4",
+      "penalty": 20000
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-01-01",
+    "version": "1.0.0",
+    "source": "Delhi Traffic Police, Delhi Transport Department"
+  }
+}
