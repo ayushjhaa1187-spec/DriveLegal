@@ -1,0 +1,104 @@
+{
+  "jurisdiction": {
+    "id": "in-TN-chennai",
+    "name": "Chennai",
+    "state": "Tamil Nadu",
+    "stateCode": "TN",
+    "country": "IN",
+    "type": "metropolitan",
+    "coordinates": { "latitude": 13.0827, "longitude": 80.2707 }
+  },
+  "trafficAuthority": {
+    "name": "Chennai City Traffic Police",
+    "website": "https://www.chennaicitypolice.gov.in/traffic",
+    "challanPortal": "https://echallan.parivahan.gov.in",
+    "headquarters": "Commissioner of Police, Chennai - 600002",
+    "contacts": [
+      {
+        "type": "helpline",
+        "number": "103",
+        "description": "Traffic Police Helpline",
+        "available": "24x7"
+      },
+      {
+        "type": "control_room",
+        "number": "044-28447111",
+        "description": "Traffic Control Room",
+        "available": "24x7"
+      },
+      {
+        "type": "complaint",
+        "number": "044-23452345",
+        "description": "Traffic Complaints",
+        "available": "Mon-Sat 9am-6pm"
+      }
+    ]
+  },
+  "rto": [
+    {
+      "code": "TN-09",
+      "name": "RTO Chennai Central",
+      "address": "Vepery, Chennai - 600007",
+      "phone": "044-26440302",
+      "email": "rto.chennaicentral@tn.gov.in",
+      "hours": "Mon-Fri 10:00-17:30"
+    },
+    {
+      "code": "TN-10",
+      "name": "RTO Chennai North",
+      "address": "Redhills, Chennai - 600052",
+      "phone": "044-26350123",
+      "email": "rto.chennainorth@tn.gov.in",
+      "hours": "Mon-Fri 10:00-17:30"
+    },
+    {
+      "code": "TN-22",
+      "name": "RTO Chennai South",
+      "address": "Adyar, Chennai - 600020",
+      "phone": "044-24412121",
+      "email": "rto.chennaisouth@tn.gov.in",
+      "hours": "Mon-Fri 10:00-17:30"
+    }
+  ],
+  "courts": [
+    {
+      "name": "Motor Accident Claims Tribunal Chennai",
+      "address": "High Court Campus, Chennai - 600104",
+      "phone": "044-25333500",
+      "jurisdiction": "Motor vehicle accident claims"
+    },
+    {
+      "name": "Metropolitan Magistrate Court (Traffic)",
+      "address": "Egmore, Chennai - 600008",
+      "phone": "044-28193711",
+      "jurisdiction": "Traffic violations and challans"
+    }
+  ],
+  "speedLimits": {
+    "expressway": 100,
+    "nationalHighway": 80,
+    "urbanRoad": 50,
+    "schoolZone": 25,
+    "residential": 30,
+    "unit": "kmph"
+  },
+  "localRegulations": [
+    {
+      "id": "tn-helmet-pillion",
+      "title": "Mandatory Helmet for Pillion",
+      "description": "Both rider and pillion must wear ISI-certified helmets",
+      "penalty": 1000
+    },
+    {
+      "id": "tn-no-tinted-glass",
+      "title": "Tinted Glass Restriction",
+      "description": "VLT must be 70% front, 50% sides as per TN Motor Vehicles Rules",
+      "penalty": 500
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-01-01",
+    "version": "1.0.0",
+    "source": "Chennai City Traffic Police, Tamil Nadu Transport Department"
+  }
+}
