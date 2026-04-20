@@ -1,0 +1,116 @@
+{
+  "document_metadata": {
+    "source_document": "Tamil Nadu Transport Department Notification G.O.",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-TN",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T10:00:00Z",
+    "regional_focus": [
+      "Chennai",
+      "OMR (Old Mahabalipuram Road)",
+      "ECR (East Coast Road)",
+      "GST Road (NH45)",
+      "Chennai Outer Ring Road (ORR)",
+      "Chennai-Bengaluru Highway (NH48)",
+      "Chennai-Trichy Highway (NH38)",
+      "Coimbatore-Salem Highway (NH544)",
+      "Madurai-Tirunelveli Highway (NH44)"
+    ],
+    "special_notices": {
+      "omr_it_corridor": "High-enforcement IT corridor. Strict lane discipline and speed cams at every major signal.",
+      "ecr_scenic_highway": "Strict speed enforcement. Avoid weekend speeding. Breathalyzer check-points frequent.",
+      "chennai_orr": "Heavy vehicle traffic. Speed limit: 80kmph/100kmph. CCTV surveillance for overspeeding active.",
+      "gst_road": "Primary highway to Southern TN. Strict enforcement for illegal parking near toll plazas and speeding.",
+      "chennai_bengaluru_nh48": "Frequent speed traps near Vellore and Krishnagiri stretches."
+    }
+  },
+  "violations": [
+    {
+      "id": "TN::Section-194D::helmet",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (TN Priority)" },
+      "plain_english_summary": "Compounding for no helmet in Tamil Nadu. High-enforcement in Chennai and Coimbatore urban zones.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "TN", "state_name": "Tamil Nadu" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "licence_suspension": "3 months"
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Tamil Nadu authorities strictly enforce the ₹1000 fine and automatic license suspension recommendation to the RTO."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "TN::Section-184::dangerous-driving-orr",
+      "section": "Section 184",
+      "title": { "en": "Dangerous Driving / Overspeeding (ORR/GST Corridor)" },
+      "plain_english_summary": "Compounding for high-speed maneuvers on Chennai Outer Ring Road (ORR) and GST road. Focusses on lane discipline and dangerous speed.",
+      "category": "dangerous_driving",
+      "severity": 5,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "TN", "state_name": "Tamil Nadu" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Intensive night patrolling on ORR and GST Road for commercial vehicle safety."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "TN::Section-183::speeding-omr",
+      "section": "Section 183",
+      "title": { "en": "Overspeeding (OMR/ECR/GST Focus)" },
+      "plain_english_summary": "Compounding for speeding on Chennai's high-speed corridors. Automatically captured by radar cams.",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "TN", "state_name": "Tamil Nadu" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Strict radar enforcement on OMR, GST Road, and ECR. Fines are usually processed digitally via speed cameras."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "TN::Section-185::drunk-driving",
+      "section": "Section 185",
+      "title": { "en": "Drunk Driving (Highway/City Focus)" },
+      "plain_english_summary": "Zero tolerance for drunk driving in Tamil Nadu. Breathalyzer tests are mandatory on highway toll gates and city exits.",
+      "category": "safety",
+      "severity": 10,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "TN", "state_name": "Tamil Nadu" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+          "imprisonment": "6 months"
+        }
+      },
+      "compoundable": false,
+      "extraction_notes": [
+        "Court appearance mandatory. Severe enforcement on weekends near ECR and GST Road."
+      ],
+      "last_verified": "2026-04-20"
+    }
+
+  ]
+}

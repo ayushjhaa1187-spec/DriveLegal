@@ -1,0 +1,52 @@
+{
+  "central": {
+    "sha256": "87bf680db925904ea459e8d1f5c1b438d2c93c34e255102029b390454db47ff8",
+    "entries": 12,
+    "generatedAt": "2026-04-20"
+  },
+  "DL": {
+    "sha256": "9c84b26685664597a4120e76a67f122aec85a13056c6d58c7412e4f7a5568830",
+    "entries": 2,
+    "generatedAt": "2026-04-20"
+  },
+  "GJ": {
+    "sha256": "4ffb0c46b1e39f745065305dcc7563af892ca33fae0bccbc06121bc827e97c7a",
+    "entries": 2,
+    "generatedAt": "2026-04-20"
+  },
+  "KA": {
+    "sha256": "054fc11d99b2dcd99ff6b715f7d3cc776f905c514664084dce5f12594fcd3030",
+    "entries": 3,
+    "generatedAt": "2026-04-20"
+  },
+  "MH": {
+    "sha256": "4a0b4b70661742fc597bc2fd8164f1453e8411d5e4d21662398e673b031642af",
+    "entries": 3,
+    "generatedAt": "2026-04-20"
+  },
+  "RJ": {
+    "sha256": "23589cdb4fa298c1828afdce4b055d2e48b2f4c7524141d55bafeded1d66a1ff",
+    "entries": 3,
+    "generatedAt": "2026-04-20"
+  },
+  "TN": {
+    "sha256": "61e48e4e167a22b191a1be0c7325825b8d2e95aa2026a3456b4da8bd4baf744f",
+    "entries": 4,
+    "generatedAt": "2026-04-20"
+  },
+  "TS": {
+    "sha256": "4644ea97942f3b988ed2de8d846f19e797632302b4401390d61dd691207e5973",
+    "entries": 2,
+    "generatedAt": "2026-04-20"
+  },
+  "UP": {
+    "sha256": "e824fb20681e1a08355944321fa8a21a70fcd7bcc571b934b93b36c1cc727114",
+    "entries": 2,
+    "generatedAt": "2026-04-20"
+  },
+  "WB": {
+    "sha256": "cd61bcfc2ece7e02fb037a42caf7cd4a01facf9075872d358b83d9b0abd677f1",
+    "entries": 2,
+    "generatedAt": "2026-04-20"
+  }
+}

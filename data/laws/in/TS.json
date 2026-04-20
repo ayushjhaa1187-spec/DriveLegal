@@ -1,0 +1,68 @@
+{
+  "document_metadata": {
+    "source_document": "Telangana Transport Department - GO Ms No 26",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-TS",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T10:00:00Z",
+    "regional_focus": [
+      "Hyderabad",
+      "Cyberabad (Hitech City)",
+      "Outer Ring Road (ORR)",
+      "Gachibowli",
+      "Warangal",
+      "Karimnagar"
+    ],
+    "special_notices": {
+      "orr_lane_discipline": "Strict lane discipline on ORR. Heavy vehicles must stay in the left lanes. 120kmph limit verified.",
+      "cyberabad_it_belt": "Zero tolerance for wrong-side driving and signal jumping in IT hubs."
+    }
+  },
+  "violations": [
+    {
+      "id": "TS::Section-194D::helmet",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (TS Override)" },
+      "plain_english_summary": "Compounding fee for riding without a helmet in Telangana. Verified for Hyderabad and Warangal city limits.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "TS", "state_name": "Telangana" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 100, "max": 100, "fixed": 100, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 100,
+      "extraction_notes": [
+        "TS has significantly lower compounding fees for basic helmet violations to encourage compliance without high friction."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "TS::Section-184::dangerous-driving",
+      "section": "Section 184",
+      "title": { "en": "Dangerous Driving / Red Light Jump (TS)" },
+      "plain_english_summary": "Penalties for jumping signals and dangerous maneuvers in Telangana cities.",
+      "category": "signal_jumping",
+      "severity": 5,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "TS", "state_name": "Telangana" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Integrated with TS Police 'ITMS' (Intelligent Traffic Management System) in Karimnagar and Khammam."
+      ],
+      "last_verified": "2026-04-20"
+    }
+  ]
+}

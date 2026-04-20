@@ -1,0 +1,16 @@
+{
+  "state_code": "MH",
+  "fetched_at": "2026-04-20T16:25:07.400Z",
+  "results": [
+    {
+      "status": "error",
+      "url": "https://transport.maharashtra.gov.in/Site/Upload/Acts%20Rules/English/Compounding%20Fees.pdf",
+      "error": "HTTP 404: https://transport.maharashtra.gov.in/Site/Upload/Acts%20Rules/English/Compounding%20Fees.pdf"
+    },
+    {
+      "status": "error",
+      "url": "https://mahatrafficpolice.gov.in/images/PDF/compounding_fees_MV_act.pdf",
+      "error": "fetch failed"
+    }
+  ]
+}

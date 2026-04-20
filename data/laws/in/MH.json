@@ -54,6 +54,49 @@
         "Maharashtra reduced the compounding fee to ₹500 from the statutory ₹1000 specified in the Central Act."
       ],
       "last_verified": "2026-04-19"
+    },
+    {
+      "id": "MH::Section-183::speeding-lmv",
+      "section": "Section 183",
+      "title": { "en": "Speeding - LMV (Maharashtra Override)" },
+      "plain_english_summary": "Compounding fee for exceeding speed limits in a Light Motor Vehicle in Maharashtra.",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "MH", "state_name": "Maharashtra" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
+          "imprisonment": null
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "MH::Section-194B::seat-belt",
+      "section": "Section 194B",
+      "title": { "en": "Driving without seat belt (MH Override)" },
+      "plain_english_summary": "State-specific fee for seat belt violation in Maharashtra.",
+      "category": "seatbelt",
+      "severity": 3,
+      "applies_to": ["4W", "LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "MH", "state_name": "Maharashtra" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 200, "max": 200, "fixed": 200, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 200,
+      "last_verified": "2026-04-20"
     }
   ]
 }

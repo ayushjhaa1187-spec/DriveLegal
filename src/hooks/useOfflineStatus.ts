@@ -1,7 +1,10 @@
+"use client";
+
 import { useState, useEffect, useCallback } from 'react';
 
 export interface OfflineStatus {
   isOffline: boolean;
+  isOnline: boolean;
   wasOffline: boolean;
   reconnectedAt: Date | null;
   disconnectedAt: Date | null;
@@ -10,6 +13,7 @@ export interface OfflineStatus {
 }
 
 function getConnectionInfo(): { connectionType: string | null; effectiveType: string | null } {
+  if (typeof window === 'undefined') return { connectionType: null, effectiveType: null };
   const nav = navigator as any;
   const conn = nav.connection || nav.mozConnection || nav.webkitConnection;
   if (!conn) return { connectionType: null, effectiveType: null };
@@ -20,11 +24,13 @@ function getConnectionInfo(): { connectionType: string | null; effectiveType: st
 }
 
 export function useOfflineStatus(): OfflineStatus {
-  const [isOffline, setIsOffline] = useState(!navigator.onLine);
+  const [isOffline, setIsOffline] = useState(typeof navigator !== 'undefined' ? !navigator.onLine : false);
   const [wasOffline, setWasOffline] = useState(false);
   const [reconnectedAt, setReconnectedAt] = useState<Date | null>(null);
   const [disconnectedAt, setDisconnectedAt] = useState<Date | null>(null);
   const [connectionInfo, setConnectionInfo] = useState(getConnectionInfo());
+
+  const isOnline = !isOffline;
 
   const handleOnline = useCallback(() => {
     setIsOffline(false);
@@ -64,6 +70,7 @@ export function useOfflineStatus(): OfflineStatus {
 
   return {
     isOffline,
+    isOnline,
     wasOffline,
     reconnectedAt,
     disconnectedAt,

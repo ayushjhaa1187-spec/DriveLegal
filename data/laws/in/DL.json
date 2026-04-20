@@ -1,0 +1,60 @@
+{
+  "document_metadata": {
+    "source_document": "NCT of Delhi Transport Department Notification",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-DL",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T09:10:00Z",
+    "regional_focus": [
+      "New Delhi",
+      "Central Secretariat",
+      "Lutyens' Delhi",
+      "Chanakyapuri",
+      "Connaught Place",
+      "ITO",
+      "IGI Airport Corridor"
+    ],
+    "special_notices": {
+      "lutyens": "Extreme VIP security zone. Use designated parking only. Fines are strictly non-compounding near India Gate.",
+      "igi_airport": "Strict overspeeding and lane discipline cams on NH48 airport stretch."
+    }
+  },
+  "violations": [
+    {
+      "id": "DL::Section-177::general-parking",
+      "section": "Section 177",
+      "title": { "en": "Unauthorized Parking (Lutyens/CP Focus)" },
+      "plain_english_summary": "Compounding for wrong parking in Delhi. Highly strictly enforced in Connaught Place and NDMC areas.",
+      "category": "parking",
+      "severity": 3,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "DL", "state_name": "Delhi" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "DL::Section-183::speeding-airport",
+      "section": "Section 183",
+      "title": { "en": "Speeding (IGI Airport Corridor)" },
+      "plain_english_summary": "Strict speed enforcement on NH48 airport approaches. Automatically captured via high-res cameras.",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "DL", "state_name": "Delhi" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 2000,
+      "last_verified": "2026-04-20"
+    }
+  ]
+}

@@ -1,95 +1,86 @@
-// Phase 19 – DriveLegal Service Worker (upgraded)
-const CACHE_NAME = 'drivelegal-v2';
-const OFFLINE_URL = '/offline';
+const CACHE_NAME = 'drivelegal-v1';
+const DATA_CACHE_NAME = 'drivelegal-data-v1';
 
-const PRECACHE_URLS = [
+const PRECACHE_ASSETS = [
   '/',
-  '/offline',
-  '/auth',
   '/manifest.json',
   '/icons/icon-192x192.png',
   '/icons/icon-512x512.png',
 ];
 
+// 1. Install - Pre-cache core shell
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(PRECACHE_URLS))
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(PRECACHE_ASSETS);
+    })
   );
   self.skipWaiting();
 });
 
+// 2. Activate - Cleanup old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((names) =>
-      Promise.all(names.filter((n) => n !== CACHE_NAME).map((n) => caches.delete(n)))
-    )
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((name) => name !== CACHE_NAME && name !== DATA_CACHE_NAME)
+          .map((name) => caches.delete(name))
+      );
+    })
   );
   self.clients.claim();
 });
 
+// 3. Fetch - Selective strategies
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
+  const { request } = event;
+  const url = new URL(request.url);
 
-  if (url.pathname.startsWith('/api/')) {
+  // Strategy: Stale-While-Revalidate for Legal Data
+  if (url.pathname.startsWith('/data/laws/')) {
     event.respondWith(
-      fetch(event.request).catch(() =>
-        new Response(JSON.stringify({ error: 'Offline' }), {
-          headers: { 'Content-Type': 'application/json' },
-          status: 503,
-        })
-      )
+      caches.open(DATA_CACHE_NAME).then((cache) => {
+        return cache.match(request).then((cachedResponse) => {
+          const fetchedResponse = fetch(request).then((networkResponse) => {
+            cache.put(request, networkResponse.clone());
+            return networkResponse;
+          });
+          return cachedResponse || fetchedResponse;
+        });
+      })
     );
     return;
   }
 
+  // Strategy: Cache-First for static assets (fonts, images)
   if (
-    url.pathname.startsWith('/_next/static/') ||
-    url.pathname.startsWith('/icons/') ||
-    url.pathname.endsWith('.png') ||
-    url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.ico')
+    request.destination === 'font' ||
+    request.destination === 'image' ||
+    url.pathname.includes('.woff2')
   ) {
     event.respondWith(
-      caches.match(event.request).then(
-        (cached) => cached ?? fetch(event.request).then((res) => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
-          return res;
-        })
-      )
+      caches.match(request).then((cachedResponse) => {
+        return cachedResponse || fetch(request).then((networkResponse) => {
+          return caches.open(CACHE_NAME).then((cache) => {
+            cache.put(request, networkResponse.clone());
+            return networkResponse;
+          });
+        });
+      })
     );
     return;
   }
 
+  // Default Strategy: Network-First with Offline Fallback for Navigation
   event.respondWith(
-    fetch(event.request)
-      .then((res) => {
-        const clone = res.clone();
-        caches.open(CACHE_NAME).then((c) => c.put(event.request, clone));
-        return res;
-      })
-      .catch(async () => {
-        const cached = await caches.match(event.request);
-        return cached ?? caches.match(OFFLINE_URL);
-      })
-  );
-});
-
-self.addEventListener('push', (event) => {
-  const data = event.data?.json() ?? {};
-  event.waitUntil(
-    self.registration.showNotification(data.title ?? 'DriveLegal', {
-      body: data.body ?? 'You have a new update.',
-      icon: '/icons/icon-192x192.png',
-      badge: '/icons/icon-72x72.png',
-      data: { url: data.url ?? '/dashboard/notifications' },
+    fetch(request).catch(() => {
+      return caches.match(request).then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
+        if (request.mode === 'navigate') {
+          return caches.match('/');
+        }
+      });
     })
   );
-});
-
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  const url = event.notification.data?.url ?? '/dashboard';
-  event.waitUntil(clients.openWindow(url));
 });

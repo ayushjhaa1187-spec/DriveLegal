@@ -1,0 +1,92 @@
+[
+  {
+    "query": "What is the fine for no helmet in Maharashtra?",
+    "expected": {
+      "category": "helmet",
+      "stateCode": "MH",
+      "vehicleType": "2W",
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "drunk driving penalty in Delhi for car",
+    "expected": {
+      "category": "intoxication",
+      "stateCode": "DL",
+      "vehicleType": "4W",
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "How much for jumping red light in Bangalore?",
+    "expected": {
+      "category": "signal_violation",
+      "stateCode": "KA",
+      "vehicleType": null,
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "Penalty for second time speed violation",
+    "expected": {
+      "category": "speed",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": true
+    }
+  },
+  {
+    "query": "using mobile while driving",
+    "expected": {
+      "category": "mobile_use",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "parking in no parking zone",
+    "expected": {
+      "category": "parking",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "hgv overloading fine",
+    "expected": {
+      "category": "overloading",
+      "stateCode": null,
+      "vehicleType": "HMV",
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "no insurance fine",
+    "expected": {
+      "category": "insurance",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": false
+    }
+  },
+  {
+    "query": "driving without license again",
+    "expected": {
+      "category": "licence",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": true
+    }
+  },
+  {
+    "query": "puc expired fine",
+    "expected": {
+      "category": "pollution",
+      "stateCode": null,
+      "vehicleType": null,
+      "isRepeatOffender": false
+    }
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "last_updated": "2026-04-20",
+  "jurisdictions": [
+    {
+      "code": "IN",
+      "name": "India",
+      "currency": "INR",
+      "penalties": {
+        "helmet": 1000,
+        "speeding": 1000,
+        "drunk_driving": 10000,
+        "phone_usage": 5000
+      }
+    },
+    {
+      "code": "UAE",
+      "name": "United Arab Emirates",
+      "currency": "AED",
+      "penalties": {
+        "helmet": 500,
+        "speeding": 600,
+        "drunk_driving": 20000,
+        "phone_usage": 800
+      }
+    },
+    {
+      "code": "UK",
+      "name": "United Kingdom",
+      "currency": "GBP",
+      "penalties": {
+        "helmet": 100,
+        "speeding": 100,
+        "drunk_driving": 5000,
+        "phone_usage": 200
+      }
+    },
+    {
+      "code": "SG",
+      "name": "Singapore",
+      "currency": "SGD",
+      "penalties": {
+        "helmet": 200,
+        "speeding": 300,
+        "drunk_driving": 10000,
+        "phone_usage": 1000
+      }
+    }
+  ],
+  "rankings": {
+    "strictness": ["SG", "UAE", "UK", "IN"],
+    "transparency": ["UK", "SG", "IN", "UAE"]
+  }
+}

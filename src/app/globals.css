@@ -1,110 +1,71 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-navy: #1e3a8a;
-  --color-brand-amber: #f59e0b;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-headings: "Manrope", sans-serif;
+  --color-primary: #F59E0B; /* Amber 500 */
+  --color-primary-dark: #D97706; /* Amber 600 */
+  --color-navy-900: #0F172A; /* Slate 900 */
+  --color-navy-950: #020617; /* Slate 950 */
+  
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221.2 83.2% 53.3%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221.2 83.2% 53.3%;
-    --radius: 0.5rem;
+    --background: #F8FAFC; /* Slate 50 */
+    --foreground: #0F172A; /* Slate 900 */
+    --card: #FFFFFF;
+    --border: #E2E8F0; /* Slate 200 */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --background: #020617; /* Slate 950 */
+    --foreground: #F8FAFC; /* Slate 50 */
+    --card: #0F172A; /* Slate 900 */
+    --border: #1E293B; /* Slate 800 */
   }
-}
 
-@layer base {
   * {
-    border-color: var(--border);
+    @apply border-slate-200 dark:border-slate-800;
   }
+
   body {
-    background-color: var(--background);
-    color: var(--foreground);
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100;
+    font-feature-settings: "cv02", "cv03", "cv04", "ss01";
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
-/* Sync Status Styles */
-.sync-status-btn {
-  @apply flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-300;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.125);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-800 rounded-full;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-300 dark:bg-slate-700;
+  }
 }
 
-.sync-status--offline {
-  @apply bg-white/10 text-white/90 hover:bg-white/20;
+/* Transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
 }
 
-.sync-status--synced {
-  @apply bg-brand-navy/80 text-white border-brand-navy/30;
-}
-
-.sync-avatar {
-  @apply w-5 h-5 rounded-full ring-1 ring-white/30;
-}
-
-.sync-logout {
-  @apply ml-1 p-0.5 hover:bg-white/10 rounded-full transition-colors leading-none;
-}
-
-/* Subtle page-load animations */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.4s ease-out forwards;
-}
-
-/* Dark mode overrides for synced status */
-.dark .sync-status--synced {
-  @apply bg-green-500/20 text-green-400 border-green-500/30;
-}
-
-.dark .sync-logout {
-  @apply text-green-400/50 hover:text-green-400;
+/* Mobile-first optimizations */
+@media (max-width: 640px) {
+  .btn-tap-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
 }

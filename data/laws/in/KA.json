@@ -1,0 +1,101 @@
+{
+  "document_metadata": {
+    "source_document": "Karnataka Government Transport Department Notification",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-KA",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T09:12:00Z",
+    "regional_focus": [
+      "Bengaluru",
+      "Silk Board",
+      "Electronic City",
+      "Outer Ring Road",
+      "Hebbal",
+      "Airport Corridor (Bellary Rd/NH44)",
+      "MG Road",
+      "Bengaluru-Mysuru Expressway",
+      "NICE Road",
+      "Bengaluru-Tumakuru Road (NH48)",
+      "Hosur Road Belt"
+    ],
+    "special_notices": {
+      "silk_board": "High-enforcement junction for signal jumping and lane violations.",
+      "ecity_flyover": "2W/3W vehicles prohibited on the elevated corridor. Strict speed cams active.",
+      "bengaluru_mysuru_expway": "Speed limit: 100kmph for LMV. Two-wheelers and three-wheelers are strictly PROHIBITED. Automatic number plate recognition (ANPR) active.",
+      "nice_road": "Private expressway. Speed limit: 80kmph/100kmph. CCTV monitored toll exits for overspeeding logs.",
+      "airport_corridor": "High-speed corridor with multiple interceptors. Strict seatbelt and lane discipline required."
+    }
+
+  },
+  "violations": [
+    {
+      "id": "KA::Section-183::speeding-expressway",
+      "section": "Section 183",
+      "title": { "en": "Speeding (Expresway/Highways KA Override)" },
+      "plain_english_summary": "Compounding for speeding on Karnataka expressways (Bengaluru-Mysuru) and NICE Road. Verified for 2W/4W limit enforcement.",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "KA", "state_name": "Karnataka" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": { "min": 2000, "max": 5000, "fixed": 2000, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Strict automatic speed detection on Bengaluru-Mysuru Expressway. 2-wheelers are prohibited on certain stretches.",
+        "NICE Road has private enforcement but follows KA Transport compounding schedules for police-issued challans."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "KA::Section-192A::one-way",
+      "section": "Section 192A",
+      "title": { "en": "One Way Entry / Wrong Way (Bengaluru Focus)" },
+      "plain_english_summary": "High-enforcement violation in Bengaluru city and Electronic City belt. Compounding fee for driving against designated traffic flow.",
+      "category": "dangerous_driving",
+      "severity": 4,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "KA", "state_name": "Karnataka" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" }
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "extraction_notes": [
+        "Frequently enforced in Electronic City and ORR areas to manage heavy traffic flow."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "KA::Section-194::overloading",
+      "section": "Section 194",
+      "title": { "en": "Overloading (NH48/NH44 Focus)" },
+      "plain_english_summary": "Strict enforcement for overloading on Bengaluru-Tumakuru and Airport Road. Penalty scales with excess weight.",
+      "category": "safety",
+      "severity": 5,
+      "applies_to": ["HMV", "Commercial"],
+      "jurisdiction": { "country": "IN", "state_code": "KA", "state_name": "Karnataka" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 20000, "max": 20000, "fixed": 20000, "currency": "INR" }
+        }
+      },
+      "extra_fine_per_tonne": 2000,
+      "compoundable": false,
+      "extraction_notes": [
+        "Weigh-bridges are frequent on NH48. Court appearance usually mandatory for severe overloading."
+      ],
+      "last_verified": "2026-04-20"
+    }
+
+  ]
+}

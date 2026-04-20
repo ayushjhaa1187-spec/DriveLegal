@@ -1,10 +1,8 @@
-// Phase 15 – Cases API Route
-import { createRouteHandlerClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
+import { createClient } from '@/lib/supabase/server';
 
 export async function POST(request: Request) {
-  const supabase = createRouteHandlerClient({ cookies });
+  const supabase = await createClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();
@@ -43,7 +41,7 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  const supabase = createRouteHandlerClient({ cookies });
+  const supabase = await createClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();

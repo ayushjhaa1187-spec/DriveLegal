@@ -1,0 +1,16 @@
+{
+  "state_code": "DL",
+  "fetched_at": "2026-04-20T16:25:29.919Z",
+  "results": [
+    {
+      "status": "error",
+      "url": "https://transport.delhi.gov.in/sites/default/files/All-PDF/Compounding%20of%20Offences%20Rules.pdf",
+      "error": "HTTP 404: https://transport.delhi.gov.in/sites/default/files/All-PDF/Compounding%20of%20Offences%20Rules.pdf"
+    },
+    {
+      "status": "error",
+      "url": "https://delhitrafficpolice.nic.in/uploads/files/penalty_chart.pdf",
+      "error": "fetch failed"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "document_metadata": {
+    "source_document": "Uttar Pradesh Government Gazette Notification - Compounding Fees",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-UP",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T08:30:00Z"
+  },
+  "violations": [
+    {
+      "id": "UP::Section-194D::helmet-not-worn-by-rider",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (UP Override)" },
+      "plain_english_summary": "Compounding fee for riding without a helmet in Uttar Pradesh.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "UP", "state_name": "Uttar Pradesh" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification for three months"
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "UP::Section-194B::seat-belt",
+      "section": "Section 194B",
+      "title": { "en": "Driving without seat belt (UP Override)" },
+      "plain_english_summary": "Compounding fee for driving without wearing a seat belt in Uttar Pradesh.",
+      "category": "seatbelt",
+      "severity": 3,
+      "applies_to": ["4W", "LMV", "HMV"],
+      "jurisdiction": { "country": "IN", "state_code": "UP", "state_name": "Uttar Pradesh" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "last_verified": "2026-04-20"
+    }
+  ]
+}

@@ -1,6 +1,4 @@
-// Phase 17 – Notifications Page
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
 type Notification = {
@@ -28,7 +26,7 @@ function NotificationIcon({ type }: { type: Notification['type'] }) {
 }
 
 export default async function NotificationsPage() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = await createClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();

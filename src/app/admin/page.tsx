@@ -1,12 +1,10 @@
-// Phase 18 – Admin Panel
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
-import { cookies } from 'next/headers';
+import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
 const ADMIN_PHONE = process.env.ADMIN_PHONE ?? '';
 
 export default async function AdminPage() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = await createClient();
   const {
     data: { session },
   } = await supabase.auth.getSession();

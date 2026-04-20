@@ -1,0 +1,71 @@
+{
+  "document_metadata": {
+    "source_document": "Gujarat Home Department Notification (Transport)",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-GJ",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T10:00:00Z",
+    "regional_focus": [
+      "Ahmedabad",
+      "Surat",
+      "SG Highway",
+      "Surat Diamond Bourse",
+      "Gandhinagar Central Vista"
+    ],
+    "special_notices": {
+      "sg_highway_speed": "Highly monitored speed corridor in Ahmedabad. 70kmph limit strictly enforced by cameras.",
+      "gandhinagar_discipline": "High-security zone near Vidhan Sabha. No-parking rules strictly enforced."
+    }
+  },
+  "violations": [
+    {
+      "id": "GJ::Section-194D::helmet",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (GJ Override)" },
+      "plain_english_summary": "Compounding fee for riding without a helmet in Gujarat cities. Verified for Ahmedabad/Gandhinagar ITMS enforcement.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "GJ", "state_name": "Gujarat" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 500,
+      "extraction_notes": [
+        "Gujarat was one of the first states to reduce the Central MVA fine of ₹1000 to ₹500 for helmet violations."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "GJ::Section-183::speeding",
+      "section": "Section 183",
+      "title": { "en": "Speeding (Gujarat Penalty)" },
+      "plain_english_summary": "Speeding fines on Gujarat state highways and expressways (Ahmedabad-Vadodara Expressway).",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV"],
+      "jurisdiction": { "country": "IN", "state_code": "GJ", "state_name": "Gujarat" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": {
+          "fine": { "min": 3000, "max": 3000, "fixed": 3000, "currency": "INR" },
+          "imprisonment": null
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1500,
+      "extraction_notes": [
+        "Strict enforcement on Ahmedabad-Vadodara NE-1 via automatic number plate recognition (ANPR)."
+      ],
+      "last_verified": "2026-04-20"
+    }
+  ]
+}

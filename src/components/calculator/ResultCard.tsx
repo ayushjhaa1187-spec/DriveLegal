@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ExternalLink, RefreshCw, Share2, AlertTriangle, CheckCircle, XCircle } from "lucide-react";
 import type { QueryResult } from "@/lib/law-engine/types";
+import { WhyThisAmount } from "./WhyThisAmount";
 
 interface ResultCardProps {
   result: QueryResult;
@@ -159,6 +160,14 @@ export function ResultCard({ result, isRepeatOffender, onToggleRepeat, onReset }
             </div>
           </div>
         </div>
+
+        {/* Dynamic Decision Trace */}
+        {primary.fineDecision && (
+          <WhyThisAmount 
+            decision={primary.fineDecision} 
+            packId={primary.ruleSource === "state_override" ? (primary.appliedStateCode || "central") : "central"} 
+          />
+        )}
       </div>
 
       {/* Actions */}

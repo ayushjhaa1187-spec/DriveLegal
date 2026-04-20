@@ -1,0 +1,88 @@
+{
+  "document_metadata": {
+    "source_document": "Rajasthan Transport Department Notification",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-RJ",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T08:45:00Z",
+    "regional_focus": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Ajmer"],
+    "special_notices": [
+      {
+        "area": "Jaipur (Pink City)",
+        "notice": "Strict CCTV enforcement for lane discipline and signal jumping. High frequency of mobile speeding interceptors on NH48 (Jaipur-Delhi)."
+      },
+      {
+        "area": "Udaipur (Lakefront)",
+        "notice": "Zero-tolerance for illegal parking and wrong-way driving in tourist zones."
+      }
+    ]
+  },
+  "violations": [
+    {
+      "id": "RJ::Section-190-2::pollution",
+      "section": "Section 190(2)",
+      "title": { "en": "Pollution Under Control (PUC) Violation" },
+      "plain_english_summary": "Operating a vehicle without a valid PUC certificate. Mandatory in all major cities of Rajasthan.",
+      "category": "environmental",
+      "severity": 4,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "RJ", "state_name": "Rajasthan" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
+          "imprisonment": "Up to 3 months"
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 10000,
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "RJ::Section-194D::helmet",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (RJ Override)" },
+      "plain_english_summary": "Compounding fee for riding without a helmet in Rajasthan. Verified for Jaipur and Jodhpur urban enforcement zones.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "RJ", "state_name": "Rajasthan" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "3 months disqualification"
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Rajasthan follows the standard Central MVA fine of ₹1000 for helmet violations."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "RJ::Section-184::dangerous-driving",
+      "section": "Section 184",
+      "title": { "en": "Dangerous Driving / Red Light (RJ)" },
+      "plain_english_summary": "Compounding fee for dangerous maneuvers or signal jumping in Rajasthan.",
+      "category": "dangerous_driving",
+      "severity": 5,
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": "RJ", "state_name": "Rajasthan" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Highly enforced in Jaipur (Pink City) via comprehensive camera networks."
+      ],
+      "last_verified": "2026-04-20"
+    }
+  ]
+
+}

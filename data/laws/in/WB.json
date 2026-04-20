@@ -1,0 +1,58 @@
+{
+  "document_metadata": {
+    "source_document": "West Bengal Transport Department Notification",
+    "document_type": "state_compounding_schedule",
+    "jurisdiction": "IN-WB",
+    "language": "en",
+    "extraction_timestamp": "2026-04-20T08:30:00Z",
+    "regional_focus": ["Kolkata", "Siliguri", "Durgapur", "Asansol"]
+  },
+  "violations": [
+    {
+      "id": "WB::Section-194D::helmet",
+      "section": "Section 194D",
+      "title": { "en": "Riding without helmet (WB Override)" },
+      "plain_english_summary": "Compounding fee for riding without a helmet in West Bengal. High enforcement in Siliguri and Kolkata.",
+      "category": "helmet",
+      "severity": 3,
+      "applies_to": ["2W"],
+      "jurisdiction": { "country": "IN", "state_code": "WB", "state_name": "West Bengal" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
+          "imprisonment": null
+        },
+        "repeat_offence": null,
+        "licence_suspension": "Disqualification for 3 months"
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 1000,
+      "extraction_notes": [
+        "Verified for NH-31 (Siliguri) and Grand Trunk Road (Durgapur/Asansol) enforcement zones."
+      ],
+      "last_verified": "2026-04-20"
+    },
+    {
+      "id": "WB::Section-183::speeding",
+      "section": "Section 183",
+      "title": { "en": "Speeding (WB Overcharge Warning)" },
+      "plain_english_summary": "Speeding penalties on West Bengal highways (NH-19, NH-12, NH-27).",
+      "category": "speeding",
+      "severity": 4,
+      "applies_to": ["LMV", "HMV"],
+      "jurisdiction": { "country": "IN", "state_code": "WB", "state_name": "West Bengal" },
+      "penalty": {
+        "first_offence": {
+          "fine": { "min": 1000, "max": 2000, "currency": "INR" },
+          "imprisonment": null
+        }
+      },
+      "compoundable": true,
+      "compounding_amount_inr": 400,
+      "extraction_notes": [
+        "Durgapur Expressway (NH-19) has automated camera enforcement linked to this section."
+      ],
+      "last_verified": "2026-04-20"
+    }
+  ]
+}
