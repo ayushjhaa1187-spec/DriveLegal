@@ -1,0 +1,13 @@
+{
+  "packId": "IN-MH",
+  "packVersion": "0.1.0",
+  "publishedAt": null,
+  "sourceUrls": [],
+  "hash": null,
+  "lastVerified": null,
+  "coverage": {
+    "sections": 0,
+    "lastSectionAdded": null
+  },
+  "TODO": "Fill during Phase 8.1."
+}
