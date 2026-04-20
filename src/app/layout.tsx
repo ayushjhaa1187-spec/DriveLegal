@@ -1,57 +1,25 @@
-import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Manrope } from "next/font/google";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { PWARegistrar } from "@/components/pwa-registrar";
-import { LanguageSelector } from "@/components/LanguageSelector";
-import { AuthProvider } from "@/components/AuthProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const manrope = Manrope({
-  variable: "--font-manrope",
-  subsets: ["latin"],
-});
-
-export const viewport: Viewport = {
-  themeColor: "#1e3a8a",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "DriveLegal | AI Legal Companion",
-  description:
-    "Offline-first AI Legal Companion for every road user. Understand traffic laws, calculate fines, and defend your rights.",
+  title: "DriveLegal — Know Your Traffic Rights",
+  description: "Offline-first traffic challan calculator and legal Q&A for Indian drivers",
   manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "DriveLegal",
-  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${manrope.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <AuthProvider>
-          <PWARegistrar />
-          <LanguageSelector />
-          {children}
-        </AuthProvider>
+    <html lang="en">
+      <head>
+        <meta name="theme-color" content="#f59e0b" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      </head>
+      <body className={`${inter.className} bg-slate-50 dark:bg-slate-950 min-h-screen`}>
+        {children}
       </body>
     </html>
   );
