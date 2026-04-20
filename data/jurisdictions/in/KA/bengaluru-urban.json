@@ -1,0 +1,116 @@
+{
+  "state": "Karnataka",
+  "stateCode": "KA",
+  "district": "Bengaluru Urban",
+  "districtCode": "BLR",
+  "rto": {
+    "code": "KA-01",
+    "name": "Regional Transport Office, Bengaluru Central",
+    "phone": "+91-80-22264088",
+    "email": "rto-bangaloreeast-ka@gov.in",
+    "address": "Infantry Road, Shanthinagar, Bengaluru - 560027",
+    "hours": "10:00 AM - 5:00 PM (Monday - Saturday)",
+    "website": "https://parivahan.gov.in/parivahan/",
+    "services": [
+      "Driving licence renewal",
+      "Vehicle registration",
+      "Challan payment",
+      "NOC issuance",
+      "RC transfer"
+    ]
+  },
+  "additionalRTOs": [
+    {
+      "code": "KA-02",
+      "name": "RTO Yeshwanthpur",
+      "phone": "+91-80-23564321",
+      "address": "Yeshwanthpur, Bengaluru - 560022"
+    },
+    {
+      "code": "KA-03",
+      "name": "RTO Jayanagar",
+      "phone": "+91-80-26633366",
+      "address": "4th Block, Jayanagar, Bengaluru - 560011"
+    },
+    {
+      "code": "KA-05",
+      "name": "RTO Rajarajeshwari Nagar",
+      "phone": "+91-80-28608080",
+      "address": "Rajarajeshwari Nagar, Bengaluru - 560098"
+    }
+  ],
+  "trafficPolice": {
+    "name": "Bengaluru Traffic Police",
+    "controlRoomPhone": "103",
+    "helpline": "+91-80-22943209",
+    "email": "blrtraffic@ksp.gov.in",
+    "website": "https://bengalurutrafficpolice.gov.in",
+    "address": "Shanthinagar, Bengaluru - 560027",
+    "emergencyContacts": [
+      { "type": "Emergency", "number": "112" },
+      { "type": "Police", "number": "100" },
+      { "type": "Traffic Helpline", "number": "103" },
+      { "type": "Ambulance", "number": "108" }
+    ],
+    "onlineChallanPortal": "https://echallan.parivahan.gov.in/index/accused-challan",
+    "zones": [
+      {
+        "name": "East Division",
+        "phone": "+91-80-25587411",
+        "areas": ["Indiranagar", "Marathahalli", "Whitefield"]
+      },
+      {
+        "name": "West Division",
+        "phone": "+91-80-23344455",
+        "areas": ["Rajajinagar", "Yeshwanthpur", "Malleshwaram"]
+      },
+      {
+        "name": "South Division",
+        "phone": "+91-80-26633344",
+        "areas": ["Jayanagar", "BTM Layout", "JP Nagar"]
+      },
+      {
+        "name": "North Division",
+        "phone": "+91-80-23456789",
+        "areas": ["Hebbal", "Yelahanka", "HBR Layout"]
+      },
+      {
+        "name": "Central Division",
+        "phone": "+91-80-22268800",
+        "areas": ["MG Road", "Cubbon Park", "Shivajinagar"]
+      }
+    ]
+  },
+  "courts": [
+    {
+      "name": "Traffic Court - Shanthinagar",
+      "type": "Traffic Violations Court",
+      "address": "Infantry Road, Shanthinagar, Bengaluru - 560027",
+      "phone": "+91-80-22864546",
+      "jurisdiction": "Traffic challan disputes, licence suspension appeals",
+      "hours": "10:00 AM - 5:00 PM (Monday - Friday)"
+    },
+    {
+      "name": "City Civil Court Bengaluru",
+      "type": "Civil Court",
+      "address": "Mayo Hall, MG Road, Bengaluru - 560001",
+      "phone": "+91-80-25589955",
+      "jurisdiction": "High-penalty traffic cases, accident claims",
+      "hours": "10:30 AM - 4:30 PM (Monday - Friday)"
+    }
+  ],
+  "quickLinks": {
+    "payFineOnline": "https://echallan.parivahan.gov.in/index/accused-challan",
+    "checkChallanStatus": "https://parivahan.gov.in/rcdlstatus",
+    "downloadDL": "https://parivahan.gov.in/rcdlstatus/?pur_cd=101",
+    "vehicleRegistration": "https://vahan.parivahan.gov.in/vahanservice/vahan/ui/statevalidation/homepage.xhtml",
+    "rtoCitizen Services": "https://transport.karnataka.gov.in/english"
+  },
+  "importantNotes": [
+    "Challans can be paid online within 60 days to avail early payment discount",
+    "Traffic violations are captured via CCTV and e-Challan system",
+    "For repeat offences, licence suspension notice will be issued",
+    "Court appearance mandatory for offences involving accident, drunk driving, or rash driving"
+  ],
+  "lastUpdated": "2026-04-20"
+}
