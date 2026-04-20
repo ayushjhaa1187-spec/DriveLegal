@@ -1,417 +1,204 @@
 {
-  "document_metadata": {
-    "source_document": "Motor Vehicles (Amendment) Act, 2019",
-    "document_type": "central_act",
+  "metadata": {
     "jurisdiction": "IN",
-    "language": "en",
-    "pages_processed": [1, 30, 40, 42, 44, 47, 52, 55, 58, 60, 62, 66],
-    "extraction_timestamp": "2026-04-19T22:45:00Z"
+    "state_code": null,
+    "state_name": null,
+    "last_updated": "2024-01-01",
+    "source_documents": ["Motor Vehicles (Amendment) Act, 2019"],
+    "total_violations": 5,
+    "coverage_notes": "Sample data. Replace with full extraction."
   },
   "violations": [
     {
-      "id": "IN::Section-194D::helmet-not-worn-by-rider",
+      "id": "IN::Section-194D::helmet-not-worn",
       "section": "Section 194D",
       "rule_reference": null,
-      "title": { "en": "Riding without protective headgear" },
-      "plain_english_summary": "Penalty for driving or riding a two-wheeler without wearing a protective headgear where required by law.",
+      "title": { "en": "Riding without protective headgear (helmet)" },
+      "plain_english_summary": "Penalty for riding a two-wheeler without a helmet.",
       "category": "helmet",
-      "severity": 3,
       "applies_to": ["2W"],
       "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
       "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
-          "imprisonment": null
-        },
-        "repeat_offence": null,
-        "licence_suspension": "Disqualification of licence for three months",
-        "licence_disqualification": null,
+        "fine_first_offence_inr": 1000,
+        "fine_repeat_offence_inr": null,
+        "fine_min_inr": null,
+        "fine_max_inr": null,
+        "imprisonment_first_offence": { "value": null, "unit": null, "text": null },
+        "imprisonment_repeat_offence": { "value": null, "unit": null, "text": null },
         "community_service": null,
+        "licence_suspension": "3 months disqualification",
+        "licence_disqualification": null,
         "other_penalty_text": null
       },
-      "compoundable": true,
+      "offence_progression": {
+        "first_offence_text": "Fine of ₹1,000 and 3-month licence disqualification",
+        "subsequent_offence_text": null
+      },
+      "compoundable": null,
       "compounding_amount_inr": null,
+      "state_override_of_section": null,
+      "severity": 2,
       "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
       "source_document": "Motor Vehicles (Amendment) Act, 2019",
       "source_page": 47,
-      "source_text_excerpt": "whoever drives a motor cycle or causes or allows a motor cycle to be driven without wearing protective headgear... shall be punishable with fine of one thousand rupees and he shall be disqualified for licence for three months",
+      "source_url": "https://www.indiacode.nic.in/handle/123456789/13435",
+      "source_text_excerpt": "Whoever drives a motor cycle or causes or allows a motor cycle to be driven without wearing protective headgear...",
       "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
+      "last_verified": "2024-01-01",
+      "extraction_notes": []
     },
     {
-      "id": "IN::Section-181::driving-without-licence",
-      "section": "Section 181",
+      "id": "IN::Section-194B::seatbelt-not-worn",
+      "section": "Section 194B",
       "rule_reference": null,
-      "title": { "en": "Driving without a valid driving licence" },
-      "plain_english_summary": "Driving a motor vehicle without a valid driving licence or in contravention of licence conditions.",
-      "category": "licence",
-      "severity": 4,
-      "applies_to": ["all"],
+      "title": { "en": "Not wearing seat belt while driving" },
+      "plain_english_summary": "Penalty for driver or passenger not wearing seat belt.",
+      "category": "seatbelt",
+      "applies_to": ["4W", "LMV"],
       "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
       "penalty": {
-        "first_offence": {
-          "fine": { "min": 5000, "max": 5000, "fixed": 5000, "currency": "INR" },
-          "imprisonment": { "value": 3, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to three months" }
-        },
-        "repeat_offence": null,
+        "fine_first_offence_inr": 1000,
+        "fine_repeat_offence_inr": null,
+        "fine_min_inr": null,
+        "fine_max_inr": null,
+        "imprisonment_first_offence": { "value": null, "unit": null, "text": null },
+        "imprisonment_repeat_offence": { "value": null, "unit": null, "text": null },
+        "community_service": null,
         "licence_suspension": null,
         "licence_disqualification": null,
-        "community_service": null,
         "other_penalty_text": null
       },
-      "compoundable": true,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 40,
-      "source_text_excerpt": "whoever drives a motor vehicle in contravention of section 3 or section 4 shall be punishable with imprisonment for a term which may extend to three months or with fine of five thousand rupees, or with both",
-      "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-183::over-speeding",
-      "section": "Section 183",
-      "rule_reference": null,
-      "title": { "en": "Driving at excessive speed" },
-      "plain_english_summary": "Penalty for driving a motor vehicle at a speed exceeding the posted or prescribed speed limit.",
-      "category": "speed",
-      "severity": 3,
-      "applies_to": ["2W", "4W", "LMV"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 2000, "fixed": null, "currency": "INR" },
-          "imprisonment": null
-        },
-        "repeat_offence": {
-          "fine": { "min": 2000, "max": 4000, "fixed": null, "currency": "INR" },
-          "imprisonment": null
-        },
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": "For Light Motor Vehicle (LMV): first offence ₹1,000–₹2,000; Medium/Heavy vehicle: ₹2,000–₹4,000"
+      "offence_progression": {
+        "first_offence_text": "Fine of ₹1,000",
+        "subsequent_offence_text": null
       },
-      "compoundable": true,
+      "compoundable": null,
       "compounding_amount_inr": null,
+      "state_override_of_section": null,
+      "severity": 2,
       "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
       "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 42,
-      "source_text_excerpt": "whoever drives a motor vehicle in contravention of the speed limits referred to in section 112 shall be punishable for the first offence with a fine of one thousand rupees or for any subsequent offence with a fine of two thousand rupees",
+      "source_page": 46,
+      "source_url": "https://www.indiacode.nic.in/handle/123456789/13435",
+      "source_text_excerpt": "Whoever drives a motor vehicle without wearing a seat belt...",
       "confidence": "high",
-      "extraction_notes": ["LMV first offence ₹1,000–₹2,000; HMV first offence ₹2,000–₹4,000 per amended schedule"],
-      "last_verified": "2026-04-19"
+      "last_verified": "2024-01-01",
+      "extraction_notes": []
     },
     {
       "id": "IN::Section-185::drunk-driving",
       "section": "Section 185",
       "rule_reference": null,
       "title": { "en": "Driving under influence of alcohol or drugs" },
-      "plain_english_summary": "Penalty for driving a motor vehicle with blood alcohol concentration exceeding the prescribed limit, or under the influence of drugs.",
+      "plain_english_summary": "Penalty for driving with blood alcohol content exceeding 30mg per 100ml.",
       "category": "intoxication",
-      "severity": 5,
       "applies_to": ["all"],
       "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
       "penalty": {
-        "first_offence": {
-          "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
-          "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to six months, or both" }
-        },
-        "repeat_offence": {
-          "fine": { "min": 15000, "max": 15000, "fixed": 15000, "currency": "INR" },
-          "imprisonment": { "value": 2, "unit": "years", "severity": "may", "text": "Imprisonment for a term which may extend to two years, or both" }
-        },
-        "licence_suspension": null,
-        "licence_disqualification": "Disqualification from holding licence",
+        "fine_first_offence_inr": 10000,
+        "fine_repeat_offence_inr": 15000,
+        "fine_min_inr": null,
+        "fine_max_inr": null,
+        "imprisonment_first_offence": { "value": 6, "unit": "months", "text": "Up to 6 months imprisonment" },
+        "imprisonment_repeat_offence": { "value": 2, "unit": "years", "text": "Up to 2 years imprisonment" },
         "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": false,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 44,
-      "source_text_excerpt": "whoever drives a motor vehicle, or attempts to drive a motor vehicle, while under the influence of alcohol, having alcohol exceeding 30 mg. per 100 ml. of blood... shall be punishable for the first offence with imprisonment for a term which may extend to six months, or with fine of ten thousand rupees",
-      "confidence": "high",
-      "extraction_notes": ["Non-compoundable offence — cannot pay and settle roadside"],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-177A::seat-belt",
-      "section": "Section 177A",
-      "rule_reference": "Rule 138(3)",
-      "title": { "en": "Not wearing seat belt while driving" },
-      "plain_english_summary": "Penalty for the driver and passengers of a motor vehicle for not wearing seat belts as required by motor vehicle rules.",
-      "category": "seatbelt",
-      "severity": 3,
-      "applies_to": ["4W", "LMV", "transport"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
-          "imprisonment": null
-        },
-        "repeat_offence": null,
         "licence_suspension": null,
         "licence_disqualification": null,
-        "community_service": null,
         "other_penalty_text": null
       },
-      "compoundable": true,
+      "offence_progression": {
+        "first_offence_text": "Fine of ₹10,000 and/or up to 6 months imprisonment",
+        "subsequent_offence_text": "Fine of ₹15,000 and/or up to 2 years imprisonment"
+      },
+      "compoundable": null,
       "compounding_amount_inr": null,
+      "state_override_of_section": null,
+      "severity": 5,
       "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
       "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 30,
-      "source_text_excerpt": "whoever contravenes the provisions of section 138(3) [seat belts]... shall be punishable with fine of one thousand rupees",
+      "source_page": 38,
+      "source_url": "https://www.indiacode.nic.in/handle/123456789/13435",
+      "source_text_excerpt": "Whoever drives a motor vehicle with blood alcohol content exceeding the prescribed limit...",
       "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
+      "last_verified": "2024-01-01",
+      "extraction_notes": []
+    },
+    {
+      "id": "IN::Section-177A::signal-violation",
+      "section": "Section 177A",
+      "rule_reference": null,
+      "title": { "en": "Violation of traffic signal / red light jumping" },
+      "plain_english_summary": "Penalty for disobeying traffic signals including jumping red lights.",
+      "category": "signal_violation",
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+      "penalty": {
+        "fine_first_offence_inr": 500,
+        "fine_repeat_offence_inr": 1500,
+        "fine_min_inr": null,
+        "fine_max_inr": null,
+        "imprisonment_first_offence": { "value": null, "unit": null, "text": null },
+        "imprisonment_repeat_offence": { "value": null, "unit": null, "text": null },
+        "community_service": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "other_penalty_text": null
+      },
+      "offence_progression": {
+        "first_offence_text": "Fine of ₹500",
+        "subsequent_offence_text": "Fine of ₹1,500"
+      },
+      "compoundable": null,
+      "compounding_amount_inr": null,
+      "state_override_of_section": null,
+      "severity": 3,
+      "effective_date": "2019-09-01",
+      "source_document": "Motor Vehicles (Amendment) Act, 2019",
+      "source_page": 35,
+      "source_url": "https://www.indiacode.nic.in/handle/123456789/13435",
+      "source_text_excerpt": "Whoever disobeys any traffic signal or direction...",
+      "confidence": "high",
+      "last_verified": "2024-01-01",
+      "extraction_notes": []
     },
     {
       "id": "IN::Section-196::no-insurance",
       "section": "Section 196",
       "rule_reference": null,
-      "title": { "en": "Driving without third-party insurance" },
-      "plain_english_summary": "Penalty for driving a motor vehicle in a public place without a valid third-party insurance policy as required by law.",
+      "title": { "en": "Driving without valid insurance" },
+      "plain_english_summary": "Penalty for driving a motor vehicle without a valid third-party insurance policy.",
       "category": "insurance",
+      "applies_to": ["all"],
+      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
+      "penalty": {
+        "fine_first_offence_inr": 2000,
+        "fine_repeat_offence_inr": 4000,
+        "fine_min_inr": null,
+        "fine_max_inr": null,
+        "imprisonment_first_offence": { "value": 3, "unit": "months", "text": "Up to 3 months imprisonment" },
+        "imprisonment_repeat_offence": { "value": 3, "unit": "months", "text": "Up to 3 months imprisonment" },
+        "community_service": null,
+        "licence_suspension": null,
+        "licence_disqualification": null,
+        "other_penalty_text": null
+      },
+      "offence_progression": {
+        "first_offence_text": "Fine of ₹2,000 and/or up to 3 months imprisonment",
+        "subsequent_offence_text": "Fine of ₹4,000 and/or up to 3 months imprisonment"
+      },
+      "compoundable": null,
+      "compounding_amount_inr": null,
+      "state_override_of_section": null,
       "severity": 4,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
-          "imprisonment": { "value": 3, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to three months, or both" }
-        },
-        "repeat_offence": {
-          "fine": { "min": 4000, "max": 4000, "fixed": 4000, "currency": "INR" },
-          "imprisonment": { "value": 3, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to three months, or both" }
-        },
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": true,
-      "compounding_amount_inr": null,
       "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
       "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 55,
-      "source_text_excerpt": "whoever drives a motor vehicle or causes or allows a motor vehicle to be driven in a public place without there being in force in relation to the use of the vehicle a policy of insurance... shall be punishable with imprisonment of either description for a term which may extend to three months, or with fine of two thousand rupees",
+      "source_page": 49,
+      "source_url": "https://www.indiacode.nic.in/handle/123456789/13435",
+      "source_text_excerpt": "Whoever drives a motor vehicle or causes or allows a motor vehicle to be driven without insurance...",
       "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-192::no-registration",
-      "section": "Section 192",
-      "rule_reference": null,
-      "title": { "en": "Driving unregistered motor vehicle" },
-      "plain_english_summary": "Penalty for driving a motor vehicle that has not been registered or whose registration has expired.",
-      "category": "registration",
-      "severity": 4,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 5000, "max": 10000, "fixed": null, "currency": "INR" },
-          "imprisonment": { "value": 1, "unit": "years", "severity": "may", "text": "Imprisonment for a term which may extend to one year, or with both" }
-        },
-        "repeat_offence": {
-          "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
-          "imprisonment": { "value": 1, "unit": "years", "severity": "may", "text": "Imprisonment for a term which may extend to one year, or with both" }
-        },
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": false,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 52,
-      "source_text_excerpt": "whoever drives a motor vehicle or causes or allows a motor vehicle to be driven in contravention of... (registration) shall be punishable for the first offence with a fine of five thousand rupees or imprisonment for a term which may extend to one year",
-      "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-184::dangerous-driving",
-      "section": "Section 184",
-      "rule_reference": null,
-      "title": { "en": "Dangerous or reckless driving" },
-      "plain_english_summary": "Penalty for driving a motor vehicle on a public road in a manner that is dangerous to the public, having regard to all circumstances.",
-      "category": "dangerous_driving",
-      "severity": 5,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 5000, "fixed": null, "currency": "INR" },
-          "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to six months, or with both" }
-        },
-        "repeat_offence": {
-          "fine": { "min": 10000, "max": 10000, "fixed": 10000, "currency": "INR" },
-          "imprisonment": { "value": 2, "unit": "years", "severity": "may", "text": "Imprisonment for a term which may extend to two years, or with both" }
-        },
-        "licence_suspension": null,
-        "licence_disqualification": "Disqualification from holding or obtaining a driving licence",
-        "community_service": "Community service may be ordered by court",
-        "other_penalty_text": null
-      },
-      "compoundable": false,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 43,
-      "source_text_excerpt": "whoever drives a motor vehicle at a speed or in a manner which is dangerous to the public... shall be punishable for the first offence with imprisonment for a term which may extend to six months or with fine of one thousand rupees to five thousand rupees",
-      "confidence": "high",
-      "extraction_notes": ["Non-compoundable — must appear in court"],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-177::signal-violation",
-      "section": "Section 177",
-      "rule_reference": null,
-      "title": { "en": "Violation of traffic signal or sign" },
-      "plain_english_summary": "Penalty for contravening any traffic signal, road sign, or traffic regulation not covered by a specific section.",
-      "category": "signal_violation",
-      "severity": 2,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 500, "max": 500, "fixed": 500, "currency": "INR" },
-          "imprisonment": null
-        },
-        "repeat_offence": {
-          "fine": { "min": 1500, "max": 1500, "fixed": 1500, "currency": "INR" },
-          "imprisonment": null
-        },
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": true,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 38,
-      "source_text_excerpt": "whoever contravenes any provision of this Act or of any rule... for which no penalty is provided in this Act... shall be punishable for the first offence with a fine of five hundred rupees",
-      "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-194C::mobile-use",
-      "section": "Section 194C",
-      "rule_reference": null,
-      "title": { "en": "Using mobile phone while driving" },
-      "plain_english_summary": "Penalty for using a hand-held communication device, including a mobile phone, while driving a motor vehicle.",
-      "category": "mobile_use",
-      "severity": 3,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 5000, "fixed": null, "currency": "INR" },
-          "imprisonment": null
-        },
-        "repeat_offence": null,
-        "licence_suspension": "Suspension of driving licence for three months",
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": true,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 58,
-      "source_text_excerpt": "whoever drives a motor vehicle while using a hand-held communication device... shall be punishable with a fine of one thousand rupees... and his driving licence shall be suspended for a period of three months",
-      "confidence": "high",
-      "extraction_notes": ["2019 Amendment introduced this specific section"],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-199A::juvenile-driving",
-      "section": "Section 199A",
-      "rule_reference": null,
-      "title": { "en": "Motor vehicle driven by juvenile" },
-      "plain_english_summary": "Penalty where a minor drives a motor vehicle; the registered owner or guardian is held liable, and the vehicle registration may be cancelled.",
-      "category": "juvenile",
-      "severity": 5,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 25000, "max": 25000, "fixed": 25000, "currency": "INR" },
-          "imprisonment": { "value": 3, "unit": "years", "severity": "shall", "text": "Guardian or owner shall be liable for imprisonment of 3 years" }
-        },
-        "repeat_offence": null,
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": "Vehicle registration may be cancelled. Juvenile tried under Juvenile Justice Act."
-      },
-      "compoundable": false,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 60,
-      "source_text_excerpt": "where a motor vehicle is driven by a juvenile, the guardian of the juvenile or the owner of the vehicle shall be deemed to have committed an offence punishable with imprisonment of 3 years and fine of twenty-five thousand rupees... the registration of the vehicle shall be cancelled",
-      "confidence": "high",
-      "extraction_notes": ["Guardian / registered owner is penalised, not the juvenile"],
-      "last_verified": "2026-04-19"
-    },
-    {
-      "id": "IN::Section-190-2::pollution-puc",
-      "section": "Section 190(2)",
-      "rule_reference": null,
-      "title": { "en": "Driving without valid Pollution Under Control (PUC) certificate" },
-      "plain_english_summary": "Penalty for driving a motor vehicle without a valid Pollution Under Control (PUC) certificate as required by emission norms.",
-      "category": "pollution",
-      "severity": 2,
-      "applies_to": ["all"],
-      "jurisdiction": { "country": "IN", "state_code": null, "state_name": null },
-      "penalty": {
-        "first_offence": {
-          "fine": { "min": 1000, "max": 1000, "fixed": 1000, "currency": "INR" },
-          "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to six months, or both" }
-        },
-        "repeat_offence": {
-          "fine": { "min": 2000, "max": 2000, "fixed": 2000, "currency": "INR" },
-          "imprisonment": { "value": 6, "unit": "months", "severity": "may", "text": "Imprisonment for a term which may extend to six months, or both" }
-        },
-        "licence_suspension": null,
-        "licence_disqualification": null,
-        "community_service": null,
-        "other_penalty_text": null
-      },
-      "compoundable": true,
-      "compounding_amount_inr": null,
-      "effective_date": "2019-09-01",
-      "source_url": "https://prsindia.org/files/bills_acts/acts_central/2019/32%20of%202019.pdf",
-      "source_document": "Motor Vehicles (Amendment) Act, 2019",
-      "source_page": 62,
-      "source_text_excerpt": "whoever uses or causes or allows to be used in any public place a motor vehicle which does not comply with the standards prescribed in relation to road safety... shall be punishable with a fine of one thousand rupees",
-      "confidence": "high",
-      "extraction_notes": [],
-      "last_verified": "2026-04-19"
+      "last_verified": "2024-01-01",
+      "extraction_notes": []
     }
-  ]
+  ],
+  "state_overrides": []
 }
