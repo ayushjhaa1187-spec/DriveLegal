@@ -1,21 +1,35 @@
 {
-  "name": "DriveLegal",
+  "name": "DriveLegal — Know Your Traffic Rights",
   "short_name": "DriveLegal",
-  "description": "Offline-first AI Legal Companion for every road user.",
+  "description": "Offline-first traffic challan calculator and legal Q&A for Indian drivers",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1e3a8a",
+  "background_color": "#0f172a",
+  "theme_color": "#f59e0b",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
     },
     {
       "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["utilities", "legal", "government"],
+  "shortcuts": [
+    {
+      "name": "Calculate Fine",
+      "url": "/calculator"
+    },
+    {
+      "name": "Ask a Question",
+      "url": "/ask"
     }
   ]
 }
