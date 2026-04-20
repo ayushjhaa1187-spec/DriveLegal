@@ -1,0 +1,246 @@
+{
+  "_meta": {
+    "title": "Central Motor Vehicles Rules (CMVR) 1989 — Common Offence Rules",
+    "description": "Key CMVR rules relevant to common traffic violations, linked to MVA penalty sections",
+    "source": "Central Motor Vehicles Rules, 1989 (as amended up to 2023)",
+    "effectiveDate": "1989-07-01",
+    "lastUpdated": "2026-04-20",
+    "totalRules": 24
+  },
+  "rules": [
+    {
+      "ruleNumber": "Rule 100",
+      "title": "Speed limits for different classes of motor vehicles",
+      "category": "speed",
+      "appliesTo": ["2W", "3W", "4W", "HMV"],
+      "description": "Maximum speed limits as per vehicle class and road type (expressway, highway, city)",
+      "limits": {
+        "2W": { "city": 40, "highway": 60, "expressway": 80 },
+        "4W": { "city": 50, "highway": 80, "expressway": 100 },
+        "HMV": { "city": 40, "highway": 60, "expressway": 80 }
+      },
+      "mvaSection": "Section 183",
+      "penalty": "Rs 1000 for first offence, Rs 2000 for repeat"
+    },
+    {
+      "ruleNumber": "Rule 125",
+      "title": "Protective headgear (helmet standards)",
+      "category": "helmet",
+      "appliesTo": ["2W"],
+      "description": "Specifications for ISI marked helmets (BIS IS 4151:2015). Both rider and pillion must wear.",
+      "mvaSection": "Section 194D",
+      "penalty": "Rs 1000 + 3 months licence suspension"
+    },
+    {
+      "ruleNumber": "Rule 138",
+      "title": "Safety belts (seat belt requirements)",
+      "category": "seatbelt",
+      "appliesTo": ["4W"],
+      "description": "All front and rear seat occupants must wear seat belts. Vehicles must have ISI marked belts.",
+      "mvaSection": "Section 194B",
+      "penalty": "Rs 1000 for driver and each passenger not wearing belt"
+    },
+    {
+      "ruleNumber": "Rule 62",
+      "title": "Seating capacity and restrictions on passengers",
+      "category": "overloading",
+      "appliesTo": ["2W", "3W", "4W"],
+      "description": "No person shall drive or allow to be driven a motor vehicle carrying passengers exceeding seating capacity.",
+      "mvaSection": "Section 194C",
+      "penalty": "Rs 1000 + Rs 100 per extra passenger"
+    },
+    {
+      "ruleNumber": "Rule 50",
+      "title": "Validity of registration certificate",
+      "category": "registration",
+      "appliesTo": ["all"],
+      "description": "RC valid for 15 years for non-transport, 5 years for transport. Renewal mandatory.",
+      "mvaSection": "Section 192",
+      "penalty": "Rs 5000 for first offence, Rs 10000 for repeat"
+    },
+    {
+      "ruleNumber": "Rule 115",
+      "title": "Emission standards (pollution under control certificate)",
+      "category": "pollution",
+      "appliesTo": ["all"],
+      "description": "Bharat Stage VI (BS-VI) norms. PUCC valid for 1 year for vehicles > 1 year old.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 10000 for first offence, Rs 10000 for repeat"
+    },
+    {
+      "ruleNumber": "Rule 3",
+      "title": "Form of driving licence",
+      "category": "licence",
+      "appliesTo": ["all"],
+      "description": "DL must contain photo, signature, vehicle classes authorized, validity dates.",
+      "mvaSection": "Section 181",
+      "penalty": "Rs 5000 for driving without valid DL"
+    },
+    {
+      "ruleNumber": "Rule 139",
+      "title": "Standards for rear view mirrors",
+      "category": "vehicle_condition",
+      "appliesTo": ["2W", "4W"],
+      "description": "Minimum 1 left-side rear view mirror for 2W, 2 mirrors (left+right) for 4W mandatory.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 1000 for improper/missing mirrors"
+    },
+    {
+      "ruleNumber": "Rule 104",
+      "title": "Use of horn and silencer",
+      "category": "vehicle_condition",
+      "appliesTo": ["all"],
+      "description": "Multi-toned, harsh, shrill horns prohibited. Silencer mandatory, must not be removed.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 1000 for improper horn, Rs 1000 for no/tampered silencer"
+    },
+    {
+      "ruleNumber": "Rule 93",
+      "title": "Parking lights",
+      "category": "safety",
+      "appliesTo": ["all"],
+      "description": "Vehicles must have proper white front lights and red rear lights.",
+      "mvaSection": "Section 177",
+      "penalty": "Rs 500 for non-compliance"
+    },
+    {
+      "ruleNumber": "Rule 88",
+      "title": "Minimum age for driving motor vehicles",
+      "category": "licence",
+      "appliesTo": ["2W", "4W"],
+      "description": "Minimum 16 years for 2W <50cc, 18 years for other vehicles, 20 years for transport vehicles.",
+      "mvaSection": "Section 181",
+      "penalty": "Rs 5000 + guardian/owner liable under MVA 199A"
+    },
+    {
+      "ruleNumber": "Rule 21",
+      "title": "Display of registration marks",
+      "category": "registration",
+      "appliesTo": ["all"],
+      "description": "Number plates must be in prescribed font (HSRP/high-security), clearly visible, not obscured.",
+      "mvaSection": "Section 192",
+      "penalty": "Rs 5000 for improper/missing number plate"
+    },
+    {
+      "ruleNumber": "Rule 118",
+      "title": "Use of mobile phones while driving",
+      "category": "mobile_use",
+      "appliesTo": ["all"],
+      "description": "Drivers prohibited from using handheld mobile phones. Hands-free allowed.",
+      "mvaSection": "Section 184",
+      "penalty": "Rs 1000 for first offence, Rs 2000 for repeat"
+    },
+    {
+      "ruleNumber": "Rule 119",
+      "title": "Carriage of goods on public service vehicles",
+      "category": "overloading",
+      "appliesTo": ["3W", "HMV"],
+      "description": "Goods exceeding prescribed weight or dimension limits prohibited.",
+      "mvaSection": "Section 194(1)",
+      "penalty": "Rs 2000 + Rs 1000 per extra ton"
+    },
+    {
+      "ruleNumber": "Rule 9",
+      "title": "Grant of learner's licence",
+      "category": "licence",
+      "appliesTo": ["all"],
+      "description": "LL valid for 6 months. Must be accompanied by valid DL holder during practice.",
+      "mvaSection": "Section 181",
+      "penalty": "Rs 5000 if LL holder drives alone"
+    },
+    {
+      "ruleNumber": "Rule 134",
+      "title": "Colour of lights shown by vehicles",
+      "category": "safety",
+      "appliesTo": ["all"],
+      "description": "Front: white/yellow. Rear: red. No other colors permitted (no blue/green/multicolor).",
+      "mvaSection": "Section 177",
+      "penalty": "Rs 500 for non-compliant lights"
+    },
+    {
+      "ruleNumber": "Rule 141",
+      "title": "Fire extinguisher in transport vehicles",
+      "category": "safety",
+      "appliesTo": ["HMV"],
+      "description": "All transport vehicles must carry functional fire extinguisher.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 2000 for missing/non-functional extinguisher"
+    },
+    {
+      "ruleNumber": "Rule 122",
+      "title": "Restrictions on towing",
+      "category": "vehicle_condition",
+      "appliesTo": ["4W"],
+      "description": "Towing permitted only with valid tow bar. Weight restrictions apply.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 2000 for improper towing"
+    },
+    {
+      "ruleNumber": "Rule 129",
+      "title": "Standards for windscreen and glasses",
+      "category": "vehicle_condition",
+      "appliesTo": ["4W"],
+      "description": "Windscreen and windows must allow >70% visible light transmission. No dark films.",
+      "mvaSection": "Section 177",
+      "penalty": "Rs 500 for violating VLT norms"
+    },
+    {
+      "ruleNumber": "Rule 41",
+      "title": "Insurance certificate validity",
+      "category": "insurance",
+      "appliesTo": ["all"],
+      "description": "Valid third-party insurance mandatory. Must be carried while driving.",
+      "mvaSection": "Section 196",
+      "penalty": "Rs 2000 for first offence, Rs 4000 for repeat + up to 3 months imprisonment"
+    },
+    {
+      "ruleNumber": "Rule 140",
+      "title": "Cabin requirements for drivers",
+      "category": "safety",
+      "appliesTo": ["HMV"],
+      "description": "Driver's seat must have proper backrest, visibility, and comfort specifications.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 1000 for non-compliant driver cabin"
+    },
+    {
+      "ruleNumber": "Rule 81(25)",
+      "title": "First aid kit in transport vehicles",
+      "category": "safety",
+      "appliesTo": ["HMV"],
+      "description": "All transport vehicles must carry first aid box with prescribed contents.",
+      "mvaSection": "Section 190(2)",
+      "penalty": "Rs 1000 for missing/inadequate first aid kit"
+    },
+    {
+      "ruleNumber": "Rule 38",
+      "title": "Temporary registration",
+      "category": "registration",
+      "appliesTo": ["all"],
+      "description": "Temporary registration valid for 1 month. Must apply for permanent RC within this period.",
+      "mvaSection": "Section 192",
+      "penalty": "Rs 5000 if driving beyond temporary RC validity"
+    },
+    {
+      "ruleNumber": "Rule 94",
+      "title": "Use of high beam/low beam headlights",
+      "category": "safety",
+      "appliesTo": ["all"],
+      "description": "High beam prohibited in city/traffic. Must dip to low beam when approaching oncoming vehicle within 200m.",
+      "mvaSection": "Section 177",
+      "penalty": "Rs 500 for misuse of high beam"
+    }
+  ],
+  "categoryIndex": {
+    "speed": ["Rule 100"],
+    "helmet": ["Rule 125"],
+    "seatbelt": ["Rule 138"],
+    "overloading": ["Rule 62", "Rule 119"],
+    "registration": ["Rule 50", "Rule 21", "Rule 38"],
+    "pollution": ["Rule 115"],
+    "licence": ["Rule 3", "Rule 88", "Rule 9"],
+    "vehicle_condition": ["Rule 139", "Rule 104", "Rule 122", "Rule 129"],
+    "safety": ["Rule 93", "Rule 134", "Rule 141", "Rule 140", "Rule 81(25)", "Rule 94"],
+    "mobile_use": ["Rule 118"],
+    "insurance": ["Rule 41"]
+  }
+}
