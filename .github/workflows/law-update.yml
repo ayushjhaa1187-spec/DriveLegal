@@ -1,18 +1,47 @@
-# Phase 8.2 — weekly law-data update pipeline.
-# TODO(phase-8): implement Fetch → Extract → Diff → PR.
-name: Weekly Law Update
+name: Weekly Law Pack Update Check
 
 on:
   schedule:
-    - cron: '30 21 * * 6'  # Sun 03:00 IST
+    - cron: '0 2 * * 1'  # 2AM UTC every Monday
   workflow_dispatch:
 
 jobs:
-  update:
+  check-and-update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: echo "TODO(phase-8): implement scrape → extract → diff → PR."
+          cache: npm
+
+      - run: npm ci
+
+      - name: Scrape & validate sources
+        run: npx tsx scripts/check-law-sources.ts
+        env:
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
+
+      - name: Run schema validation
+        run: npx tsx scripts/validate-laws.ts
+
+      - name: Build law packs & checksums
+        run: npx tsx scripts/build-lawpacks.ts
+
+      - name: Check for changes
+        id: diff
+        run: |
+          git diff --exit-code data/lawpacks || echo "CHANGES=true" >> $GITHUB_OUTPUT
+
+      - name: Create PR if changes found
+        if: steps.diff.outputs.CHANGES == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          title: "Law Pack Update ${{ github.run_id }}"
+          body: |
+            Automated law data update detected.
+            Human review required before merging.
+            Check diff carefully against source PDFs.
+          labels: law-data, needs-review
+          branch: "law-update-${{ github.run_id }}"
