@@ -1,0 +1,17 @@
+{
+  "packId": "IN-central",
+  "packVersion": "1.0.0",
+  "jurisdiction": "IN",
+  "stateCode": null,
+  "publishedAt": "2026-01-01T00:00:00Z",
+  "lastVerified": "2026-05-20",
+  "sourceUrls": [
+    "https://www.indiacode.nic.in/handle/123456789/13435",
+    "https://prsindia.org/billtrack/the-motor-vehicles-amendment-bill-2019"
+  ],
+  "totalViolations": 150,
+  "coverageNotes": "All sections of MVA 2019 as amended",
+  "maintainer": "DriveLegal Data Team",
+  "schemaVersion": "2.0.0",
+  "hash": "sha256:abc123"
+}
