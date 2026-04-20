@@ -1,35 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
-import { INDIA_STATES } from "@/lib/law-engine/states";
+import { STATE_NAME_TO_CODE } from "@/lib/geo/state-codes";
 
 export const runtime = "edge";
 
-// Cloudflare provides CF-IPCountry and via Vercel: x-vercel-ip-country-region
-// In development these will be absent — we return null gracefully.
 export async function GET(request: NextRequest) {
-  const headers = request.headers;
+  // Cloudflare provides region headers
+  const region = request.headers.get("cf-region") ?? "";
+  const country = request.headers.get("cf-ipcountry") ?? "";
 
-  // Vercel edge: x-vercel-ip-country-region = e.g. "MH"
-  const vercelRegion = headers.get("x-vercel-ip-country-region");
-  // Cloudflare: CF-Region
-  const cfRegion = headers.get("cf-region");
-  // Cloudflare: CF-IPCountry (fallback — country only)
-  const cfCountry = headers.get("cf-ipcountry");
+  if (country !== "IN") {
+    return NextResponse.json({ stateCode: null, country });
+  }
 
-  const rawCode = vercelRegion ?? cfRegion ?? null;
+  const normalized = region.toLowerCase().trim();
+  const stateCode = STATE_NAME_TO_CODE[normalized] ?? null;
 
-  // Validate against known state list
-  const stateCode =
-    rawCode && INDIA_STATES.some((s) => s.code === rawCode.toUpperCase())
-      ? rawCode.toUpperCase()
-      : null;
-
-  return NextResponse.json(
-    { stateCode, source: rawCode ? "header" : null, country: cfCountry },
-    {
-      headers: {
-        // Cache for 1 hour on CDN edge; IP-based detection doesn't change often
-        "Cache-Control": "public, s-maxage=3600",
-      },
-    }
-  );
+  return NextResponse.json({ stateCode, region });
 }
