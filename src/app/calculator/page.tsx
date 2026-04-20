@@ -1,176 +1,121 @@
-'use client';
+"use client";
 
-import { useState, useEffect, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import Link from "next/link";
-import { ChevronLeft } from "lucide-react";
-import { WizardProgress } from "@/components/calculator/WizardProgress";
-import { Step1StateVehicle } from "@/components/calculator/Step1StateVehicle";
-import { Step2ViolationPicker } from "@/components/calculator/Step2ViolationPicker";
-import { ResultCard } from "@/components/calculator/ResultCard";
-import { queryViolations } from "@/lib/law-engine/engine";
-import type { VehicleTypeInput, QueryResult } from "@/lib/law-engine/types";
-import type { Violation } from "@/lib/law-engine/schema";
-
-type Category = Violation["category"];
-type Step = 1 | 2 | 3;
-
-function CalculatorInner() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-
-  // Wizard state
-  const [step, setStep] = useState<Step>(1);
-  const [selectedState, setSelectedState] = useState<string | null>(
-    searchParams.get("state") ?? null
-  );
-  const [selectedVehicle, setSelectedVehicle] = useState<VehicleTypeInput | null>(
-    (searchParams.get("vehicle") as VehicleTypeInput) ?? null
-  );
-  const [selectedCategory, setSelectedCategory] = useState<Category | null>(
-    (searchParams.get("category") as Category) ?? null
-  );
-  const [isRepeatOffender, setIsRepeatOffender] = useState(
-    searchParams.get("repeat") === "1"
-  );
-  const [queryResult, setQueryResult] = useState<QueryResult | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-
-  // If URL has all params pre-filled, jump to result
-  useEffect(() => {
-    if (selectedState && selectedVehicle && selectedCategory) {
-      setStep(3);
-      runQuery(selectedState, selectedVehicle, selectedCategory, isRepeatOffender);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  async function runQuery(
-    state: string | null,
-    vehicle: VehicleTypeInput,
-    category: Category,
-    repeat: boolean
-  ) {
-    setIsLoading(true);
-    setQueryResult(null);
-    try {
-      const result = await queryViolations({
-        stateCode: state,
-        vehicleType: vehicle,
-        category,
-        isRepeatOffender: repeat,
-      });
-      setQueryResult(result);
-    } catch (e) {
-      console.error("Engine error:", e);
-    } finally {
-      setIsLoading(false);
-    }
-  }
-
-  function goToStep2() {
-    if (!selectedState || !selectedVehicle) return;
-    setStep(2);
-  }
-
-  function goToStep3() {
-    if (!selectedCategory || !selectedVehicle) return;
-    setStep(3);
-    runQuery(selectedState, selectedVehicle, selectedCategory, isRepeatOffender);
-  }
-
-  function handleToggleRepeat(val: boolean) {
-    setIsRepeatOffender(val);
-    if (selectedCategory && selectedVehicle) {
-      runQuery(selectedState, selectedVehicle, selectedCategory, val);
-    }
-  }
-
-  function handleReset() {
-    setStep(1);
-    setSelectedState(null);
-    setSelectedVehicle(null);
-    setSelectedCategory(null);
-    setIsRepeatOffender(false);
-    setQueryResult(null);
-    router.replace("/calculator");
-  }
-
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white px-4 py-10">
-      <div className="max-w-xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1 text-sm text-zinc-500 hover:text-brand-navy transition-colors mb-4"
-          >
-            <ChevronLeft className="w-4 h-4" /> Back to Home
-          </Link>
-          <h1 className="text-3xl font-black font-headings text-zinc-900">
-            Challan Calculator
-          </h1>
-          <p className="text-zinc-500 mt-1">
-            Instant, offline, source-backed fine lookup
-          </p>
-        </div>
-
-        {/* Progress */}
-        <WizardProgress currentStep={step} />
-
-        {/* Steps */}
-        {step === 1 && (
-          <Step1StateVehicle
-            selectedState={selectedState}
-            selectedVehicle={selectedVehicle}
-            onSelectState={setSelectedState}
-            onSelectVehicle={setSelectedVehicle}
-            onNext={goToStep2}
-          />
-        )}
-
-        {step === 2 && (
-          <Step2ViolationPicker
-            selectedCategory={selectedCategory}
-            onSelectCategory={setSelectedCategory}
-            onNext={goToStep3}
-            onBack={() => setStep(1)}
-          />
-        )}
-
-        {step === 3 && (
-          <div>
-            {isLoading ? (
-              <div className="space-y-6 animate-slide-up">
-                <div className="bg-white rounded-3xl border border-zinc-100 p-8 shadow-xl">
-                  <div className="h-4 w-24 bg-zinc-100 rounded animate-pulse mb-6" />
-                  <div className="h-16 w-48 bg-zinc-100 rounded animate-pulse mb-8" />
-                  <div className="space-y-4">
-                    <div className="h-4 w-full bg-zinc-50 rounded animate-pulse" />
-                    <div className="h-4 w-5/6 bg-zinc-50 rounded animate-pulse" />
-                    <div className="h-4 w-4/6 bg-zinc-50 rounded animate-pulse" />
-                  </div>
-                </div>
-              </div>
-            ) : queryResult ? (
-              <ResultCard
-                result={queryResult}
-                isRepeatOffender={isRepeatOffender}
-                onToggleRepeat={handleToggleRepeat}
-                onReset={handleReset}
-              />
-            ) : null}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
+import { useState } from "react";
+import { Calculator } from "lucide-react";
+import { INDIAN_STATES, VEHICLE_TYPES, VIOLATION_CATEGORIES } from "@/lib/constants";
+import { formatCurrency, formatFineRange } from "@/lib/utils/format-currency";
 
 export default function CalculatorPage() {
+  const [category, setCategory] = useState("");
+  const [state, setState] = useState("");
+  const [vehicle, setVehicle] = useState("");
+  const [repeat, setRepeat] = useState(false);
+
   return (
-    <Suspense>
-      <CalculatorInner />
-    </Suspense>
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-950 p-4">
+      <div className="max-w-2xl mx-auto space-y-6">
+        {/* Header */}
+        <div className="flex items-center gap-3 py-4">
+          <Calculator className="h-7 w-7 text-amber-500" />
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+            Challan Calculator
+          </h1>
+        </div>
+
+        {/* Form */}
+        <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800 space-y-5">
+
+          {/* Violation Category */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+              Violation Type
+            </label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none"
+            >
+              <option value="">Select violation...</option>
+              {VIOLATION_CATEGORIES.map((c) => (
+                <option key={c.code} value={c.code}>
+                  {c.icon} {c.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* State */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+              State / UT
+            </label>
+            <select
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+              className="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none"
+            >
+              <option value="">Select state...</option>
+              {INDIAN_STATES.map((s) => (
+                <option key={s.code} value={s.code}>
+                  {s.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Vehicle Type */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">
+              Vehicle Type
+            </label>
+            <select
+              value={vehicle}
+              onChange={(e) => setVehicle(e.target.value)}
+              className="w-full border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-amber-500 outline-none"
+            >
+              <option value="">Select vehicle...</option>
+              {VEHICLE_TYPES.map((v) => (
+                <option key={v.code} value={v.code}>
+                  {v.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Repeat Offender */}
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="repeat"
+              checked={repeat}
+              onChange={(e) => setRepeat(e.target.checked)}
+              className="h-5 w-5 rounded accent-amber-500"
+            />
+            <label htmlFor="repeat" className="text-sm font-medium text-slate-700 dark:text-slate-300">
+              Repeat offender (second or subsequent offence)
+            </label>
+          </div>
+
+          {/* Result Placeholder */}
+          {category && (
+            <div className="bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 rounded-xl p-5 mt-2">
+              <p className="text-sm text-amber-700 dark:text-amber-300 font-medium mb-1">
+                Estimated Fine
+              </p>
+              <p className="text-4xl font-bold text-slate-900 dark:text-white">
+                {formatCurrency(1000)}
+              </p>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-3">
+                ⚠️ This is a placeholder. Connect law data JSON to show real fines.
+              </p>
+            </div>
+          )}
+        </div>
+
+        <p className="text-xs text-center text-slate-400 px-4">
+          ⚠️ Fine amounts are for general guidance only. Verify with official sources.
+        </p>
+      </div>
+    </main>
   );
 }
