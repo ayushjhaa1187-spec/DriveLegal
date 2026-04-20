@@ -1,133 +1,109 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Search, Mic, Calculator, MessageSquareText, Scan, ShieldCheck, ChevronRight } from "lucide-react";
-import { SyncStatus } from "@/components/SyncStatus";
+import { Calculator, MessageSquare, ScanLine, Scale, ShieldCheck, Globe } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-bg.png"
-            alt="Modern Highway"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-navy/80 via-brand-navy/40 to-background" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 w-full max-w-4xl px-6 text-center text-white">
-          <div className="absolute top-0 right-6 md:right-0">
-            <SyncStatus />
+    <main className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
+      {/* Hero */}
+      <section className="px-6 py-20 text-center">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <Scale className="h-10 w-10 text-amber-400" />
+            <h1 className="text-5xl font-bold text-white">DriveLegal</h1>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold font-headings tracking-tight mb-4 mt-12 md:mt-0">
-            Drive <span className="text-brand-amber">Legal</span>
-          </h1>
-          <p className="text-lg md:text-xl text-zinc-200 mb-8 max-w-2xl mx-auto">
-            Your offline-first AI companion for traffic laws, fine calculation, and legal rights.
+          <p className="text-xl text-slate-300">
+            Know your traffic rights. Calculate correct fines. Challenge overcharging.
           </p>
-
-          {/* Giant Search Bar */}
-          <form 
-            action="/ask" 
-            method="GET"
-            className="relative max-w-2xl mx-auto group"
-          >
-            <div className="absolute inset-0 bg-brand-amber/20 blur-xl group-focus-within:bg-brand-amber/40 transition-all rounded-full" />
-            <div className="relative flex items-center bg-white rounded-full shadow-2xl overflow-hidden p-2">
-              <div className="pl-4 pr-2 text-zinc-400">
-                <Search className="w-6 h-6" />
-              </div>
-              <input
-                type="text"
-                name="q"
-                placeholder="How much fine if I don't wear helmet in Pune?"
-                className="flex-1 bg-transparent py-3 md:py-4 px-2 text-zinc-900 focus:outline-none text-lg"
-                required
-              />
-              <div className="flex items-center gap-2 pr-2">
-                 <div className="hidden md:flex items-center px-3 py-1 bg-zinc-100 rounded-full text-xs font-semibold text-zinc-500 uppercase tracking-widest border border-zinc-200">
-                  Powered by AI
-                </div>
-                <button type="submit" className="p-3 bg-brand-navy text-white rounded-full hover:bg-brand-navy/90 transition-all">
-                  <Mic className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-          </form>
+          <div className="flex items-center justify-center gap-3 flex-wrap">
+            <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-sm font-medium">
+              📴 Works Offline
+            </span>
+            <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-sm font-medium">
+              🌐 10 Languages
+            </span>
+            <span className="bg-amber-400/20 text-amber-300 border border-amber-400/30 px-3 py-1 rounded-full text-sm font-medium">
+              🗺️ All 36 States
+            </span>
+          </div>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <Link
+              href="/calculator"
+              className="bg-amber-500 hover:bg-amber-400 text-slate-900 font-bold px-8 py-3 rounded-xl transition-colors"
+            >
+              Calculate Fine
+            </Link>
+            <Link
+              href="/ask"
+              className="bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-3 rounded-xl border border-white/20 transition-colors"
+            >
+              Ask Legal AI
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Features Grid */}
-      <section className="flex-1 bg-background px-6 py-16 -mt-12 relative z-20">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature) => (
-            <Link 
-              key={feature.title}
-              href={feature.href}
-              className="group relative bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-100 dark:border-zinc-800 shadow-xl shadow-zinc-200/50 dark:shadow-none hover:border-brand-amber/50 transition-all duration-300 transform hover:-translate-y-1"
+      {/* Feature Cards */}
+      <section className="px-6 pb-20">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
+          {[
+            {
+              href: "/calculator",
+              icon: <Calculator className="h-8 w-8 text-amber-400" />,
+              title: "Fine Calculator",
+              desc: "Instant fine lookup. State-specific rates. Works offline. No guessing.",
+            },
+            {
+              href: "/ask",
+              icon: <MessageSquare className="h-8 w-8 text-amber-400" />,
+              title: "Ask Legal AI",
+              desc: "Ask in Hindi, Tamil, or English. Get answers with MVA 2019 citations.",
+            },
+            {
+              href: "/scan",
+              icon: <ScanLine className="h-8 w-8 text-amber-400" />,
+              title: "Scan & Verify",
+              desc: "Upload challan photo. Detect overcharging. Generate dispute letter instantly.",
+            },
+            {
+              href: "/rights",
+              icon: <ShieldCheck className="h-8 w-8 text-amber-400" />,
+              title: "Know Your Rights",
+              desc: "What can police check? How to contest? Lok Adalat guide.",
+            },
+            {
+              href: "/laws",
+              icon: <Scale className="h-8 w-8 text-amber-400" />,
+              title: "Browse Laws",
+              desc: "All 150+ violations. Searchable. Filterable by category and vehicle type.",
+            },
+            {
+              href: "/laws",
+              icon: <Globe className="h-8 w-8 text-amber-400" />,
+              title: "Global Mode",
+              desc: "USA, UK, UAE, Australia and 6 more countries covered.",
+            },
+          ].map((card) => (
+            <Link
+              key={card.href + card.title}
+              href={card.href}
+              className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-6 transition-all hover:border-amber-400/50 group"
             >
-              <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors ${feature.iconBg}`}>
-                <feature.icon className={`w-7 h-7 ${feature.iconColor}`} />
-              </div>
-              <h3 className="text-xl font-bold font-headings mb-2 text-zinc-900 dark:text-zinc-50 flex items-center">
-                {feature.title}
-                <ChevronRight className="w-4 h-4 ml-2 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+              <div className="mb-4">{card.icon}</div>
+              <h3 className="font-bold text-white text-lg mb-2 group-hover:text-amber-300 transition-colors">
+                {card.title}
               </h3>
-              <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed text-sm">
-                {feature.description}
-              </p>
+              <p className="text-slate-400 text-sm leading-relaxed">{card.desc}</p>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Footer / Status */}
-      <footer className="py-8 px-6 border-t border-zinc-100 dark:border-zinc-800 text-center">
-        <p className="text-zinc-400 text-xs font-medium uppercase tracking-widest">
-          Offline Enabled • Central Law v2019.4 • MH/DL/KA Active
+      {/* Footer */}
+      <footer className="border-t border-white/10 px-6 py-8 text-center">
+        <p className="text-slate-500 text-sm">
+          ⚠️ DriveLegal provides legal information, not legal advice. Always verify with official sources.
         </p>
       </footer>
-    </div>
+    </main>
   );
 }
-
-const features = [
-  {
-    title: "Calculator",
-    description: "Check official fine amounts for 50+ violations across all states.",
-    href: "/calculator",
-    icon: Calculator,
-    iconBg: "bg-blue-50 dark:bg-blue-900/20",
-    iconColor: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    title: "Ask AI",
-    description: "Natural language legal Q&A powered by Google Gemini (Flash).",
-    href: "/ask",
-    icon: MessageSquareText,
-    iconBg: "bg-amber-50 dark:bg-amber-900/20",
-    iconColor: "text-amber-600 dark:text-amber-400",
-  },
-  {
-    title: "Scan Receipt",
-    description: "OCR scan of challan receipts to verify accuracy and detect overcharging.",
-    href: "/scan",
-    icon: Scan,
-    iconBg: "bg-emerald-50 dark:bg-emerald-900/20",
-    iconColor: "text-emerald-600 dark:text-emerald-400",
-  },
-  {
-    title: "Your Rights",
-    description: "Know exactly what to do when stopped by traffic police.",
-    href: "/rights",
-    icon: ShieldCheck,
-    iconBg: "bg-indigo-50 dark:bg-indigo-900/20",
-    iconColor: "text-indigo-600 dark:text-indigo-400",
-  },
-];
