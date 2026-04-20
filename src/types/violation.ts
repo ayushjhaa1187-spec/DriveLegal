@@ -11,6 +11,9 @@ export type ViolationCategory =
 export type Severity = 1 | 2 | 3 | 4 | 5;
 export type Confidence = "high" | "medium" | "low";
 
+// NEW: Regulation source types for multi-law display
+export type RegulationSource = "MVA" | "CMVR" | "BNS" | "STATE";
+
 export interface Penalty {
   fine_first_offence_inr: number | null;
   fine_repeat_offence_inr: number | null;
@@ -51,6 +54,21 @@ export interface MultilingualString {
   pa?: string;
 }
 
+// NEW: BNS section mapping interface
+export interface BNSMapping {
+  bnsSection: string;       // e.g. "Section 285"
+  mvaSection: string;       // e.g. "Section 185"
+  offenceDescription: string;
+}
+
+// NEW: CMVR rule reference interface
+export interface CMVRRule {
+  ruleNumber: string;       // e.g. "Rule 125"
+  title: string;
+  category: string;
+  appliesTo: VehicleType[];
+}
+
 export interface Violation {
   id: string;
   section: string | null;
@@ -77,6 +95,11 @@ export interface Violation {
   confidence: Confidence;
   last_verified: string;
   extraction_notes: string[];
+  // NEW: Multi-regulation support fields
+  regulationSources: RegulationSource[];  // e.g. ["MVA", "BNS"]
+  bnsSection?: string;                    // e.g. "Section 285" (BNS 2023)
+  bnsDescription?: string;               // Short BNS offence description
+  cmvrRules?: string[];                  // e.g. ["Rule 125", "Rule 100"]
 }
 
 export interface StateOverride {
