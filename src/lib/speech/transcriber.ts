@@ -4,9 +4,12 @@
 // Augment Window type for Speech API
 declare global {
   interface Window {
-    SpeechRecognition: typeof SpeechRecognition;
-    webkitSpeechRecognition: typeof SpeechRecognition;
+    SpeechRecognition: any;
+    webkitSpeechRecognition: any;
   }
+  type SpeechRecognition = any;
+  type SpeechRecognitionEvent = any;
+  type SpeechRecognitionErrorEvent = any;
 }
 
 export interface TranscriptionResult {

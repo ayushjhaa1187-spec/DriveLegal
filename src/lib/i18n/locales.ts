@@ -5,6 +5,8 @@ export const SUPPORTED_LANGUAGES = [
   { code: "mr", name: "Marathi", nativeName: "मराठी" },
   { code: "te", name: "Telugu", nativeName: "తెలుగు" },
   { code: "bn", name: "Bengali", nativeName: "বাংলা" },
+  { code: "gu", name: "Gujarati", nativeName: "ગુજરાતી" },
+  { code: "kn", name: "Kannada", nativeName: "ಕನ್ನಡ" },
 ];
 
 export const DEFAULT_LANGUAGE = "en";

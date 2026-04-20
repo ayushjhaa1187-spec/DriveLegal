@@ -1,9 +1,31 @@
 {
+  "nav.home": "होम",
   "nav.calculator": "कैलक्यूलेटर",
   "nav.ask": "एआई से पूछें",
   "nav.scan": "स्कैन",
+  "nav.hotspots": "हॉटस्पॉट्स",
+  "nav.vault": "वॉल्ट",
+  "nav.experts": "विशेषज्ञ",
   "nav.rights": "अधिकार",
+  "nav.portal": "पारदर्शिता",
+  "nav.simulate": "सिम्युलेशन",
   "common.back": "पीछे",
   "common.next": "अगला",
-  "common.submit": "जमा करें"
+  "common.submit": "जमा करें",
+  "common.loading": "लोड हो रहा है...",
+  "common.verify": "सत्यापित करें",
+  "expert.title": "कानूनी मार्केटप्लेस",
+  "expert.subtitle": "परामर्श और सलाह के लिए सत्यापित मोटर कानून विशेषज्ञों से जुड़ें।",
+  "expert.consult": "विशेषज्ञ से परामर्श करें",
+  "expert.verified": "सत्यापित",
+  "sim.title": "प्रैक्टिस सिम्युलेटर",
+  "sim.subtitle": "सुरक्षित वातावरण में सड़क किनारे की बातचीत और कानूनी तर्कों का अभ्यास करें।",
+  "sim.start": "सत्र शुरू करें",
+  "sim.accuracy": "कानूनी सटीकता",
+  "sim.articulacy": "स्पष्टता",
+  "portal.title": "पारदर्शिता पोर्टल",
+  "portal.subtitle": "सार्वजनिक प्रवर्तन सटीकता और ओवरचार्ज मेट्रिक्स।",
+  "portal.accuracy": "प्रवर्तन सटीकता",
+  "portal.overcharge": "ओवरचार्ज दर"
 }
+

@@ -1,0 +1,20 @@
+{
+  "nav.home": "હોમ",
+  "nav.calculator": "કેલ્ક્યુલેટર",
+  "nav.ask": "AI પૂછો",
+  "nav.scan": "સ્કેન",
+  "nav.hotspots": "હોટસ્પોટ્સ",
+  "nav.vault": "વોલ્ટ",
+  "nav.experts": "નિષ્ણાતો",
+  "nav.rights": "અધિકાર",
+  "nav.portal": "પારદર્શિતા",
+  "common.back": "પાછળ",
+  "common.next": "આગળ",
+  "common.submit": "સબમિટ કરો",
+  "common.loading": "લોડ થઈ રહ્યું છે...",
+  "common.verify": "તપાસો",
+  "dashboard.health": "લાઇસન્સ હેલ્થ",
+  "dashboard.excellent": "ઉત્તમ",
+  "dashboard.caution": "સાવધાની",
+  "dashboard.at_risk": "જોખમમાં"
+}

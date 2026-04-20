@@ -1,6 +1,6 @@
 // Phase 9.1 — Decision Table Engine with full explanation trace
-import type { Violation, StateOverride, VehicleType } from '@/types/violation';
-import type { CalculatorInput } from '@/types/calculator';
+import type { Violation } from "./schema";
+import type { QueryParams } from "./types";
 
 export interface FineTrace {
   step: number;
@@ -23,17 +23,16 @@ export interface FineDecision {
 
 export function computeFineWithTrace(
   violation: Violation,
-  input: CalculatorInput,
-  stateOverrides: StateOverride[] = [],
+  params: QueryParams
 ): FineDecision {
   const trace: FineTrace[] = [];
   let step = 1;
 
-  // Step 1: Record loaded packs
+  // Step 1: Record trace metadata
   trace.push({
     step: step++,
-    rule: 'DATA_LOADED',
-    detail: 'Loaded central law pack',
+    rule: 'ENGINE_INIT',
+    detail: 'Deterministic Rule Engine v2 initialized',
     value: 'IN-central@1.0.0',
   });
 
@@ -41,128 +40,96 @@ export function computeFineWithTrace(
   trace.push({
     step: step++,
     rule: 'VIOLATION_MATCHED',
-    detail: `Matched violation: ${violation.title?.en}`,
+    detail: `Matched violation: ${violation.title.en}`,
     value: violation.section ?? violation.id,
   });
 
-  // Step 3: Check state override
-  const override = stateOverrides.find(
-    (o) =>
-      o.stateCode === input.stateCode &&
-      o.section === violation.section &&
-      (o.appliesTo.includes('all') || o.appliesTo.includes(input.vehicleType as VehicleType)),
-  );
+  // Step 3: Check jurisdiction
+  const isStateOverride = violation.jurisdiction.state_code !== null;
+  trace.push({
+    step: step++,
+    rule: isStateOverride ? 'STATE_OVERRIDE_APPLIED' : 'CENTRAL_LAW_APPLIED',
+    detail: isStateOverride 
+      ? `Applied ${violation.jurisdiction.state_code} state schedule` 
+      : 'No state override found, using national MVA schedule',
+    value: violation.jurisdiction.state_code ?? 'CENTRAL',
+  });
 
   let finalFine: number | null = null;
+  let fineMin: number | null = null;
+  let fineMax: number | null = null;
 
-  if (override?.amountINR != null) {
-    trace.push({
-      step: step++,
-      rule: 'STATE_OVERRIDE_APPLIED',
-      detail: `State ${input.stateCode} override found: ${override.overrideType}`,
-      value: override.amountINR,
-    });
-    finalFine = override.amountINR;
-  } else {
-    trace.push({
-      step: step++,
-      rule: 'NO_STATE_OVERRIDE',
-      detail: `No override for ${input.stateCode}, using central law`,
-      value: null,
-    });
-  }
+  // Step 4: Resolve Fine
+  const penaltyScope = params.isRepeatOffender && violation.penalty.repeat_offence
+    ? violation.penalty.repeat_offence
+    : violation.penalty.first_offence;
 
-  // Step 4: Repeat offender / first offence
-  if (finalFine === null) {
-    if (input.isRepeatOffender && violation.penalty?.fineRepeatOffenceINR != null) {
+  const fineData = penaltyScope.fine;
+
+  if (fineData) {
+    if (fineData.fixed !== null && fineData.fixed !== undefined) {
+      finalFine = fineData.fixed;
       trace.push({
         step: step++,
-        rule: 'REPEAT_OFFENDER_APPLIED',
-        detail: 'Repeat offender flag is TRUE, using repeat fine',
-        value: violation.penalty.fineRepeatOffenceINR,
+        rule: 'FIXED_FINE_RESOLVED',
+        detail: `Resolved specific ${params.isRepeatOffender ? 'repeat' : 'first'} offence amount`,
+        value: `₹${finalFine.toLocaleString()}`,
       });
-      finalFine = violation.penalty.fineRepeatOffenceINR;
-    } else if (violation.penalty?.fineFirstOffenceINR != null) {
+    } else if (fineData.min !== null || fineData.max !== null) {
+      fineMin = fineData.min;
+      fineMax = fineData.max;
       trace.push({
         step: step++,
-        rule: 'FIRST_OFFENCE_APPLIED',
-        detail: 'Using first offence fine',
-        value: violation.penalty.fineFirstOffenceINR,
-      });
-      finalFine = violation.penalty.fineFirstOffenceINR;
-    } else if (
-      violation.penalty?.fineMinINR != null &&
-      violation.penalty?.fineMaxINR != null
-    ) {
-      trace.push({
-        step: step++,
-        rule: 'FINE_RANGE_APPLIED',
-        detail: 'Only a range is defined by law',
-        value: `${violation.penalty.fineMinINR}–${violation.penalty.fineMaxINR}`,
-      });
-    } else {
-      trace.push({
-        step: step++,
-        rule: 'NO_FINE_DATA',
-        detail: 'No fine amount in dataset',
-        value: null,
+        rule: 'FINE_RANGE_RESOLVED',
+        detail: 'Law specifies a range; magistrate/officer discretion applies',
+        value: `₹${fineMin?.toLocaleString()} - ₹${fineMax?.toLocaleString()}`,
       });
     }
   }
 
   // Step 5: Imprisonment check
-  const imprisonmentRisk = input.isRepeatOffender
-    ? violation.penalty?.imprisonmentRepeatOffence?.value != null
-    : violation.penalty?.imprisonmentFirstOffence?.value != null;
-
-  const imprisonmentDetail = input.isRepeatOffender
-    ? violation.penalty?.imprisonmentRepeatOffence?.text ?? null
-    : violation.penalty?.imprisonmentFirstOffence?.text ?? null;
-
+  const imprisonment = penaltyScope.imprisonment;
+  const imprisonmentRisk = imprisonment !== null && imprisonment.value !== null;
+  
   if (imprisonmentRisk) {
     trace.push({
       step: step++,
       rule: 'IMPRISONMENT_RISK',
-      detail: 'This violation carries imprisonment risk',
-      value: imprisonmentDetail,
+      detail: `${imprisonment.severity === 'shall' ? 'Mandatory' : 'Potential'} imprisonment applies`,
+      value: imprisonment.text || `${imprisonment.value} ${imprisonment.unit}`,
     });
   }
 
-  // Step 6: Licence check
-  if (violation.penalty?.licenceSuspension) {
+  // Step 6: Licence impact
+  if (violation.penalty.licence_suspension) {
     trace.push({
       step: step++,
       rule: 'LICENCE_IMPACT',
-      detail: 'Licence suspension applies',
-      value: violation.penalty.licenceSuspension,
+      detail: 'Licence suspension recommended',
+      value: violation.penalty.licence_suspension,
     });
   }
 
   // Step 7: Confidence scoring
-  const confidence: 'high' | 'medium' | 'low' =
-    finalFine != null && override != null
-      ? 'high'
-      : override != null
-      ? 'high'
-      : violation.penalty?.fineMinINR != null
-      ? 'medium'
-      : 'low';
+  const confidence: 'high' | 'medium' | 'low' = 
+    violation.confidence === 'high' ? 'high' : 
+    violation.confidence === 'medium' ? 'medium' : 'low';
 
   trace.push({
     step: step++,
     rule: 'CONFIDENCE_SCORED',
-    detail: 'Final confidence level',
-    value: confidence,
+    detail: 'Data accuracy confidence',
+    value: confidence.toUpperCase(),
   });
 
   return {
     finalFine,
-    isFineRange: finalFine === null && violation.penalty?.fineMinINR != null,
-    fineMin: violation.penalty?.fineMinINR ?? null,
-    fineMax: violation.penalty?.fineMaxINR ?? null,
+    isFineRange: finalFine === null && (fineMin !== null || fineMax !== null),
+    fineMin,
+    fineMax,
     imprisonmentRisk,
-    imprisonmentDetail,
-    licenceSuspension: violation.penalty?.licenceSuspension ?? null,
+    imprisonmentDetail: imprisonment?.text ?? null,
+    licenceSuspension: violation.penalty.licence_suspension,
     trace,
     confidence,
   };

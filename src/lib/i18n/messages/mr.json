@@ -1,0 +1,20 @@
+{
+  "nav.home": "होम",
+  "nav.calculator": "कैलक्युलेटर",
+  "nav.ask": "AI विचारा",
+  "nav.scan": "स्कॅन",
+  "nav.hotspots": "हॉटस्पॉट्स",
+  "nav.vault": "व्हॉल्ट",
+  "nav.experts": "तज्ज्ञ",
+  "nav.rights": "अधिकार",
+  "nav.portal": "पारदर्शकता",
+  "common.back": "मागे",
+  "common.next": "पुढील",
+  "common.submit": "सादर करा",
+  "common.loading": "लोड होत आहे...",
+  "common.verify": "सत्यापित करा",
+  "dashboard.health": "परवाना आरोग्य",
+  "dashboard.excellent": "उत्कृष्ट",
+  "dashboard.caution": "सावधान",
+  "dashboard.at_risk": "धोक्यात"
+}

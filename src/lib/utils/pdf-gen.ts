@@ -6,12 +6,13 @@ interface DisputeData {
   date?: string | null;
   amountCharged: number;
   section?: string | null;
+  destination: string; // Pre-filled or manual RTO/PS address
   match: QueryResult["results"][0];
+  signatureDataUrl?: string | null; // Optional digital signature image
 }
 
 /**
  * Generates a professional legal dispute draft PDF using jsPDF.
- * Follows the user's requirement for a restrained, professional header.
  */
 export function generateDisputePDF(data: DisputeData) {
   const doc = new jsPDF();
@@ -47,10 +48,10 @@ export function generateDisputePDF(data: DisputeData) {
   doc.text("To,", margin, y);
   y += 6;
   doc.setFont("helvetica", "normal");
-  doc.text("The Traffic Police Department / Concerned Authority,", margin, y);
-  y += 6;
-  doc.text("Jurisdiction Area,", margin, y);
-  y += 6;
+  const destLines = doc.splitTextToSize(data.destination || "The Concerned Traffic Authority", 100);
+  doc.text(destLines, margin, y);
+  
+  y += (destLines.length * 6) + 6;
   doc.text("Subject: Formal request for rectification of incorrectly charged challan.", margin, y);
 
   y += 15;
@@ -69,15 +70,29 @@ I request you to verify the records and rectify the amount as per the authorized
   doc.text("Looking forward to your favorable response.", margin, y);
   y += 15;
   doc.text("Sincerely,", margin, y);
-  y += 15;
-  doc.line(margin, y, 70, y);
-  y += 6;
+  
+  y += 5;
+  if (data.signatureDataUrl) {
+    try {
+      // Embed signature image if provided
+      doc.addImage(data.signatureDataUrl, "PNG", margin, y, 50, 15);
+      y += 18;
+    } catch (e) {
+      y += 15;
+    }
+  } else {
+    y += 15;
+    doc.line(margin, y, 70, y);
+    y += 6;
+  }
+  
   doc.text("(Full Name & Signature)", margin, y);
 
   // Footer / Disclaimer
   doc.setFontSize(8);
   doc.setTextColor(180, 180, 180);
-  doc.text("This document is a computer-generated draft provided by DriveLegal for informational purposes.", margin, 280);
+  doc.text("This document is a computer-generated draft provided by DriveLegal for informational purposes.", margin, 275);
+  doc.text("It includes a captured image of a handwritten signature (optional).", margin, 280);
   doc.text("It does not constitute formal legal representation. Users should verify local rules before submission.", margin, 285);
 
   doc.save(`DriveLegal_Dispute_${data.challanNumber || "Draft"}.pdf`);

@@ -5,33 +5,46 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "generate-checksums": "tsx tools/generate-checksums.ts",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
     "@google/genai": "^1.50.1",
+    "@supabase/auth-helpers-nextjs": "^0.15.0",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.104.0",
+    "@types/leaflet": "^1.9.21",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
-    "firebase": "^12.12.0",
+    "framer-motion": "^12.38.0",
+    "fuse.js": "^7.3.0",
+    "groq-sdk": "^1.1.2",
+    "idb": "^8.0.3",
     "jspdf": "^4.2.1",
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-leaflet": "^5.0.0",
     "react-markdown": "^10.1.0",
+    "recharts": "^3.8.1",
     "tailwind-merge": "^3.5.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.39",
+    "@types/pdf-parse": "^1.1.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
     "tailwindcss": "^4",
     "tsx": "^4.21.0",
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }

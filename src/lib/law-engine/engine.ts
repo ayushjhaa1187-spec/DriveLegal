@@ -14,6 +14,7 @@ import type {
   ResolvedFine,
   ResolvedViolation,
 } from "./types";
+import { computeFineWithTrace } from "./decision-table";
 
 // ─── Fine Resolution ──────────────────────────────────────────────────────────
 
@@ -137,6 +138,7 @@ function buildResult(
       excerpt: violation.source_text_excerpt,
       lastVerified: violation.last_verified,
     },
+    fineDecision: computeFineWithTrace(violation, params),
   };
 }
 

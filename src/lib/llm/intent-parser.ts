@@ -1,6 +1,8 @@
 import { routeLLMRequest } from "./router";
-import { INTENT_PARSER_SYSTEM_PROMPT } from "./prompts";
-import type { ParsedIntent } from "@/types/llm";
+import { INTENT_PARSER_SYSTEM_PROMPT } from "../prompts";
+import type { ParsedIntent } from "../../types/llm";
+import { IntentSchema } from "./schema";
+import { assertNoFineOutput, sanitizeIntent } from "./guardrails";
 
 export async function parseUserIntent(query: string): Promise<ParsedIntent> {
   try {
@@ -12,17 +14,28 @@ export async function parseUserIntent(query: string): Promise<ParsedIntent> {
       jsonMode: true,
     });
 
-    const parsed = JSON.parse(response.content);
+    // 1. Guardrail check against text hallucinations (fines/amounts)
+    assertNoFineOutput(response.content);
+
+    const rawParsed = JSON.parse(response.content);
+    
+    // 2. Schema validation
+    const validated = sanitizeIntent(rawParsed);
+
+    if (!validated) {
+      throw new Error("Validation failed");
+    }
 
     return {
-      violations: Array.isArray(parsed.violations) ? parsed.violations : [],
-      state: parsed.state ?? null,
-      vehicleType: parsed.vehicleType ?? null,
-      isRepeatOffender: parsed.isRepeatOffender ?? false,
+      violations: validated.category ? [validated.category] : [],
+      state: validated.stateCode,
+      vehicleType: validated.vehicleType,
+      isRepeatOffender: validated.isRepeatOffender,
       rawQuery: query,
-      confidence: parsed.confidence ?? 0.5,
+      confidence: 0.9, // Model with schema validation is high-confidence
     };
-  } catch {
+  } catch (err) {
+    console.error("AI Intent Parse Error:", err);
     return fallbackKeywordParse(query);
   }
 }
@@ -36,15 +49,15 @@ function fallbackKeywordParse(query: string): ParsedIntent {
     "seat belt": "seatbelt",
     seatbelt: "seatbelt",
     speed: "speed",
-    drunk: "drunk_driving",
-    alcohol: "drunk_driving",
-    signal: "signal",
-    "red light": "signal",
+    drunk: "intoxication",
+    alcohol: "intoxication",
+    signal: "signal_violation",
+    "red light": "signal_violation",
     parking: "parking",
-    mobile: "mobile_phone",
-    phone: "mobile_phone",
-    license: "license",
-    licence: "license",
+    mobile: "mobile_use",
+    phone: "mobile_use",
+    license: "licence",
+    licence: "licence",
     insurance: "insurance",
     pollution: "pollution",
     overload: "overloading",

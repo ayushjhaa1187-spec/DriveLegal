@@ -94,3 +94,115 @@ function validateAndNormalize(raw: Record<string, unknown>): StructuredIntent {
 
   return { category, stateCode, vehicleType };
 }
+
+/**
+ * Generic LLM call for router - uses Gemini 1.5 Flash
+ */
+export async function callGemini(
+  systemPrompt: string,
+  userMessage: string,
+  options: { temperature?: number; maxTokens?: number; jsonMode?: boolean } = {}
+): Promise<any> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GEMINI_API_KEY is not set");
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+  const body = {
+    system_instruction: { parts: [{ text: systemPrompt }] },
+    contents: [{ role: "user", parts: [{ text: userMessage }] }, { role: "model", parts: [{ text: "" }] }],
+    generationConfig: {
+      responseMimeType: options.jsonMode ? "application/json" : "text/plain",
+      temperature: options.temperature ?? 0.7,
+      maxOutputTokens: options.maxTokens ?? 2048,
+    },
+  };
+
+  // Adjust contents to fix gemini API specific message structure if needed
+  // Note: Gemini 1.5 Flash supports system_instruction
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+       system_instruction: { parts: [{ text: systemPrompt }] },
+       contents: [{ role: "user", parts: [{ text: userMessage }] }],
+       generationConfig: body.generationConfig
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Gemini ${res.status}: ${err}`);
+  }
+
+  const data = await res.json();
+  const content = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
+
+  return {
+    content,
+    provider: "gemini",
+    tokensUsed: data?.usageMetadata?.totalTokenCount ?? 0,
+    cached: false,
+  };
+}
+
+/**
+ * Gemini Vision for document OCR and image analysis.
+ * Supports both base64 inlineData and potentially image URLs.
+ */
+export async function callGeminiVision(
+  systemPrompt: string,
+  userMessage: string,
+  images: any, // Can be { inlineData: { data, mimeType } } or string[]
+  options: { temperature?: number; maxTokens?: number } = {}
+): Promise<any> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GEMINI_API_KEY is not set");
+
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+  // Prepare parts
+  const parts: any[] = [{ text: userMessage }];
+  
+  if (images && images.inlineData) {
+    parts.push(images);
+  } else if (Array.isArray(images)) {
+    images.forEach(url => {
+      // Note: Gemini API standard multimodal expects inlineData for images usually in REST
+      // but some versions support fileData. For local base64 we use inlineData.
+      // If we only have URLs, we'd need to fetch them first or use fileData if hosted.
+      console.warn("URL-based images in Gemini REST require pre-fetching to base64.");
+    });
+  }
+
+  const body = {
+    system_instruction: { parts: [{ text: systemPrompt }] },
+    contents: [{ role: "user", parts }],
+    generationConfig: {
+      responseMimeType: "application/json",
+      temperature: options.temperature ?? 0,
+      maxOutputTokens: options.maxTokens ?? 2048,
+    },
+  };
+
+  const res = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Gemini Vision ${res.status}: ${err}`);
+  }
+
+  const data = await res.json();
+  const content = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
+
+  return {
+    content,
+    provider: "gemini",
+    tokensUsed: data?.usageMetadata?.totalTokenCount ?? 0,
+    cached: false,
+  };
+}

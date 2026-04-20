@@ -1,4 +1,5 @@
 import type { Violation } from "./schema";
+import type { FineDecision } from "./decision-table";
 
 // ─── Input ────────────────────────────────────────────────────────────────────
 
@@ -62,6 +63,8 @@ export interface ResolvedViolation {
     excerpt: string;
     lastVerified: string;
   };
+  /** Full logic trace and decision details */
+  fineDecision?: FineDecision;
 }
 
 export interface QueryResult {

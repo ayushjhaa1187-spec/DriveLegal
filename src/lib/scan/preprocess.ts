@@ -1,75 +1,55 @@
-// Phase 12.1 — Client-Side Image Preprocessing for OCR
-// Contrast enhancement + resize + orientation detection
+/**
+ * P12.1 — Browser-side image preprocessing for OCR stability.
+ * Uses Canvas API to enhance contrast and resize images.
+ */
 
-export interface PreprocessResult {
-  blob: Blob;
-  width: number;
-  height: number;
-  wasRotated: boolean;
-  wasEnhanced: boolean;
-}
+export async function preprocessImage(imgSource: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      let width = img.width;
+      let height = img.height;
 
-export async function preprocessChallanImage(
-  file: File,
-): Promise<PreprocessResult> {
-  const bitmap = await createImageBitmap(file);
+      // Max dimension check for Gemini Vision efficiency
+      const MAX_DIM = 1600;
+      if (width > height) {
+        if (width > MAX_DIM) {
+          height *= MAX_DIM / width;
+          width = MAX_DIM;
+        }
+      } else {
+        if (height > MAX_DIM) {
+          width *= MAX_DIM / height;
+          height = MAX_DIM;
+        }
+      }
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d')!;
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return reject("Could not get context");
 
-  // Auto-orient
-  canvas.width = bitmap.width;
-  canvas.height = bitmap.height;
-  ctx.drawImage(bitmap, 0, 0);
+      // Draw original
+      ctx.drawImage(img, 0, 0, width, height);
 
-  // Enhance contrast for OCR accuracy
-  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  const enhanced = enhanceContrast(imageData, 1.5);
-  ctx.putImageData(enhanced, 0, 0);
+      // Simple contrast enhancement
+      const imageData = ctx.getImageData(0, 0, width, height);
+      const data = imageData.data;
+      const contrast = 1.2; // Increase contrast by 20%
+      const intercept = 128 * (1 - contrast);
 
-  // Resize if too large (max 1200px wide)
-  if (canvas.width > 1200) {
-    const ratio = 1200 / canvas.width;
-    const finalCanvas = document.createElement('canvas');
-    finalCanvas.width = 1200;
-    finalCanvas.height = Math.round(canvas.height * ratio);
-    const finalCtx = finalCanvas.getContext('2d')!;
-    finalCtx.drawImage(canvas, 0, 0, finalCanvas.width, finalCanvas.height);
+      for (let i = 0; i < data.length; i += 4) {
+        data[i] = data[i] * contrast + intercept;     // R
+        data[i + 1] = data[i + 1] * contrast + intercept; // G
+        data[i + 2] = data[i + 2] * contrast + intercept; // B
+      }
+      ctx.putImageData(imageData, 0, 0);
 
-    const blob = await new Promise<Blob>((res) =>
-      finalCanvas.toBlob((b) => res(b!), 'image/jpeg', 0.92),
-    );
-    return {
-      blob,
-      width: finalCanvas.width,
-      height: finalCanvas.height,
-      wasRotated: false,
-      wasEnhanced: true,
+      resolve(canvas.toDataURL("image/jpeg", 0.85));
     };
-  }
-
-  const blob = await new Promise<Blob>((res) =>
-    canvas.toBlob((b) => res(b!), 'image/jpeg', 0.92),
-  );
-  return {
-    blob,
-    width: canvas.width,
-    height: canvas.height,
-    wasRotated: false,
-    wasEnhanced: true,
-  };
-}
-
-function enhanceContrast(imageData: ImageData, factor: number): ImageData {
-  const data = imageData.data;
-  for (let i = 0; i < data.length; i += 4) {
-    data[i] = clamp((data[i] - 128) * factor + 128);
-    data[i + 1] = clamp((data[i + 1] - 128) * factor + 128);
-    data[i + 2] = clamp((data[i + 2] - 128) * factor + 128);
-  }
-  return imageData;
-}
-
-function clamp(value: number): number {
-  return Math.min(255, Math.max(0, Math.round(value)));
+    img.onerror = reject;
+    img.src = imgSource;
+  });
 }
