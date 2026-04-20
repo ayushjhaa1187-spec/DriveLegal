@@ -1,274 +1,221 @@
-/**
- * scripts/state-docs/extract-overrides.ts
- *
- * Step D of the state-docs pipeline:
- * Parses relevant pages from section_index.json using regex heuristics
- * to extract structured compounding/fine override rows.
- *
- * For LLM-assisted extraction, this module prepares prompts and parses
- * the structured JSON response. LLM call is optional (requires OPENAI_API_KEY
- * or ANTHROPIC_API_KEY env var).
- *
- * Produces: data/extracted/state-docs/<STATE>/<docId>/overrides.json
- *
- * Run:
- *   npx tsx scripts/state-docs/extract-overrides.ts --state=MH --doc=MH-2026-04-20-abc123
- *   npx tsx scripts/state-docs/extract-overrides.ts --state=MH --doc=... --llm
- */
+import fs from "fs";
+import path from "path";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
-import fs from "node:fs/promises";
-import path from "node:path";
+// ---------------------------------------------------------------------------
+// extract-overrides.ts  (Gemini edition)
+// Step D of the state-docs pipeline.
+// Reads sections.json + raw.txt for a doc, runs regex first, then falls back
+// to Gemini 1.5 Flash for unstructured/messy pages.
+//
+// Usage:
+//   npx tsx scripts/state-docs/extract-overrides.ts --state=MH --doc=MH-compounding-2022
+//
+// Requires: GEMINI_API_KEY in env (free at aistudio.google.com)
+// ---------------------------------------------------------------------------
 
-const ROOT = process.cwd();
-const EXTRACTED_DIR = path.join(ROOT, "data/extracted/state-docs");
+const GEMINI_MODEL = "gemini-1.5-flash";
 
-export type OverrideRow = {
-  state_code: string;
-  section: string | null;
-  rule_reference: string | null;
-  title_en: string;
-  override_type: "compounding_amount" | "penalty" | "other";
-  amount_inr: number | null;
-  applies_to: string[];
-  effective_date: string | null;
-  source_page: number;
+interface Override {
+  offense_code?: string;
+  offense_description: string;
+  section: string;
+  compounding_amount?: number | null;
+  fine_min?: number | null;
+  fine_max?: number | null;
+  unit?: string;
+  source_url: string;
+  source_page?: number;
   source_text_excerpt: string;
   confidence: "high" | "medium" | "low";
-  notes: string[];
-};
-
-export type OverridesFile = {
-  doc: {
-    doc_id: string;
-    state_code: string;
-    document_type: string;
-    source_url: string;
-    retrieved_at: string;
-    sha256: string;
-  };
-  extraction_method: "regex" | "llm" | "hybrid";
-  extracted_at: string;
-  state_overrides: OverrideRow[];
-};
-
-// ---- Regex-based heuristic extraction (no LLM) ------------------------------
-
-// Pattern: Section 194D ... Rs. 500 / \u20b9500
-const SECTION_AMOUNT_PATTERN =
-  /(?:section|sec\.?)\s*(\d+[A-Z]?(?:-[A-Z]?)?).*?(?:rs\.?|\u20b9)\s*([\d,]+)/gi;
-
-// Pattern: standalone amount lines in tables: "500", "1,000", "10000"
-const TABLE_AMOUNT_PATTERN = /^\s*(\d{1,2}[.,]?\d{3,5})\s*$/gm;
-
-// Vehicle type hints
-function inferAppliesTo(text: string): string[] {
-  const lower = text.toLowerCase();
-  const types: string[] = [];
-  if (lower.match(/two.?wheel|2w|motor.?cycle|scooter/)) types.push("2W");
-  if (lower.match(/four.?wheel|4w|car|lmv/)) types.push("4W");
-  if (lower.match(/heavy|hmv|truck|lorry|bus/)) types.push("HMV");
-  if (lower.match(/three.?wheel|3w|auto/)) types.push("3W");
-  return types.length ? types : ["all"];
 }
 
-function extractSectionFromText(text: string): string | null {
-  const m = text.match(/(?:section|sec\.?)\s*(\d+[A-Z]?(?:\([a-z]\))?)/i);
-  return m ? `Section ${m[1]}` : null;
+interface SectionHit {
+  page: number;
+  section_refs: string[];
+  keyword_hits: string[];
+  text_snippet: string;
 }
 
-function parseAmountString(s: string): number | null {
-  const cleaned = s.replace(/,/g, "").trim();
-  const n = parseInt(cleaned, 10);
-  return isNaN(n) ? null : n;
-}
+// ---------------------------------------------------------------------------
+// Regex-based extraction (fast, no API cost)
+// ---------------------------------------------------------------------------
+const AMOUNT_RE = /(?:Rs\.?|INR|\u20b9)\s*(\d[\d,]*)/gi;
+const SECTION_RE = /[Ss]ection\s*(\d+[A-Z]?(?:\(\d+\))?(?:\/\d+[A-Z]?)*)/g;
+const ROW_RE =
+  /([A-Z][\w\s/()-]{5,60})\s+(?:Rs\.?|\u20b9|INR)?\s*(\d[\d,]*)\s*(?:\/|to|-)?\s*(\d[\d,]*)?/gi;
 
-async function extractWithRegex(
-  stateCode: string,
-  docId: string,
-  relevantPages: number[]
-): Promise<OverrideRow[]> {
-  const pagesTextPath = path.join(EXTRACTED_DIR, stateCode, docId, "pages_text.json");
-  const raw = JSON.parse(await fs.readFile(pagesTextPath, "utf-8"));
-  const pages = raw.pages as Array<{ page_number: number; text: string }>;
+function extractByRegex(text: string, sourceUrl: string, page: number): Override[] {
+  const results: Override[] = [];
+  let match: RegExpExecArray | null;
 
-  const relevantSet = new Set(relevantPages);
-  const rows: OverrideRow[] = [];
+  ROW_RE.lastIndex = 0;
+  while ((match = ROW_RE.exec(text)) !== null) {
+    const desc = match[1].trim();
+    const amt1 = parseInt(match[2].replace(/,/g, ""), 10);
+    const amt2 = match[3] ? parseInt(match[3].replace(/,/g, ""), 10) : undefined;
 
-  for (const page of pages) {
-    if (!relevantSet.has(page.page_number)) continue;
+    // Find section reference near this match
+    const nearby = text.slice(Math.max(0, match.index - 100), match.index + 200);
+    SECTION_RE.lastIndex = 0;
+    const secMatch = SECTION_RE.exec(nearby);
+    const section = secMatch ? `Section ${secMatch[1]}` : "Unknown";
 
-    const text = page.text;
-    let match: RegExpExecArray | null;
+    if (desc.length < 8 || amt1 < 100 || amt1 > 50000) continue;
 
-    // Reset regex
-    SECTION_AMOUNT_PATTERN.lastIndex = 0;
-
-    while ((match = SECTION_AMOUNT_PATTERN.exec(text)) !== null) {
-      const sectionNum = match[1];
-      const amountStr = match[2];
-      const amount = parseAmountString(amountStr);
-
-      // Extract surrounding context (up to 200 chars)
-      const start = Math.max(0, match.index - 40);
-      const end = Math.min(text.length, match.index + match[0].length + 80);
-      const excerpt = text.slice(start, end).replace(/\s+/g, " ").trim();
-
-      if (amount !== null && amount >= 100 && amount <= 200000) {
-        rows.push({
-          state_code: stateCode,
-          section: `Section ${sectionNum}`,
-          rule_reference: null,
-          title_en: `Section ${sectionNum} violation`,
-          override_type: "compounding_amount",
-          amount_inr: amount,
-          applies_to: inferAppliesTo(excerpt),
-          effective_date: null,
-          source_page: page.page_number,
-          source_text_excerpt: excerpt,
-          confidence: "medium",
-          notes: ["Extracted by regex heuristic — verify manually"]
-        });
-      }
-    }
+    results.push({
+      offense_description: desc,
+      section,
+      compounding_amount: amt2 ? undefined : amt1,
+      fine_min: amt2 ? amt1 : undefined,
+      fine_max: amt2 ?? undefined,
+      source_url: sourceUrl,
+      source_page: page,
+      source_text_excerpt: match[0].trim().slice(0, 200),
+      confidence: "medium",
+    });
   }
-
-  return rows;
+  return results;
 }
 
-// ---- LLM prompt builder (for use with OpenAI / Anthropic / Gemini) ----------
+// ---------------------------------------------------------------------------
+// Gemini-based extraction (for messy / OCR / dense narrative pages)
+// ---------------------------------------------------------------------------
+async function extractByGemini(
+  pageText: string,
+  sourceUrl: string,
+  page: number,
+  apiKey: string
+): Promise<Override[]> {
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: GEMINI_MODEL });
 
-export function buildExtractionPrompt(pageTexts: string[], stateCode: string): string {
-  return `You are a legal data extraction assistant for Indian traffic law.
+  const prompt = `You are a legal data extraction assistant for Indian Motor Vehicles Act documents.
 
-Extract ALL compounding fee / fine / penalty rows from the following pages of a state government PDF document for state: ${stateCode}.
+Extract ALL compounding fees and fine amounts from the text below.
+Output ONLY a valid JSON array. No explanation, no markdown, no code fences.
 
-For each row, output a JSON object with these exact fields:
-- section: string | null (e.g. "Section 194D", "Rule 138")
-- rule_reference: string | null
-- title_en: string (brief English description of the offence)
-- override_type: "compounding_amount" | "penalty" | "other"
-- amount_inr: number | null (the rupee amount as an integer)
-- applies_to: string[] (e.g. ["2W", "4W", "HMV", "all"])
-- effective_date: string | null (ISO date if mentioned)
-- source_page: number
-- source_text_excerpt: string (exact 1-3 sentence excerpt from source)
+Each object must have exactly these fields:
+- offense_description: string (what the offense is)
+- section: string (e.g. "Section 177" or "Unknown")
+- compounding_amount: number or null (single fixed fee in INR)
+- fine_min: number or null
+- fine_max: number or null
+- source_text_excerpt: string (the exact text fragment you found this in, max 150 chars)
 - confidence: "high" | "medium" | "low"
-- notes: string[] (any caveats, conflicts, or ambiguities)
 
 Rules:
-1. NEVER invent amounts. If unclear, set amount_inr: null and confidence: "low"
-2. If two amounts appear for same section, output BOTH rows with a conflict note
-3. Preserve the source_text_excerpt exactly as it appears in the document
-4. Only output rows for compounding/fine/penalty amounts — skip all other content
-5. Output ONLY a JSON array — no prose, no markdown
+- NEVER invent amounts. If not found, use null.
+- If a range like "500-1000" is given, use fine_min=500, fine_max=1000, compounding_amount=null.
+- If a single amount like "1000" is given, use compounding_amount=1000.
+- confidence is "high" if exact table row found, "medium" if inferred from text.
 
-Document pages:
-${pageTexts.map((t, i) => `--- Page ${i + 1} ---\n${t}`).join("\n\n")}
+TEXT:
+${pageText.slice(0, 6000)}
 
-Output JSON array:`;
+JSON array:`;
+
+  try {
+    const result = await model.generateContent(prompt);
+    const raw = result.response.text().trim();
+
+    // Strip any accidental markdown fences
+    const cleaned = raw.replace(/^```[\w]*\n?/m, "").replace(/```$/m, "").trim();
+    const parsed: Omit<Override, "source_url" | "source_page">[] = JSON.parse(cleaned);
+
+    return parsed.map((r) => ({
+      ...r,
+      source_url: sourceUrl,
+      source_page: page,
+    }));
+  } catch (err) {
+    console.warn(`  [gemini] Failed to parse response for page ${page}:`, (err as Error).message);
+    return [];
+  }
 }
 
-// ---- Main extraction function -----------------------------------------------
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+async function run() {
+  const stateArg = process.argv.find((a) => a.startsWith("--state="))?.split("=")[1];
+  const docArg = process.argv.find((a) => a.startsWith("--doc="))?.split("=")[1];
+  const useLLM = process.argv.includes("--llm");
 
-export async function extractOverrides(
-  stateCode: string,
-  docId: string,
-  opts: { useLlm?: boolean } = {}
-): Promise<OverridesFile> {
-  const docFolder = path.join(EXTRACTED_DIR, stateCode, docId);
-  const metaPath = path.join(docFolder, "doc_meta.json");
-  const indexPath = path.join(docFolder, "section_index.json");
-
-  const meta = JSON.parse(await fs.readFile(metaPath, "utf-8"));
-  const index = JSON.parse(await fs.readFile(indexPath, "utf-8"));
-
-  const relevantPages: number[] = index.relevant_pages ?? [];
-  let rows: OverrideRow[] = [];
-  let method: "regex" | "llm" | "hybrid" = "regex";
-
-  if (opts.useLlm && process.env.ANTHROPIC_API_KEY) {
-    // LLM path — reads page texts and calls API
-    const pagesTextPath = path.join(docFolder, "pages_text.json");
-    const raw = JSON.parse(await fs.readFile(pagesTextPath, "utf-8"));
-    const pages = raw.pages as Array<{ page_number: number; text: string }>;
-    const relevantSet = new Set(relevantPages);
-    const relevantTexts = pages
-      .filter(p => relevantSet.has(p.page_number))
-      .map(p => p.text);
-
-    const prompt = buildExtractionPrompt(relevantTexts, stateCode);
-
-    // Batch in groups of 10 pages to stay within token limits
-    const BATCH = 10;
-    for (let i = 0; i < relevantTexts.length; i += BATCH) {
-      const batch = relevantTexts.slice(i, i + BATCH);
-      const batchPrompt = buildExtractionPrompt(batch, stateCode);
-
-      try {
-        // Dynamic import to avoid hard dependency
-        const Anthropic = (await import("@anthropic-ai/sdk")).default;
-        const client = new Anthropic();
-        const response = await client.messages.create({
-          model: "claude-opus-4-5",
-          max_tokens: 4096,
-          messages: [{ role: "user", content: batchPrompt }]
-        });
-        const content = response.content[0];
-        if (content.type === "text") {
-          const parsed = JSON.parse(content.text) as OverrideRow[];
-          rows.push(...parsed.map(r => ({ ...r, state_code: stateCode })));
-        }
-      } catch (err) {
-        console.error(`LLM extraction failed for batch ${i}: ${err}. Falling back to regex.`);
-        const fallback = await extractWithRegex(stateCode, docId, relevantPages);
-        rows.push(...fallback);
-        break;
-      }
-    }
-    method = "llm";
-  } else {
-    rows = await extractWithRegex(stateCode, docId, relevantPages);
-    method = "regex";
+  if (!stateArg || !docArg) {
+    console.error("Usage: npx tsx extract-overrides.ts --state=MH --doc=MH-compounding-2022 [--llm]");
+    process.exit(1);
   }
 
-  const overridesFile: OverridesFile = {
-    doc: {
-      doc_id: meta.doc_id,
-      state_code: stateCode,
-      document_type: meta.document_type_hint ?? "other",
-      source_url: meta.source_url,
-      retrieved_at: meta.retrieved_at,
-      sha256: meta.sha256
-    },
-    extraction_method: method,
-    extracted_at: new Date().toISOString(),
-    state_overrides: rows
+  const apiKey = process.env.GEMINI_API_KEY ?? "";
+  if (useLLM && !apiKey) {
+    console.error("GEMINI_API_KEY env var not set. Get a free key at aistudio.google.com");
+    process.exit(1);
+  }
+
+  const docDir = path.join(process.cwd(), "data", "extracted", "state-docs", stateArg, docArg);
+  const rawTxtPath = path.join(docDir, "raw.txt");
+  const sectionsPath = path.join(docDir, "sections.json");
+  const outPath = path.join(docDir, "overrides_raw.json");
+
+  if (!fs.existsSync(rawTxtPath)) {
+    console.error(`raw.txt not found at ${rawTxtPath}. Run pdf-text.ts first.`);
+    process.exit(1);
+  }
+
+  const rawText = fs.readFileSync(rawTxtPath, "utf-8");
+  const pages = rawText.split("\n--- PAGE ").slice(1);
+
+  // Find relevant pages from sections.json if it exists
+  let relevantPages: number[] = [];
+  if (fs.existsSync(sectionsPath)) {
+    const sections: SectionHit[] = JSON.parse(fs.readFileSync(sectionsPath, "utf-8"));
+    relevantPages = sections.map((s) => s.page);
+    console.log(`  [info] Using ${relevantPages.length} relevant pages from sections.json`);
+  } else {
+    relevantPages = pages.map((_, i) => i + 1);
+    console.log(`  [info] No sections.json found, scanning all ${pages.length} pages`);
+  }
+
+  // Read source_url from registry
+  const registryPath = path.join(process.cwd(), "data", "sources", "state_docs_registry.json");
+  const registry = JSON.parse(fs.readFileSync(registryPath, "utf-8"));
+  const allDocs: { doc_id: string; source_url: string }[] = Object.values(registry.IN).flat() as any;
+  const docMeta = allDocs.find((d: any) => d.doc_id === docArg);
+  const sourceUrl = docMeta?.source_url ?? "unknown";
+
+  const allOverrides: Override[] = [];
+
+  for (const pageNum of relevantPages) {
+    const pageText = pages[pageNum - 1];
+    if (!pageText) continue;
+
+    console.log(`  [page ${pageNum}] Running regex extraction...`);
+    const regexResults = extractByRegex(pageText, sourceUrl, pageNum);
+    console.log(`    Found ${regexResults.length} rows via regex`);
+
+    if (regexResults.length > 0) {
+      allOverrides.push(...regexResults);
+    } else if (useLLM) {
+      console.log(`    Regex found nothing, falling back to Gemini...`);
+      const geminiResults = await extractByGemini(pageText, sourceUrl, pageNum, apiKey);
+      console.log(`    Found ${geminiResults.length} rows via Gemini`);
+      allOverrides.push(...geminiResults);
+    } else {
+      console.log(`    Regex found nothing. Re-run with --llm flag to use Gemini for this page.`);
+    }
+  }
+
+  const output = {
+    state_code: stateArg,
+    doc_id: docArg,
+    generated_at: new Date().toISOString(),
+    total_rows: allOverrides.length,
+    overrides: allOverrides,
   };
 
-  await fs.writeFile(
-    path.join(docFolder, "overrides.json"),
-    JSON.stringify(overridesFile, null, 2)
-  );
-
-  // Update meta
-  meta.extraction_status = "overrides_extracted";
-  meta.overrides_count = rows.length;
-  await fs.writeFile(metaPath, JSON.stringify(meta, null, 2));
-
-  console.log(`  [${docId}] Extracted ${rows.length} override rows (method: ${method})`);
-  return overridesFile;
+  fs.writeFileSync(outPath, JSON.stringify(output, null, 2));
+  console.log(`\nDone. ${allOverrides.length} overrides written to ${outPath}`);
 }
 
-// ---- CLI --------------------------------------------------------------------
-
-const args = process.argv.slice(2);
-const stateArg = args.find(a => a.startsWith("--state="))?.split("=")[1];
-const docArg = args.find(a => a.startsWith("--doc="))?.split("=")[1];
-const useLlm = args.includes("--llm");
-
-if (!stateArg || !docArg) {
-  console.error("Usage: npx tsx extract-overrides.ts --state=MH --doc=<docId> [--llm]");
-  process.exit(1);
-}
-
-extractOverrides(stateArg, docArg, { useLlm }).catch(e => { console.error(e); process.exit(1); });
+run();
