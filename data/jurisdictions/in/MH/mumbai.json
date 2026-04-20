@@ -1,0 +1,104 @@
+{
+  "jurisdiction": {
+    "id": "in-MH-mumbai",
+    "name": "Mumbai",
+    "state": "Maharashtra",
+    "stateCode": "MH",
+    "country": "IN",
+    "type": "metropolitan",
+    "coordinates": { "latitude": 19.0760, "longitude": 72.8777 }
+  },
+  "trafficAuthority": {
+    "name": "Mumbai Traffic Police",
+    "website": "https://www.mumbaitrafficpolice.gov.in",
+    "challanPortal": "https://echallan.parivahan.gov.in",
+    "headquarters": "Mumbai Police Commissioner's Office, Crawford Market, Mumbai - 400001",
+    "contacts": [
+      {
+        "type": "helpline",
+        "number": "103",
+        "description": "Traffic Police Helpline",
+        "available": "24x7"
+      },
+      {
+        "type": "control_room",
+        "number": "022-22694488",
+        "description": "Traffic Control Room",
+        "available": "24x7"
+      },
+      {
+        "type": "complaint",
+        "number": "022-24920111",
+        "description": "Traffic Complaints",
+        "available": "Mon-Sat 9am-6pm"
+      }
+    ]
+  },
+  "rto": [
+    {
+      "code": "MH-01",
+      "name": "RTO Mumbai Central",
+      "address": "Tardeo, Mumbai - 400034",
+      "phone": "022-23529901",
+      "email": "rto.mumbaicentral@mahaparivahan.in",
+      "hours": "Mon-Sat 10:00-17:30"
+    },
+    {
+      "code": "MH-02",
+      "name": "RTO Mumbai West",
+      "address": "Borivali West, Mumbai - 400092",
+      "phone": "022-28923901",
+      "email": "rto.mumbaiwest@mahaparivahan.in",
+      "hours": "Mon-Sat 10:00-17:30"
+    },
+    {
+      "code": "MH-03",
+      "name": "RTO Mumbai East",
+      "address": "Mulund East, Mumbai - 400081",
+      "phone": "022-25638901",
+      "email": "rto.mumbaieast@mahaparivahan.in",
+      "hours": "Mon-Sat 10:00-17:30"
+    }
+  ],
+  "courts": [
+    {
+      "name": "Motor Accident Claims Tribunal Mumbai",
+      "address": "City Civil Court, Dhobi Talao, Mumbai - 400001",
+      "phone": "022-22620990",
+      "jurisdiction": "Motor vehicle accident claims"
+    },
+    {
+      "name": "Metropolitan Magistrate Court (Traffic)",
+      "address": "Mazgaon, Mumbai - 400010",
+      "phone": "022-23774000",
+      "jurisdiction": "Traffic violations and challans"
+    }
+  ],
+  "speedLimits": {
+    "expressway": 120,
+    "nationalHighway": 100,
+    "urbanRoad": 50,
+    "schoolZone": 25,
+    "residential": 30,
+    "unit": "kmph"
+  },
+  "localRegulations": [
+    {
+      "id": "mh-no-honking",
+      "title": "No Honking Zones",
+      "description": "No honking within 100m of hospitals, courts, and schools",
+      "penalty": 1000
+    },
+    {
+      "id": "mh-odd-even",
+      "title": "High Court Parking Restriction",
+      "description": "No parking within 200m of High Court during court hours",
+      "penalty": 2000
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2025-01-01",
+    "version": "1.0.0",
+    "source": "Mumbai Traffic Police, MahaParivahan"
+  }
+}
