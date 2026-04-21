@@ -1,0 +1,241 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "name": "drivelegal",
+  "version": 2,
+
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      }
+    },
+    {
+      "src": "/sw.js",
+      "dest": "/sw.js",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/manifest.json",
+      "dest": "/manifest.json",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    },
+    {
+      "src": "/offline",
+      "dest": "/offline.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(self), geolocation=(self)"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/_next/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/data/(.*).json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=3600"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
+  ],
+
+  "rewrites": [
+    {
+      "source": "/api/ai/gemini/:path*",
+      "destination": "/api/ai/gemini/:path*"
+    },
+    {
+      "source": "/api/ai/groq/:path*",
+      "destination": "/api/ai/groq/:path*"
+    },
+    {
+      "source": "/api/violations/:path*",
+      "destination": "/api/violations/:path*"
+    },
+    {
+      "source": "/api/challan/:path*",
+      "destination": "/api/challan/:path*"
+    },
+    {
+      "source": "/calculator",
+      "destination": "/calculator"
+    },
+    {
+      "source": "/laws/:path*",
+      "destination": "/laws/:path*"
+    },
+    {
+      "source": "/rights/:path*",
+      "destination": "/rights/:path*"
+    },
+    {
+      "source": "/scan",
+      "destination": "/scan"
+    },
+    {
+      "source": "/chat",
+      "destination": "/chat"
+    },
+    {
+      "source": "/global/:path*",
+      "destination": "/global/:path*"
+    }
+  ],
+
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fine-calculator",
+      "destination": "/calculator",
+      "permanent": true
+    },
+    {
+      "source": "/challan-calculator",
+      "destination": "/calculator",
+      "permanent": true
+    },
+    {
+      "source": "/check-challan",
+      "destination": "/scan",
+      "permanent": true
+    },
+    {
+      "source": "/legal-help",
+      "destination": "/chat",
+      "permanent": true
+    }
+  ],
+
+  "env": {
+    "NEXT_PUBLIC_APP_NAME": "DriveLegal",
+    "NEXT_PUBLIC_APP_URL": "https://drivelegal.vercel.app",
+    "NEXT_PUBLIC_APP_VERSION": "1.0.0"
+  },
+
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_APP_NAME": "DriveLegal",
+      "NEXT_PUBLIC_APP_URL": "https://drivelegal.vercel.app",
+      "NEXT_PUBLIC_APP_VERSION": "1.0.0"
+    }
+  },
+
+  "functions": {
+    "api/ai/gemini/*.ts": {
+      "maxDuration": 30,
+      "memory": 512
+    },
+    "api/ai/groq/*.ts": {
+      "maxDuration": 30,
+      "memory": 512
+    },
+    "api/scan/*.ts": {
+      "maxDuration": 60,
+      "memory": 1024
+    },
+    "api/violations/*.ts": {
+      "maxDuration": 10,
+      "memory": 256
+    },
+    "api/challan/*.ts": {
+      "maxDuration": 10,
+      "memory": 256
+    }
+  },
+
+  "regions": ["bom1"],
+
+  "cleanUrls": true,
+  "trailingSlash": false
+}
