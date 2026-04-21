@@ -107,7 +107,7 @@ export default function ScanPage() {
         // Use the first violation for main summary (most common case is 1 violation per challan)
         const primaryExtracted = extracted.violations?.[0];
 
-        if (primaryExtracted || extracted.violation) {
+        if (primaryExtracted) {
           // MATCHING ALGORITHM V3 (Hardened)
           // Priority 1: Exact Section match
           let matched = centralLaws.find(v => 
@@ -121,7 +121,7 @@ export default function ScanPage() {
 
           // Priority 3: Fuzzy title match
           if (!matched) {
-            const searchText = (primaryExtracted?.description || extracted.violation || "").toLowerCase();
+            const searchText = (primaryExtracted?.description || "").toLowerCase();
             matched = centralLaws.find(v => 
               v.title.en.toLowerCase().includes(searchText) ||
               searchText.includes(v.title.en.toLowerCase())

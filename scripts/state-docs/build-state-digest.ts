@@ -97,8 +97,8 @@ async function buildDigest(stateCode: string): Promise<void> {
     .readdirSync(extractedBase)
     .filter((d) => fs.statSync(path.join(extractedBase, d)).isDirectory());
 
-  let allRows: Override[] = [];
-  let allConflicts: Override[] = [];
+  const allRows: Override[] = [];
+  const allConflicts: Override[] = [];
   let docsProcessed = 0;
 
   for (const docId of docDirs) {

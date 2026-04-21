@@ -60,7 +60,7 @@ export async function extractPdfText(
   const buf = await fs.readFile(pdfPath);
 
   const pages: PageText[] = [];
-  let pageIndex = 0;
+  const pageIndex = 0;
 
   // pdf-parse renders all pages into a single text string by default.
   // For per-page extraction, we use the pagerender callback.

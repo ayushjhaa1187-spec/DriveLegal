@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { callGeminiVision } from "../../../lib/llm/gemini";
 import { SCAN_EXTRACTION_SYSTEM_PROMPT } from "../../../lib/prompts";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 import { z } from "zod";
 
@@ -21,6 +21,7 @@ const ScanResultSchema = z.object({
   total_amount_inr: z.number().nullable().optional(),
   due_date: z.string().nullable().optional(),
   issuing_authority: z.string().nullable().optional(),
+  vehicleType: z.enum(["2W", "3W", "4W", "LMV", "HMV", "transport", "all"]).nullable().optional(),
   extraction_confidence: z.enum(["high", "medium", "low"]).optional(),
 });
 

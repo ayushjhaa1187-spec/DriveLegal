@@ -47,6 +47,7 @@ Extract these fields from the challan image:
 - total_amount_inr
 - due_date (ISO format)
 - issuing_authority
+- vehicleType (one of [2W, 3W, 4W, LMV, HMV, transport, all])
 
 Rules:
 1. Extract only what is clearly visible. Use null for unclear fields.

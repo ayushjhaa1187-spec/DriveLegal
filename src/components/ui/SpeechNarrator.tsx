@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { Volume2, VolumeX, Play, Pause } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { playFeedback } from "@/lib/utils/feedback";
+
 
 interface SpeechNarratorProps {
   text: string;

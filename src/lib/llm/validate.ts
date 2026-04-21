@@ -24,7 +24,7 @@ const VALID_VEHICLES = new Set<VehicleTypeInput>([
 
 export function validateGroqOutput(raw: Record<string, unknown>): StructuredIntent {
   const category = typeof raw.category === "string" && VALID_CATEGORIES.has(raw.category)
-    ? (raw.category as Violation["category"])
+    ? (raw.category as StructuredIntent["category"])
     : null;
   const stateCode = typeof raw.stateCode === "string" && VALID_STATES.has(raw.stateCode.toUpperCase())
     ? raw.stateCode.toUpperCase()

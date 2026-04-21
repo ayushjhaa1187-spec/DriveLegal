@@ -1,6 +1,40 @@
 import Fuse from "fuse.js";
-import { parseUserIntent, type StructuredIntent } from "./gemini";
+import { parseUserIntent, type StructuredIntent, callGemini } from "./gemini";
 import { dataLoader } from "@/lib/data/data-loader";
+import { callGroq } from "./groq";
+
+/**
+ * Universal LLM Router: Directs requests to available providers (Gemini/Groq).
+ */
+export async function routeLLMRequest(options: {
+  systemPrompt: string;
+  userMessage: string;
+  temperature?: number;
+  maxTokens?: number;
+  jsonMode?: boolean;
+}) {
+  // Logic: Prefer Gemini for complex logic, Groq for speed if needed.
+  // For now, default to Gemini with fallback to Groq if API key issues occur.
+  try {
+    return await callGemini(options.systemPrompt, options.userMessage, {
+      temperature: options.temperature,
+      maxTokens: options.maxTokens,
+      jsonMode: options.jsonMode,
+    });
+  } catch (err) {
+    console.warn("Gemini call failed, attempting Groq fallback:", err);
+    try {
+      return await callGroq(options.systemPrompt, options.userMessage, {
+        temperature: options.temperature,
+        maxTokens: options.maxTokens,
+        jsonMode: options.jsonMode,
+      });
+    } catch (groqErr) {
+      console.error("All LLM providers failed:", groqErr);
+      throw new Error("AI services currently unavailable.");
+    }
+  }
+}
 
 /**
  * Hybrid Router: Coordinates between LLM and Fuzzy Local Search.
@@ -70,3 +104,4 @@ async function fuzzyMatchIntent(query: string, stateCode: string): Promise<Struc
   }
   return null;
 }
+

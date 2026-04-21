@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { sendOTP, verifyOTP } from "@/lib/auth/otp";
 import { Button } from "@/components/ui/Button";
@@ -9,7 +9,7 @@ import { Shield, Smartphone, Lock, ArrowRight, CheckCircle2, AlertCircle } from 
 import { motion, AnimatePresence } from "framer-motion";
 import { animations } from "@/lib/animations";
 
-export default function AuthPage() {
+function AuthContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const nextTarget = searchParams.get("next") || "/dashboard";
@@ -225,3 +225,12 @@ export default function AuthPage() {
     </div>
   );
 }
+
+export default function AuthPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading Auth...</div>}>
+      <AuthContent />
+    </Suspense>
+  );
+}
+

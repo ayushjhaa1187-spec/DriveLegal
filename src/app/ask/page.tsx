@@ -14,7 +14,7 @@ import { Card } from "@/components/ui/Card";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { cn } from "@/lib/utils/cn";
 import { animations } from "@/lib/animations";
-import { WhatsAppShare } from "@/components/social/WhatsAppShare";
+import { WhatsAppShare } from "@/components/shared/WhatsAppShare";
 import { useOfflineStatus } from "@/hooks/useOfflineStatus";
 import { playFeedback } from "@/lib/utils/feedback";
 import { SpeechNarrator } from "@/components/ui/SpeechNarrator";
@@ -82,10 +82,10 @@ export default function AskPage() {
 
     try {
       let resolvedResults: ResolvedViolation[] = [];
-      let isOfflineMode = !isOnline;
+      const isOfflineMode = !isOnline;
 
       // 1. Resolve Intent via Hybrid Router (Gemini -> Fuse.js fallback)
-      const intent = await resolveIntent(q, isOnline, stateCode);
+      const intent = await resolveIntent(q, isOnline.isOnline, stateCode);
       
       if (intent) {
         const targetState = intent.stateCode?.toLowerCase() || stateCode;

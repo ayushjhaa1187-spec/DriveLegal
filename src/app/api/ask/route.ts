@@ -3,7 +3,7 @@ import { routeLLMRequest } from "../../../lib/llm/router";
 import { parseUserIntent } from "../../../lib/llm/intent-parser";
 import { RIGHTS_CHAT_SYSTEM_PROMPT } from "../../../lib/prompts";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function POST(request: NextRequest) {
   try {

@@ -31,7 +31,7 @@ async function seed() {
     let status = "correct";
     let overcharge_total_inr = 0;
     let charged_total_inr = 1000;
-    let legal_total_inr = 1000;
+    const legal_total_inr = 1000;
     
     if (rand > 0.7 && rand <= 0.9) {
       status = "overcharged";
