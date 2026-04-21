@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Shield body -->
+  <path d="M32 4 L56 14 L56 34 C56 47 44 57 32 60 C20 57 8 47 8 34 L8 14 Z" fill="#0B1A3A" stroke="#f59e0b" stroke-width="2.5"/>
+  <!-- Chakra wheel (24 spokes) -->
+  <circle cx="32" cy="34" r="10" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+  <circle cx="32" cy="34" r="2.5" fill="#f59e0b"/>
+  <line x1="32" y1="24" x2="32" y2="44" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="22" y1="34" x2="42" y2="34" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="25" y1="27" x2="39" y2="41" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="39" y1="27" x2="25" y2="41" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="23.5" y1="30.5" x2="40.5" y2="37.5" stroke="#f59e0b" stroke-width="0.8"/>
+  <line x1="23.5" y1="37.5" x2="40.5" y2="30.5" stroke="#f59e0b" stroke-width="0.8"/>
+  <line x1="28.5" y1="24.5" x2="35.5" y2="43.5" stroke="#f59e0b" stroke-width="0.8"/>
+  <line x1="35.5" y1="24.5" x2="28.5" y2="43.5" stroke="#f59e0b" stroke-width="0.8"/>
+  <!-- DL monogram -->
+  <text x="32" y="16" text-anchor="middle" font-family="Manrope,Arial,sans-serif" font-size="7" font-weight="800" fill="#f59e0b" letter-spacing="0.5">DL</text>
+</svg>
