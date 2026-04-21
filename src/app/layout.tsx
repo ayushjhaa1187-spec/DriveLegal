@@ -6,6 +6,8 @@ import { AuthProvider } from "@/components/AuthProvider";
 import { GlobalSearch } from "@/components/search/GlobalSearch";
 import { MobileBottomNav } from "@/components/nav/MobileBottomNav";
 import { AppShell } from "@/components/layout/AppShell";
+import { InitiativeHeader } from "@/components/layout/InitiativeHeader";
+import { AppBootSplash } from "@/components/shared/AppBootSplash";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -20,7 +22,7 @@ const mono = JetBrains_Mono({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a", // Slate 900
+  themeColor: "#0f172a",
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
@@ -73,13 +75,17 @@ export default function RootLayout({
       <body className="min-h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-amber-500/30">
         <AuthProvider>
           <PWARegistrar />
+          {/* Boot splash — rendered client-side, disappears after ~900ms */}
+          <AppBootSplash />
+          {/* Govt-style initiative header with tricolor strip */}
+          <InitiativeHeader />
           <AppShell>
             <div className="hidden md:block">
               <GlobalSearch />
             </div>
-            <div className="md:ml-4 flex-1">
+            <main id="main-content" className="md:ml-4 flex-1">
               {children}
-            </div>
+            </main>
             <MobileBottomNav />
           </AppShell>
         </AuthProvider>
