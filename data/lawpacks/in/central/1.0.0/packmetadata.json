@@ -3,7 +3,7 @@
   "packVersion": "1.0.0",
   "jurisdiction": "IN",
   "stateCode": null,
-  "publishedAt": "2026-01-01T00:00:00Z",
+  "publishedAt": "2026-04-21T04:52:48.093Z",
   "lastVerified": "2026-05-20",
   "sourceUrls": [
     "https://www.indiacode.nic.in/handle/123456789/13435",
@@ -13,5 +13,5 @@
   "coverageNotes": "All sections of MVA 2019 as amended",
   "maintainer": "DriveLegal Data Team",
   "schemaVersion": "2.0.0",
-  "hash": "sha256:abc123"
+  "hash": "82f69f305f6664faa232a89171e25dfc66406e77819f2ee5dd8f26803431ed7f"
 }

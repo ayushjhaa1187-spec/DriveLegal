@@ -38,7 +38,7 @@ export function MobileBottomNav() {
                 "p-1.5 rounded-xl transition-all duration-300",
                 isActive && "bg-brand-navy/5 dark:bg-white/10 scale-110"
               )}>
-                <Icon className={cn("h-5 w-5", isActive ? "stroke-[2.5]" : "stroke-[2]")} />
+                <Icon className={cn("h-5 w-5", isActive ? "stroke-[2.5]" : "stroke-[2]")} aria-hidden="true" />
               </div>
               <span className={cn(
                 "text-[10px] font-bold transition-all",

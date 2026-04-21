@@ -40,10 +40,10 @@ You are an OCR data extraction engine for traffic challans in India.
 Extract these fields from the challan image:
 - challan_number
 - date_of_offence (ISO format)
-- vehicle_number
+- vehicle_number (e.g. MH01-AB-1234)
 - officer_name
 - police_station
-- violations: array of { section, description, amount_charged_inr }
+- violations: array of { section, description, amount_charged_inr, category_id }
 - total_amount_inr
 - due_date (ISO format)
 - issuing_authority
@@ -52,18 +52,14 @@ Rules:
 1. Extract only what is clearly visible. Use null for unclear fields.
 2. For amounts, extract as integers (rupees only).
 3. Return STRICT JSON only.
+4. IMPORTANT: For category_id, map to one of [speed, safety, documentation, dangerous_driving, intoxication, helmet, seatbelt, insurance, licence, registration, overloading, juvenile, pollution, parking, signal_violation, mobile_use, vehicle_condition, permit, other].
 
-OUTPUT SCHEMA:
-{
-  "challan_number": "string or null",
-  "date_of_offence": "ISO date or null",
-  "vehicle_number": "string or null",
-  "officer_name": "string or null",
-  "police_station": "string or null",
-  "violations": [{ "section": "string or null", "description": "string", "amount_charged_inr": "integer or null" }],
-  "total_amount_inr": "integer or null",
-  "due_date": "ISO date or null",
-  "issuing_authority": "string or null",
-  "extraction_confidence": "high | medium | low"
+Example 1 (Overcharge Evidence):
+User uploads receipt showing 2000 for helmet.
+Output: {
+  "challan_number": "DL-56789",
+  "violations": [{ "section": "194D", "description": "Riding without helmet", "amount_charged_inr": 2000, "category_id": "helmet" }],
+  "total_amount_inr": 2000,
+  "extraction_confidence": "high"
 }
 `;

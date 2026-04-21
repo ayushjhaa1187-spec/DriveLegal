@@ -47,7 +47,7 @@
       "section": "Section 184",
       "title": { "en": "Dangerous Driving / Red Light Jump (TS)" },
       "plain_english_summary": "Penalties for jumping signals and dangerous maneuvers in Telangana cities.",
-      "category": "signal_jumping",
+      "category": "signal_violation",
       "severity": 5,
       "applies_to": ["all"],
       "jurisdiction": { "country": "IN", "state_code": "TS", "state_name": "Telangana" },

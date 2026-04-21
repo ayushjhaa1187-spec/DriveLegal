@@ -66,10 +66,11 @@ export function GlobalSearch() {
       <button
         onClick={() => setOpen(true)}
         className="hidden md:flex items-center gap-2 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-all text-xs"
+        aria-label="Open search"
       >
-        <Search className="h-3.5 w-3.5" />
+        <Search className="h-3.5 w-3.5" aria-hidden="true" />
         <span>Search anything...</span>
-        <kbd className="font-sans font-bold text-[10px] bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-zinc-800">
+        <kbd className="font-sans font-bold text-[10px] bg-white dark:bg-slate-900 px-1.5 py-0.5 rounded border border-slate-200 dark:border-zinc-800" aria-hidden="true">
           ⌘K
         </kbd>
       </button>
@@ -108,8 +109,9 @@ export function GlobalSearch() {
                 <button 
                   onClick={() => setOpen(false)}
                   className="p-1.5 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-xl transition-all"
+                  aria-label="Close search"
                 >
-                  <X className="h-4 w-4 text-slate-400" />
+                  <X className="h-4 w-4 text-slate-400" aria-hidden="true" />
                 </button>
               </div>
 

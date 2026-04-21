@@ -1,0 +1,40 @@
+{
+  "document_metadata": {
+    "source_document": "Global Traffic Regulations",
+    "document_type": "central_act",
+    "jurisdiction": "USA",
+    "language": "en",
+    "extraction_timestamp": "2026-04-21T05:21:02.075Z"
+  },
+  "violations": [
+    {
+      "id": "USA::Speeding::11-20-over",
+      "section": "Speeding 11-20",
+      "title": {
+        "en": "Speeding (11-20 mph over)"
+      },
+      "plain_english_summary": "Driving between 11 and 20 miles per hour over the posted limit.",
+      "category": "speed",
+      "severity": 4,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "USA",
+        "state_code": "NY",
+        "state_name": "New York"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "min": 90,
+            "max": 300,
+            "currency": "USD"
+          }
+        }
+      },
+      "source_document": "NY Traffic Law",
+      "last_verified": "2024-04-21"
+    }
+  ]
+}

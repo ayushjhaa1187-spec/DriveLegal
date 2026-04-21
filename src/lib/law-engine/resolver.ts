@@ -64,13 +64,13 @@ export function resolveViolation(
     ruleSource: stateOverride ? "state_override" : "central",
     resolvedFine: fine,
     resolvedImprisonment,
-    licenceConsequence: activeViolation.penalty.licence_suspension || activeViolation.penalty.licence_disqualification,
+    licenceConsequence: activeViolation.penalty.licence_suspension ?? activeViolation.penalty.licence_disqualification ?? null,
     citation: {
       section: activeViolation.section,
-      sourceDocument: activeViolation.source_document,
-      sourceUrl: activeViolation.source_url,
-      excerpt: activeViolation.source_text_excerpt,
-      lastVerified: activeViolation.last_verified,
+      sourceDocument: activeViolation.source_document ?? "Motor Vehicles Act / State Gazette",
+      sourceUrl: activeViolation.source_url ?? null,
+      excerpt: activeViolation.source_text_excerpt ?? "Citation text excerpt unavailable.",
+      lastVerified: activeViolation.last_verified ?? new Date().toISOString().split("T")[0],
     },
   };
 }

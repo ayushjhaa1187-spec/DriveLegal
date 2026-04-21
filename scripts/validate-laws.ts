@@ -2,40 +2,51 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { ViolationsDatasetSchema } from "../src/lib/law-engine/schema";
 
-const DATA_DIR = join(process.cwd(), "data/laws/in");
+const LAWS_DIR = join(process.cwd(), "data/laws/in");
+const LAWPACKS_DIR = join(process.cwd(), "data/lawpacks");
 
 function validateFiles() {
-  const files = readdirSync(DATA_DIR).filter((f) => f.endsWith(".json"));
   let exitCode = 0;
 
-  console.log(`🔍 Validating ${files.length} legal data files...\n`);
+  // 1. Basic violation JSONs
+  const lawFiles = readdirSync(LAWS_DIR).filter(
+    (f) => f.endsWith(".json") && !f.includes("pack_metadata") && f !== "manifest.json"
+  );
+  console.log(`🔍 Validating ${lawFiles.length} standard legal files...\n`);
 
-  files.forEach((file) => {
-    const filePath = join(DATA_DIR, file);
+  lawFiles.forEach((file) => {
+    const filePath = join(LAWS_DIR, file);
     try {
       const content = JSON.parse(readFileSync(filePath, "utf-8"));
       const result = ViolationsDatasetSchema.safeParse(content);
-
       if (!result.success) {
-        console.error(`❌ [${file}] Validation failed:`);
+        console.error(`❌ [${file}] Schema violation:`);
         result.error.issues.forEach((issue) => {
-          console.error(`   - ${issue.path.join(".")}: ${issue.message}`);
+          console.error(`   - ${issue.path.join(".")}: ${issue.message} (${issue.code})`);
         });
         exitCode = 1;
       } else {
-        console.log(`✅ [${file}] Validated successfully (${result.data.violations.length} violations)`);
+        console.log(`✅ [${file}] OK`);
       }
-    } catch (e: any) {
-      console.error(`💥 [${file}] Critical error: ${e.message}`);
+    } catch (e) {
       exitCode = 1;
     }
   });
 
-  if (exitCode === 0) {
-    console.log("\n✨ All legal records passed integrity checks.");
-  } else {
-    console.error("\n🛑 Integrity checks failed. Please fix schema violations before deployment.");
-  }
+  // 2. Lawpacks (Section 2.1)
+  console.log(`\n📦 Checking Lawpack Integrity (Section 2.1)...`);
+  const requiredLawpacks = ["manifest.json", "in/central/1.0.0/violations.json", "in/central/1.0.0/pack_metadata.json"];
+  
+  requiredLawpacks.forEach(relPath => {
+    const p = join(LAWPACKS_DIR, relPath);
+    try {
+      readFileSync(p);
+      console.log(`✅ ${relPath} present`);
+    } catch (e) {
+      console.error(`❌ Missing: ${relPath}`);
+      exitCode = 1;
+    }
+  });
 
   process.exit(exitCode);
 }

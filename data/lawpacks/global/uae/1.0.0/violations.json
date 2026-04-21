@@ -1,0 +1,39 @@
+{
+  "document_metadata": {
+    "source_document": "Global Traffic Regulations",
+    "document_type": "central_act",
+    "jurisdiction": "UAE",
+    "language": "en",
+    "extraction_timestamp": "2026-04-21T05:21:02.081Z"
+  },
+  "violations": [
+    {
+      "id": "UAE::Mobile::handheld-use",
+      "section": "Traffic Fee 38",
+      "title": {
+        "en": "Using a hand-held mobile phone while driving"
+      },
+      "plain_english_summary": "Using a mobile phone or being distracted while driving.",
+      "category": "mobile_use",
+      "severity": 6,
+      "applies_to": [
+        "all"
+      ],
+      "jurisdiction": {
+        "country": "UAE",
+        "state_code": "DXB",
+        "state_name": "Dubai"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "fixed": 800,
+            "currency": "AED"
+          }
+        }
+      },
+      "source_document": "Federal Traffic Law",
+      "last_verified": "2024-04-21"
+    }
+  ]
+}

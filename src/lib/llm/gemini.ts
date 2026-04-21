@@ -1,208 +1,145 @@
-/**
- * Gemini Intent Parser
- *
- * ONLY returns { category, stateCode, vehicleType } — never fine amounts.
- * Client then calls queryViolations() locally with these params.
- */
-
+import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
+import { z } from "zod";
 import type { Violation } from "@/lib/law-engine/schema";
 import type { VehicleTypeInput } from "@/lib/law-engine/types";
 
-export interface StructuredIntent {
-  category: Violation["category"] | null;
-  stateCode: string | null;
-  vehicleType: VehicleTypeInput | null;
+// Strict Zod Schema for Intents
+const IntentSchema = z.object({
+  category: z.enum([
+    "speed", "safety", "documentation", "dangerous_driving", "intoxication",
+    "helmet", "seatbelt", "insurance", "licence", "registration", "overloading",
+    "juvenile", "pollution", "parking", "signal_violation", "mobile_use",
+    "vehicle_condition", "permit", "other"
+  ]).nullable(),
+  stateCode: z.string().length(2).toUpperCase().nullable(),
+  vehicleType: z.enum([
+    "2W", "3W", "4W", "LMV", "HMV", "transport", "non_transport", "all"
+  ]).nullable(),
+});
+
+export type StructuredIntent = z.infer<typeof IntentSchema>;
+
+const SYSTEM_PROMPT = `You are a traffic violation intent parser for India.
+Extract the violation category, state code, and vehicle type from the user query.
+
+Valid Categories: [speed, safety, documentation, dangerous_driving, intoxication, helmet, seatbelt, insurance, licence, registration, overloading, juvenile, pollution, parking, signal_violation, mobile_use, vehicle_condition, permit, other]
+Valid Vehicles: [2W, 3W, 4W, LMV, HMV, transport, all]
+
+Rules:
+1. Return ONLY valid JSON.
+2. If state is not mentioned, use null.
+3. If vehicle is not mentioned, use null.
+4. IMPORTANT: Never suggest a fine amount or legal advice.
+
+Examples:
+- "helmet fine delhi" -> {"category":"helmet", "stateCode":"DL", "vehicleType":"2W"}
+- "overspeeding in maharashtra" -> {"category":"speed", "stateCode":"MH", "vehicleType":null}
+- "drunk driving penalty" -> {"category":"intoxication", "stateCode":null, "vehicleType":null}
+- "pillion without helmet" -> {"category":"helmet", "stateCode":null, "vehicleType":"2W"}
+`;
+
+function getGenAI(apiKey: string) {
+  return new GoogleGenerativeAI(apiKey);
 }
-
-// Whitelists for server-side validation (guardrail per user review)
-const VALID_CATEGORIES = new Set([
-  "speed", "safety", "documentation", "dangerous_driving", "intoxication",
-  "helmet", "seatbelt", "insurance", "licence", "registration", "overloading",
-  "juvenile", "pollution", "parking", "signal_violation", "mobile_use",
-  "vehicle_condition", "permit", "other",
-]);
-const VALID_STATES = new Set([
-  "AN","AP","AR","AS","BR","CH","CT","DN","DL","GA","GJ","HR","HP",
-  "JK","JH","KA","KL","LA","LD","MP","MH","MN","ML","MZ","NL","OR",
-  "PY","PB","RJ","SK","TN","TS","TR","UP","UT","WB",
-]);
-const VALID_VEHICLES = new Set<VehicleTypeInput>([
-  "2W","3W","4W","LMV","HMV","transport","non_transport","all",
-]);
-
-const SYSTEM_PROMPT = `You are a traffic violation intent parser for Indian roads.
-From the user's query, extract ONLY:
-- category: one of [speed, safety, documentation, dangerous_driving, intoxication, helmet, seatbelt, insurance, licence, registration, overloading, juvenile, pollution, parking, signal_violation, mobile_use, vehicle_condition, permit, other]
-- stateCode: 2-letter Indian state code (e.g. MH, DL, KA) or null if not mentioned
-- vehicleType: one of [2W, 3W, 4W, LMV, HMV, transport, all] or null if not mentioned
-
-Return ONLY valid JSON with these 3 keys. Do NOT include fine amounts, legal advice, or any other text.
-Example: {"category":"helmet","stateCode":"MH","vehicleType":"2W"}`;
 
 export async function parseUserIntent(
   query: string,
   lang: string = "en",
   apiKey: string
 ): Promise<StructuredIntent | null> {
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-
-  const body = {
-    system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
-    contents: [{ role: "user", parts: [{ text: `Query (language: ${lang}): ${query}` }] }],
-    generationConfig: {
-      responseMimeType: "application/json",
-      temperature: 0,
-      maxOutputTokens: 128,
-    },
-  };
-
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+  const genAI = getGenAI(apiKey);
+  const model = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash",
+    systemInstruction: SYSTEM_PROMPT
   });
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Gemini ${res.status}: ${err}`);
-  }
-
-  const data = await res.json();
-  const raw = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-
   try {
-    const parsed = JSON.parse(raw);
-    return validateAndNormalize(parsed);
-  } catch {
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: `Query (language: ${lang}): ${query}` }] }],
+      generationConfig: {
+        responseMimeType: "application/json",
+        temperature: 0,
+      }
+    });
+
+    const response = await result.response;
+    const rawText = response.text();
+    const rawJson = JSON.parse(rawText);
+    const validated = IntentSchema.safeParse(rawJson);
+    return validated.success ? validated.data : null;
+  } catch (err) {
+    console.error("Gemini SDK parseUserIntent error:", err);
     return null;
   }
 }
 
-/** Strict server-side whitelist validation — never trust raw model output */
-function validateAndNormalize(raw: Record<string, unknown>): StructuredIntent {
-  const category = typeof raw.category === "string" && VALID_CATEGORIES.has(raw.category)
-    ? (raw.category as Violation["category"])
-    : null;
-
-  const stateCode = typeof raw.stateCode === "string" && VALID_STATES.has(raw.stateCode.toUpperCase())
-    ? raw.stateCode.toUpperCase()
-    : null;
-
-  const vehicleType = typeof raw.vehicleType === "string" && VALID_VEHICLES.has(raw.vehicleType as VehicleTypeInput)
-    ? (raw.vehicleType as VehicleTypeInput)
-    : null;
-
-  return { category, stateCode, vehicleType };
-}
-
-/**
- * Generic LLM call for router - uses Gemini 1.5 Flash
- */
 export async function callGemini(
   systemPrompt: string,
   userMessage: string,
-  options: { temperature?: number; maxTokens?: number; jsonMode?: boolean } = {}
+  options: { temperature?: number; maxTokens?: number; jsonMode?: boolean; apiKey?: string } = {}
 ): Promise<any> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new Error("GEMINI_API_KEY is not set");
+  const apiKey = options.apiKey || process.env.GOOGLE_AI_API_KEY || process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GOOGLE_AI_API_KEY is not set");
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const genAI = getGenAI(apiKey);
+  const model = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash",
+    systemInstruction: systemPrompt
+  });
 
-  const body = {
-    system_instruction: { parts: [{ text: systemPrompt }] },
-    contents: [{ role: "user", parts: [{ text: userMessage }] }, { role: "model", parts: [{ text: "" }] }],
+  const result = await model.generateContent({
+    contents: [{ role: "user", parts: [{ text: userMessage }] }],
     generationConfig: {
       responseMimeType: options.jsonMode ? "application/json" : "text/plain",
       temperature: options.temperature ?? 0.7,
       maxOutputTokens: options.maxTokens ?? 2048,
-    },
-  };
-
-  // Adjust contents to fix gemini API specific message structure if needed
-  // Note: Gemini 1.5 Flash supports system_instruction
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-       system_instruction: { parts: [{ text: systemPrompt }] },
-       contents: [{ role: "user", parts: [{ text: userMessage }] }],
-       generationConfig: body.generationConfig
-    }),
+    }
   });
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Gemini ${res.status}: ${err}`);
-  }
-
-  const data = await res.json();
-  const content = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "";
-
+  const response = await result.response;
   return {
-    content,
+    content: response.text(),
     provider: "gemini",
-    tokensUsed: data?.usageMetadata?.totalTokenCount ?? 0,
+    tokensUsed: response.usageMetadata?.totalTokenCount ?? 0,
     cached: false,
   };
 }
 
-/**
- * Gemini Vision for document OCR and image analysis.
- * Supports both base64 inlineData and potentially image URLs.
- */
 export async function callGeminiVision(
   systemPrompt: string,
   userMessage: string,
-  images: any, // Can be { inlineData: { data, mimeType } } or string[]
-  options: { temperature?: number; maxTokens?: number } = {}
+  images: any, // Expecting { inlineData: { data, mimeType } }
+  options: { temperature?: number; maxTokens?: number; apiKey?: string } = {}
 ): Promise<any> {
-  const apiKey = process.env.GEMINI_API_KEY;
-  if (!apiKey) throw new Error("GEMINI_API_KEY is not set");
+  const apiKey = options.apiKey || process.env.GOOGLE_AI_API_KEY || process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("GOOGLE_AI_API_KEY is not set");
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const genAI = getGenAI(apiKey);
+  const model = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash",
+    systemInstruction: systemPrompt
+  });
 
-  // Prepare parts
+  // Convert legacy images format to SDK format if needed
   const parts: any[] = [{ text: userMessage }];
-  
-  if (images && images.inlineData) {
+  if (images?.inlineData) {
     parts.push(images);
-  } else if (Array.isArray(images)) {
-    images.forEach(url => {
-      // Note: Gemini API standard multimodal expects inlineData for images usually in REST
-      // but some versions support fileData. For local base64 we use inlineData.
-      // If we only have URLs, we'd need to fetch them first or use fileData if hosted.
-      console.warn("URL-based images in Gemini REST require pre-fetching to base64.");
-    });
   }
 
-  const body = {
-    system_instruction: { parts: [{ text: systemPrompt }] },
+  const result = await model.generateContent({
     contents: [{ role: "user", parts }],
     generationConfig: {
       responseMimeType: "application/json",
       temperature: options.temperature ?? 0,
       maxOutputTokens: options.maxTokens ?? 2048,
-    },
-  };
-
-  const res = await fetch(endpoint, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body),
+    }
   });
 
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Gemini Vision ${res.status}: ${err}`);
-  }
-
-  const data = await res.json();
-  const content = data?.candidates?.[0]?.content?.parts?.[0]?.text ?? "{}";
-
+  const response = await result.response;
   return {
-    content,
+    content: response.text(),
     provider: "gemini",
-    tokensUsed: data?.usageMetadata?.totalTokenCount ?? 0,
+    tokensUsed: response.usageMetadata?.totalTokenCount ?? 0,
     cached: false,
   };
 }

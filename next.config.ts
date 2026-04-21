@@ -7,6 +7,29 @@ const withPWA = withPWAInit({
   cacheOnFrontEndNav: true,
   aggressiveFrontEndNavCaching: true,
   reloadOnOnline: true,
+  extendDefaultRuntimeCaching: true,
+  workboxOptions: {
+    runtimeCaching: [
+      {
+        urlPattern: /\/data\/lawpacks\/.*\.(json|bin)$/,
+        handler: "CacheFirst",
+        options: {
+          cacheName: "lawpacks-cache",
+          expiration: {
+            maxEntries: 50,
+            maxAgeSeconds: 30 * 24 * 60 * 60, // 30 Days
+          },
+        },
+      },
+      {
+        urlPattern: /\/src\/lib\/i18n\/messages\/.*\.json$/,
+        handler: "StaleWhileRevalidate",
+        options: {
+          cacheName: "locales-cache",
+        },
+      },
+    ],
+  },
 });
 
 const nextConfig: NextConfig = {

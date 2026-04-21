@@ -26,5 +26,17 @@
   "portal.title": "Transparency Portal",
   "portal.subtitle": "Public enforcement precision and overcharge metrics.",
   "portal.accuracy": "Enforcement Accuracy",
-  "portal.overcharge": "Overcharge Rate"
+  "portal.overcharge": "Overcharge Rate",
+  "common.listen": "Listen",
+  "common.stop": "Stop",
+  "home.calculate": "Calculate Fine",
+  "home.ask": "Ask Legal AI",
+  "home.scan": "Scan Challan",
+  "home.hero_title": "Know your traffic rights. Pay only what's legal.",
+  "home.hero_subtitle": "India's first AI-powered legal assistant for road users.",
+  "home.features_title": "Everything you need on the road",
+  "home.features_subtitle": "From quick fine lookups to AI legal advice — DriveLegal is your pocket lawyer.",
+  "home.badge_offline": "Works Offline",
+  "home.badge_langs": "10 Languages",
+  "home.badge_ai": "AI-Powered"
 }

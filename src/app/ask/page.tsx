@@ -14,12 +14,10 @@ import { Card } from "@/components/ui/Card";
 import { Skeleton } from "@/components/ui/Skeleton";
 import { cn } from "@/lib/utils/cn";
 import { animations } from "@/lib/animations";
-import { dataLoader } from "@/lib/data/data-loader";
-import { resolveViolation } from "@/lib/law-engine/resolver";
+import { WhatsAppShare } from "@/components/social/WhatsAppShare";
 import { useOfflineStatus } from "@/hooks/useOfflineStatus";
-import { WhatsAppShare } from "@/components/shared/WhatsAppShare";
-import type { Violation } from "@/lib/law-engine/schema";
-import type { ResolvedViolation } from "@/lib/law-engine/types";
+import { playFeedback } from "@/lib/utils/feedback";
+import { SpeechNarrator } from "@/components/ui/SpeechNarrator";
 
 interface Message {
   id: string;
@@ -35,6 +33,11 @@ const EXAMPLE_QUERIES = [
   "Is DigiLocker DL valid?",
   "How much fine for no insurance?",
 ];
+
+import { dataLoader } from "@/lib/data/data-loader";
+import { resolveViolation } from "@/lib/law-engine/resolver";
+import { resolveIntent } from "@/lib/llm/router";
+import type { ResolvedViolation } from "@/lib/law-engine/types";
 
 export default function AskPage() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -73,71 +76,41 @@ export default function AskPage() {
     const userMsg: Message = { id: crypto.randomUUID(), role: "user", text: q };
     setMessages((prev) => [...prev, userMsg]);
     setIsLoading(true);
+    
+    // Play sensory feedback
+    playFeedback("click");
 
     try {
       let resolvedResults: ResolvedViolation[] = [];
       let isOfflineMode = !isOnline;
 
-      if (isOnline) {
-        // 1. Get Intent from AI
-        const res = await fetch("/api/ask", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ query: q }),
-        });
+      // 1. Resolve Intent via Hybrid Router (Gemini -> Fuse.js fallback)
+      const intent = await resolveIntent(q, isOnline, stateCode);
+      
+      if (intent) {
+        const targetState = intent.stateCode?.toLowerCase() || stateCode;
         
-        if (res.ok) {
-          const { intent } = await res.json();
-          
-          if (intent) {
-            const targetState = intent.stateCode?.toLowerCase() || stateCode;
-            
-            // 2. Load Local Data
-            const [centralLaws, stateLaws] = await Promise.all([
-              dataLoader.loadViolations("central"),
-              dataLoader.loadViolations(targetState)
-            ]);
+        // 2. Load Local Data
+        const [centralLaws, stateLaws] = await Promise.all([
+          dataLoader.loadViolations("central"),
+          dataLoader.loadViolations(targetState)
+        ]);
 
-            // 3. Resolve locally if intent found
-            if (intent.category) {
-              const matchedInCentral = centralLaws.filter(v => 
-                v.category === intent.category && 
-                (intent.vehicleType === "all" || v.applies_to.includes("all") || (intent.vehicleType && v.applies_to.includes(intent.vehicleType as any)))
-              );
+        // 3. Resolve locally if intent found
+        if (intent.category) {
+          const matchedInCentral = centralLaws.filter(v => 
+            v.category === intent.category && 
+            (intent.vehicleType === "all" || v.applies_to.includes("all") || (intent.vehicleType && v.applies_to.includes(intent.vehicleType as any)))
+          );
 
-              resolvedResults = matchedInCentral.map(v => 
-                resolveViolation(v, stateLaws, {
-                  stateCode: targetState,
-                  vehicleType: intent.vehicleType || "all",
-                  isRepeatOffender: false
-                })
-              );
-            }
-          }
+          resolvedResults = matchedInCentral.map(v => 
+            resolveViolation(v, stateLaws, {
+              stateCode: targetState,
+              vehicleType: intent.vehicleType || "all",
+              isRepeatOffender: false
+            })
+          );
         }
-      }
-
-      // 4. Keyword Fallback if no structured result
-      if (resolvedResults.length === 0) {
-        const centralLaws = await dataLoader.loadViolations("central");
-        const stateLaws = await dataLoader.loadViolations(stateCode);
-        
-        const keywords = q.toLowerCase().split(" ");
-        const matched = centralLaws.filter(v => 
-          keywords.some(k => 
-            v.title.en.toLowerCase().includes(k) || 
-            v.plain_english_summary.toLowerCase().includes(k) ||
-            v.section?.toLowerCase().includes(k)
-          )
-        ).slice(0, 3);
-
-        resolvedResults = matched.map(v => 
-          resolveViolation(v, stateLaws, {
-            stateCode,
-            vehicleType: "all",
-            isRepeatOffender: false
-          })
-        );
       }
 
       const assistantMsg: Message = {
@@ -150,7 +123,11 @@ export default function AskPage() {
         isOffline: isOfflineMode
       };
       setMessages((prev) => [...prev, assistantMsg]);
+      
+      // Success feedback
+      if (resolvedResults.length > 0) playFeedback("success");
     } catch (err) {
+      playFeedback("error");
       setMessages((prev) => [...prev, {
         id: crypto.randomUUID(),
         role: "assistant",
@@ -262,6 +239,10 @@ export default function AskPage() {
                               {res.ruleSource === "state_override" ? `${res.appliedStateCode} State Law` : "Central MVA Law"}
                             </span>
                             <h3 className="font-bold text-slate-900 dark:text-white">{res.violation.title.en}</h3>
+                            <SpeechNarrator 
+                              text={`${res.violation.title.en}. Summary: ${res.violation.plain_english_summary}. The fine is ${res.resolvedFine.displayText} as per section ${res.citation.section}.`}
+                              className="mt-2"
+                            />
                           </div>
                           <div className="text-right">
                              <p className="text-xl font-black text-slate-900 dark:text-white">{res.resolvedFine.displayText}</p>

@@ -22,16 +22,16 @@ export const FineSchema = z.object({
 });
 
 export const ImprisonmentSchema = z.object({
-  value: z.number().nullable(),
-  unit: z.enum(["days", "months", "years"]).nullable(),
-  severity: z.enum(["may", "shall"]).nullable(),
-  text: z.string().nullable(),
+  value: z.number().nullable().optional(),
+  unit: z.enum(["days", "months", "years"]).nullable().optional(),
+  severity: z.enum(["may", "shall"]).nullable().optional(),
+  text: z.string().nullable().optional(),
 });
 
 export const ViolationSchema = z.object({
   id: z.string(), // e.g., "IN::Section-184::dangerous-driving"
   section: z.string().nullable(), // e.g., "Section 184"
-  rule_reference: z.string().nullable(),
+  rule_reference: z.string().nullable().optional(),
   title: z.object({
     en: z.string(),
     hi: z.string().optional(),
@@ -40,6 +40,7 @@ export const ViolationSchema = z.object({
   }),
   plain_english_summary: z.string(),
   category: z.enum([
+    "speeding",
     "speed",
     "safety",
     "documentation",
@@ -60,7 +61,7 @@ export const ViolationSchema = z.object({
     "permit",
     "other",
   ]),
-  severity: z.number().min(1).max(5),
+  severity: z.number().min(1).max(10),
   applies_to: z.array(VehicleTypeSchema),
   jurisdiction: z.object({
     country: z.string().default("IN"),
@@ -70,27 +71,27 @@ export const ViolationSchema = z.object({
   penalty: z.object({
     first_offence: z.object({
       fine: FineSchema.nullable(),
-      imprisonment: ImprisonmentSchema.nullable(),
+      imprisonment: ImprisonmentSchema.nullable().optional(),
     }),
     repeat_offence: z.object({
       fine: FineSchema.nullable(),
-      imprisonment: ImprisonmentSchema.nullable(),
-    }).nullable(),
-    licence_suspension: z.string().nullable(),
-    licence_disqualification: z.string().nullable(),
-    community_service: z.string().nullable(),
-    other_penalty_text: z.string().nullable(),
+      imprisonment: ImprisonmentSchema.nullable().optional(),
+    }).nullable().optional(),
+    licence_suspension: z.string().nullable().optional(),
+    licence_disqualification: z.string().nullable().optional(),
+    community_service: z.string().nullable().optional(),
+    other_penalty_text: z.string().nullable().optional(),
   }),
-  compoundable: z.boolean().nullable(),
-  compounding_amount_inr: z.number().nullable(),
-  effective_date: z.string().nullable(), // ISO date
-  source_url: z.string().nullable(),
-  source_document: z.string(),
-  source_page: z.number().nullable(),
-  source_text_excerpt: z.string(),
-  confidence: z.enum(["high", "medium", "low"]),
-  extraction_notes: z.array(z.string()),
-  last_verified: z.string(), // ISO date
+  compoundable: z.boolean().nullable().optional(),
+  compounding_amount_inr: z.number().nullable().optional(),
+  effective_date: z.string().nullable().optional(), // ISO date
+  source_url: z.string().nullable().optional(),
+  source_document: z.string().optional(),
+  source_page: z.number().nullable().optional(),
+  source_text_excerpt: z.string().optional(),
+  confidence: z.enum(["high", "medium", "low"]).optional(),
+  extraction_notes: z.array(z.string()).optional(),
+  last_verified: z.string().optional(), // ISO date
 });
 
 export type Violation = z.infer<typeof ViolationSchema>;
@@ -107,7 +108,7 @@ export const ViolationsDatasetSchema = z.object({
     ]),
     jurisdiction: z.string(),
     language: z.string(),
-    pages_processed: z.array(z.number()),
+    pages_processed: z.array(z.number()).optional(),
     extraction_timestamp: z.string(),
   }),
   violations: z.array(ViolationSchema),

@@ -15,7 +15,7 @@ interface LoadedDataset {
   violations: Violation[];
 }
 
-// In-memory cache keyed by stateCode (or "central" for central-only)
+// In-memory cache keyed by "country:state"
 const cache = new Map<string, Violation[]>();
 
 async function fetchDataset(path: string): Promise<LoadedDataset | null> {
@@ -30,59 +30,59 @@ async function fetchDataset(path: string): Promise<LoadedDataset | null> {
 }
 
 /**
- * Load merged violations for a given state.
- * State overrides REPLACE matching central entries by `section`.
- * If no state file exists, falls back to central-only.
+ * Load merged violations for a given country and state.
+ * Supports:
+ * 1. Global (country only): /data/lawpacks/global/{country}/1.0.0/violations.json
+ * 2. Domestic (India): /data/lawpacks/in/{state || central}/1.0.0/violations.json
  */
-export async function loadViolations(stateCode: string | null): Promise<Violation[]> {
-  const cacheKey = stateCode ?? "central";
+export async function loadViolations(stateCode: string | null, countryCode: string = "in"): Promise<Violation[]> {
+  const cacheKey = `${countryCode}:${stateCode ?? "central"}`;
 
   if (cache.has(cacheKey)) {
     return cache.get(cacheKey)!;
   }
 
-  // Always load central law
-  const centralData = await fetchDataset("/data/laws/in/central.json");
+  // ─── Global Strategy ───────────────────────────────────────────────────────
+  if (countryCode.toLowerCase() !== "in") {
+    const globalData = await fetchDataset(`/data/lawpacks/global/${countryCode.toLowerCase()}/1.0.0/violations.json`);
+    const violations = globalData?.violations ?? [];
+    cache.set(cacheKey, violations);
+    return violations;
+  }
+
+  // ─── India Strategy ────────────────────────────────────────────────────────
+  // Always load central law as baseline
+  const centralData = await fetchDataset("/data/lawpacks/in/central/1.0.0/violations.json");
   const central = centralData?.violations ?? [];
 
-  if (!stateCode) {
+  if (!stateCode || stateCode === "central") {
     cache.set(cacheKey, central);
     return central;
   }
 
   // Try to load state override
-  const stateData = await fetchDataset(`/data/laws/in/${stateCode}.json`);
+  const stateData = await fetchDataset(`/data/lawpacks/in/${stateCode.toLowerCase()}/1.0.0/violations.json`);
   const stateViolations = stateData?.violations ?? [];
 
   if (stateViolations.length === 0) {
-    // No override file for this state — use central
     cache.set(cacheKey, central);
     return central;
   }
 
-  // Build a map of sections overridden by the state
+  // Merge: state overrides REPLACE central entries with matching section
   const overriddenSections = new Set(
-    stateViolations
-      .map((v) => v.section)
-      .filter(Boolean)
+    stateViolations.map((v) => v.section).filter(Boolean)
   );
 
-  // Keep central entries whose section is NOT overridden by the state
   const filteredCentral = central.filter(
     (v) => !v.section || !overriddenSections.has(v.section)
   );
 
-  // Merge: state overrides first, then remaining central entries
   const merged = [...stateViolations, ...filteredCentral];
-
   cache.set(cacheKey, merged);
   return merged;
 }
 
-/** Clear the cache (useful for testing or hot-reload) */
 export function clearViolationCache(): void {
   cache.clear();
 }
-
-/** Expose the full list of states that have override files */
-export const STATES_WITH_OVERRIDES: string[] = ["MH", "KA", "DL"];

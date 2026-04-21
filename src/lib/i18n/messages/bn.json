@@ -26,5 +26,17 @@
   "portal.title": "স্বচ্ছতা পোর্টাল",
   "portal.subtitle": "জনসাধারণের এনফোর্সমেন্ট নির্ভুলতা এবং অতিরিক্ত চার্জ মেট্রিক্স।",
   "portal.accuracy": "এনফোর্সমেন্ট নির্ভুলতা",
-  "portal.overcharge": "অতিরিক্ত চার্জের হার"
+  "portal.overcharge": "অতিরিক্ত চার্জের হার",
+  "common.listen": "শুনুন",
+  "common.stop": "থামুন",
+  "home.calculate": "জরিমানা হিসাব করুন",
+  "home.ask": "আইনি AI জিজ্ঞাসা করুন",
+  "home.scan": "চালান স্ক্যান করুন",
+  "home.hero_title": "আপনার ট্রাফিক অধিকার জানুন। শুধুমাত্র যা আইনি তা প্রদান করুন।",
+  "home.hero_subtitle": "সড়ক ব্যবহারকারীদের জন্য ভারতের প্রথম AI-চালিত আইনি সহকারী।",
+  "home.features_title": "রাস্তায় আপনার যা কিছু প্রয়োজন",
+  "home.features_subtitle": "দ্রুত জরিমানা দেখা থেকে শুরু করে AI আইনি পরামর্শ — DriveLegal আপনার পকেট আইনজীবী।",
+  "home.badge_offline": "অফলাইনে কাজ করে",
+  "home.badge_langs": "১০টি ভাষা",
+  "home.badge_ai": "AI-চালিত"
 }

@@ -8,6 +8,7 @@ import { MobileBottomNav } from "@/components/nav/MobileBottomNav";
 import { AppShell } from "@/components/layout/AppShell";
 import { InitiativeHeader } from "@/components/layout/InitiativeHeader";
 import { AppBootSplash } from "@/components/shared/AppBootSplash";
+import FramerLayout from "@/components/layout/FramerLayout";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -27,6 +28,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -84,7 +86,9 @@ export default function RootLayout({
               <GlobalSearch />
             </div>
             <main id="main-content" className="md:ml-4 flex-1">
-              {children}
+              <FramerLayout>
+                {children}
+              </FramerLayout>
             </main>
             <MobileBottomNav />
           </AppShell>

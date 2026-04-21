@@ -101,9 +101,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading ? (
           <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-        ) : leftIcon}
-        <span>{children}</span>
-        {!loading && rightIcon}
+        ) : (
+          leftIcon && <span aria-hidden="true">{leftIcon}</span>
+        )}
+        <span className="flex-1 text-center">{children}</span>
+        {!loading && rightIcon && <span aria-hidden="true">{rightIcon}</span>}
       </button>
     );
   }

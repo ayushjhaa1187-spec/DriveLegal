@@ -17,6 +17,7 @@ import { PWAInstallPrompt } from "@/components/shared/PWAInstallPrompt";
 import { AuthModal } from "@/components/auth/AuthModal";
 import { useAuth } from "@/components/AuthProvider";
 import { User, LogOut, UserCircle } from "lucide-react";
+import { SplashScreen } from "./SplashScreen";
 
 const PRIMARY_NAV = [
   { href: "/", label: "Home", icon: Home, mobile: true },
@@ -46,8 +47,14 @@ export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [isReady, setIsReady] = useState(false);
   const { user, signOut } = useAuth();
   const { isOnline } = useOfflineStatus();
+
+  // Hydration readiness
+  useEffect(() => {
+    setIsReady(true);
+  }, []);
 
   // Lock body scroll when mobile menu open
   useEffect(() => {
@@ -56,7 +63,8 @@ export function AppShell({ children }: AppShellProps) {
   }, [mobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans">
+    <SplashScreen isReady={isReady}>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex flex-col font-sans">
       {/* Offline Banner */}
       {!isOnline && (
         <div
@@ -252,5 +260,6 @@ export function AppShell({ children }: AppShellProps) {
       <PWAInstallPrompt />
       <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </div>
+    </SplashScreen>
   );
 }

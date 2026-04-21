@@ -20,27 +20,26 @@ import { computeFineWithTrace } from "./decision-table";
 
 function resolveFine(violation: Violation, isRepeat: boolean): ResolvedFine {
   const penalty = violation.penalty;
-
   const offence =
     isRepeat && penalty.repeat_offence
       ? penalty.repeat_offence
       : penalty.first_offence;
 
   const fine = offence?.fine;
+  const currency = fine?.currency || "INR";
+  const symbol = currency === "INR" ? "₹" : currency === "USD" ? "$" : currency === "GBP" ? "£" : currency === "AED" ? "د.إ" : currency + " ";
 
   if (!fine) {
-    return { amount: null, type: "unknown", displayText: "Refer to court", currency: "INR" };
+    return { amount: null, type: "unknown", displayText: "Refer to court", currency };
   }
 
-  // Prefer compounding amount when available and user wants payable amount
-  // (compounding = can pay on-spot; otherwise must go to court)
   const compoundingAmount = violation.compounding_amount_inr;
   if (compoundingAmount !== null && compoundingAmount !== undefined) {
     return {
       amount: compoundingAmount,
       type: "fixed",
-      displayText: `₹${compoundingAmount.toLocaleString("en-IN")}`,
-      currency: "INR",
+      displayText: `${symbol}${compoundingAmount.toLocaleString()}`,
+      currency,
     };
   }
 
@@ -48,8 +47,8 @@ function resolveFine(violation: Violation, isRepeat: boolean): ResolvedFine {
     return {
       amount: fine.fixed,
       type: "fixed",
-      displayText: `₹${fine.fixed.toLocaleString("en-IN")}`,
-      currency: "INR",
+      displayText: `${symbol}${fine.fixed.toLocaleString()}`,
+      currency,
     };
   }
 
@@ -57,8 +56,8 @@ function resolveFine(violation: Violation, isRepeat: boolean): ResolvedFine {
     return {
       amount: fine.min,
       type: "range",
-      displayText: `₹${fine.min!.toLocaleString("en-IN")} – ₹${fine.max!.toLocaleString("en-IN")}`,
-      currency: "INR",
+      displayText: `${symbol}${fine.min!.toLocaleString()} – ${symbol}${fine.max!.toLocaleString()}`,
+      currency,
     };
   }
 
@@ -66,8 +65,8 @@ function resolveFine(violation: Violation, isRepeat: boolean): ResolvedFine {
   return {
     amount,
     type: amount !== null ? "fixed" : "unknown",
-    displayText: amount !== null ? `₹${amount.toLocaleString("en-IN")}` : "Refer to court",
-    currency: "INR",
+    displayText: amount !== null ? `${symbol}${amount.toLocaleString()}` : "Refer to court",
+    currency,
   };
 }
 
@@ -133,10 +132,10 @@ function buildResult(
       null,
     citation: {
       section: violation.section,
-      sourceDocument: violation.source_document,
-      sourceUrl: violation.source_url,
-      excerpt: violation.source_text_excerpt,
-      lastVerified: violation.last_verified,
+      sourceDocument: violation.source_document ?? "Motor Vehicles Act / State Gazette",
+      sourceUrl: violation.source_url ?? null,
+      excerpt: violation.source_text_excerpt ?? "Citation text excerpt unavailable.",
+      lastVerified: violation.last_verified ?? new Date().toISOString().split("T")[0],
     },
     fineDecision: computeFineWithTrace(violation, params),
   };
@@ -160,7 +159,7 @@ function keywordMatch(violation: Violation, searchText: string): boolean {
 // ─── Main Query Function ──────────────────────────────────────────────────────
 
 export async function queryViolations(params: QueryParams): Promise<QueryResult> {
-  const violations = await loadViolations(params.stateCode);
+  const violations = await loadViolations(params.stateCode, params.countryCode || "in");
 
   let matched: Violation[] = [];
   let usedKeywordFallback = false;

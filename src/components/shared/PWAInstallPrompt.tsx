@@ -60,8 +60,9 @@ export function PWAInstallPrompt() {
               <button
                 onClick={dismiss}
                 className="absolute top-4 right-4 text-slate-400 hover:text-slate-600"
+                aria-label="Dismiss prompt"
               >
-                <X className="h-4 w-4" />
+                <X className="h-4 w-4" aria-hidden="true" />
               </button>
 
               <div className="flex gap-4 items-start mb-6">

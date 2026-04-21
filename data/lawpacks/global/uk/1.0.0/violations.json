@@ -1,0 +1,39 @@
+{
+  "document_metadata": {
+    "source_document": "Global Traffic Regulations",
+    "document_type": "central_act",
+    "jurisdiction": "UK",
+    "language": "en",
+    "extraction_timestamp": "2026-04-21T05:21:02.078Z"
+  },
+  "violations": [
+    {
+      "id": "UK::Helmet::not-worn",
+      "section": "Rule 83",
+      "title": {
+        "en": "Riding without a helmet"
+      },
+      "plain_english_summary": "On a motorcycle, you MUST wear a protective helmet.",
+      "category": "helmet",
+      "severity": 5,
+      "applies_to": [
+        "2W"
+      ],
+      "jurisdiction": {
+        "country": "UK",
+        "state_code": null,
+        "state_name": "United Kingdom"
+      },
+      "penalty": {
+        "first_offence": {
+          "fine": {
+            "fixed": 100,
+            "currency": "GBP"
+          }
+        }
+      },
+      "source_document": "Highway Code",
+      "last_verified": "2024-04-21"
+    }
+  ]
+}

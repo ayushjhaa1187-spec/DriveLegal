@@ -89,9 +89,9 @@ export function computeFineWithTrace(
 
   // Step 5: Imprisonment check
   const imprisonment = penaltyScope.imprisonment;
-  const imprisonmentRisk = imprisonment !== null && imprisonment.value !== null;
+  const imprisonmentRisk = !!(imprisonment && imprisonment.value !== null && imprisonment.value !== undefined);
   
-  if (imprisonmentRisk) {
+  if (imprisonmentRisk && imprisonment) {
     trace.push({
       step: step++,
       rule: 'IMPRISONMENT_RISK',
@@ -129,7 +129,7 @@ export function computeFineWithTrace(
     fineMax,
     imprisonmentRisk,
     imprisonmentDetail: imprisonment?.text ?? null,
-    licenceSuspension: violation.penalty.licence_suspension,
+    licenceSuspension: violation.penalty.licence_suspension ?? null,
     trace,
     confidence,
   };

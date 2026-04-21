@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# antigravity / project specific
+artifacts/
+data/eval/
+playwright-report/
+test-results/
+.gemini/

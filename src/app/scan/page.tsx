@@ -46,8 +46,8 @@ export default function ScanPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Status computation
-  const isOvercharged = scanResult?.amountCharged != null && resolvedLaw?.resolvedFine.amount != null && 
-    scanResult.amountCharged > resolvedLaw.resolvedFine.amount;
+  const isOvercharged = scanResult?.total_amount_inr != null && resolvedLaw?.resolvedFine.amount != null && 
+    scanResult.total_amount_inr > resolvedLaw.resolvedFine.amount;
 
   // VIP Detection simulation
   useEffect(() => {
@@ -100,28 +100,32 @@ export default function ScanPage() {
         setScanResult(extracted);
 
         // 2. Resolve Law locally
-        if (extracted.section || extracted.violation) {
-          const centralLaws = await dataLoader.loadViolations("central");
-          const stateCode = localStorage.getItem("user-state-code") || "central";
-          const stateLaws = await dataLoader.loadViolations(stateCode.toLowerCase());
+        const centralLaws = await dataLoader.loadViolations("central");
+        const stateCode = localStorage.getItem("user-state-code") || "central";
+        const stateLaws = await dataLoader.loadViolations(stateCode.toLowerCase());
 
-          // MATCHING ALGORITHM V2
+        // Use the first violation for main summary (most common case is 1 violation per challan)
+        const primaryExtracted = extracted.violations?.[0];
+
+        if (primaryExtracted || extracted.violation) {
+          // MATCHING ALGORITHM V3 (Hardened)
           // Priority 1: Exact Section match
           let matched = centralLaws.find(v => 
-            v.section?.toLowerCase().replace(/\s/g, '') === extracted.section?.toLowerCase().replace(/\s/g, '')
+            v.section?.toLowerCase().replace(/\s/g, '') === primaryExtracted?.section?.toLowerCase().replace(/\s/g, '')
           );
 
-          // Priority 2: Fuzzy title match
-          if (!matched) {
-            matched = centralLaws.find(v => 
-              v.title.en.toLowerCase().includes((extracted.violation || "").toLowerCase()) ||
-              (extracted.violation || "").toLowerCase().includes(v.title.en.toLowerCase())
-            );
+          // Priority 2: AI Category match (Trusting the hardened extraction)
+          if (!matched && primaryExtracted?.category_id) {
+            matched = centralLaws.find(v => v.category === primaryExtracted.category_id);
           }
 
-          // Priority 3: Category fallback
-          if (!matched && extracted.category) {
-            matched = centralLaws.find(v => v.category === extracted.category);
+          // Priority 3: Fuzzy title match
+          if (!matched) {
+            const searchText = (primaryExtracted?.description || extracted.violation || "").toLowerCase();
+            matched = centralLaws.find(v => 
+              v.title.en.toLowerCase().includes(searchText) ||
+              searchText.includes(v.title.en.toLowerCase())
+            );
           }
 
           if (matched) {
@@ -251,7 +255,7 @@ export default function ScanPage() {
                   <Card className="p-6 bg-slate-50 dark:bg-slate-900 border-none shadow-inner">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">On Your Receipt</p>
                     <p className={cn("text-3xl font-black", isOvercharged ? "text-red-500" : "text-slate-900 dark:text-white")}>
-                      ₹{scanResult.amountCharged?.toLocaleString()}
+                      ₹{scanResult.total_amount_inr?.toLocaleString() || "0"}
                     </p>
                   </Card>
                   <Card className="p-6 bg-indigo-500/5 dark:bg-indigo-500/10 border-2 border-indigo-500/20">

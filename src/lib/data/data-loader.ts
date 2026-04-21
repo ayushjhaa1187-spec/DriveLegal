@@ -118,6 +118,19 @@ class DriveLegalDataLoader implements DataLoadStrategy {
   }
 
   private async loadFromNetwork(stateCode: string): Promise<LawDataFile> {
+    if (typeof window === "undefined") {
+      // In Node environment (benchmarking scripts), load from local file system
+      try {
+        const fs = await import("fs");
+        const path = await import("path");
+        const filePath = path.join(process.cwd(), "public/data/laws/in", `${stateCode}.json`);
+        const content = fs.readFileSync(filePath, "utf-8");
+        return JSON.parse(content);
+      } catch (e) {
+        throw new Error(`Node Local Load Failed for ${stateCode}: ${e}`);
+      }
+    }
+
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 5000);
     
@@ -134,6 +147,11 @@ class DriveLegalDataLoader implements DataLoadStrategy {
 
   private async loadBundledFallback(stateCode: string): Promise<Violation[]> {
     try {
+      if (typeof window === "undefined") {
+        const data = await this.loadFromNetwork(stateCode);
+        return data.violations ?? [];
+      }
+      
       // Use fetch to get project-local JSON as fallback
       const response = await fetch(`/data/laws/in/${stateCode === "central" ? "central" : stateCode}.json`);
       if (!response.ok) {

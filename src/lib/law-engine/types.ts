@@ -14,6 +14,8 @@ export type VehicleTypeInput =
   | "all";
 
 export interface QueryParams {
+  /** Country code, e.g. "in", "usa". Defaults to "in". */
+  countryCode?: string;
   /** ISO state code, e.g. "MH". Null = central law only. */
   stateCode: string | null;
   /** Normalized vehicle type */
